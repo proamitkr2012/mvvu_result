@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="../MVVU_RESULT_DATA/MVVU_RESULT_DATA.csproj" />
+  <Project Path="../MVVU_RESULT_MODEL/MVVU_RESULT_MODEL.csproj" />
+  <Project Path="../MVVU_RESULT_REPO/MVVU_RESULT_REPO.csproj" />
+  <Project Path="../SMS_MAILAPP/SMS_MAILAPP.csproj" />
+  <Project Path="MVVU_RESULT_UI.csproj" />
+</Solution>

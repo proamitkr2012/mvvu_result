@@ -1,0 +1,12 @@
+D:\MVVU_RESULT\SMS_MAILAPP\bin\Debug\net8.0\SMS_MAILAPP.deps.json
+D:\MVVU_RESULT\SMS_MAILAPP\bin\Debug\net8.0\SMS_MAILAPP.dll
+D:\MVVU_RESULT\SMS_MAILAPP\bin\Debug\net8.0\SMS_MAILAPP.pdb
+D:\MVVU_RESULT\SMS_MAILAPP\obj\Debug\net8.0\SMS_MAILAPP.csproj.AssemblyReference.cache
+D:\MVVU_RESULT\SMS_MAILAPP\obj\Debug\net8.0\SMS_MAILAPP.GeneratedMSBuildEditorConfig.editorconfig
+D:\MVVU_RESULT\SMS_MAILAPP\obj\Debug\net8.0\SMS_MAILAPP.AssemblyInfoInputs.cache
+D:\MVVU_RESULT\SMS_MAILAPP\obj\Debug\net8.0\SMS_MAILAPP.AssemblyInfo.cs
+D:\MVVU_RESULT\SMS_MAILAPP\obj\Debug\net8.0\SMS_MAILAPP.csproj.CoreCompileInputs.cache
+D:\MVVU_RESULT\SMS_MAILAPP\obj\Debug\net8.0\SMS_MAILAPP.dll
+D:\MVVU_RESULT\SMS_MAILAPP\obj\Debug\net8.0\refint\SMS_MAILAPP.dll
+D:\MVVU_RESULT\SMS_MAILAPP\obj\Debug\net8.0\SMS_MAILAPP.pdb
+D:\MVVU_RESULT\SMS_MAILAPP\obj\Debug\net8.0\ref\SMS_MAILAPP.dll
