@@ -239,7 +239,7 @@ namespace MVVU_RESULT_UI.Controllers
                     model.IsAdmin = "0";
                 }
 
-                model.FName = "dsa";
+                model.FName = "dsa@26";
                 if (!string.IsNullOrEmpty(model.RollNumber))
                 {
                     Session.SetObject("resultdata", model);

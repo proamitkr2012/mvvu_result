@@ -1,10 +1,10 @@
-wwwroot\AgraUniversity_LOGO.png
 wwwroot\DHRAU_Watermark.png
-wwwroot\DHRAU_Watermark_1.png
+wwwroot\DHRAU_Watermark1.png
 wwwroot\No-Image-Placeholder.svg
 wwwroot\Rotativa\wkhtmltoimage.exe
 wwwroot\Rotativa\wkhtmltopdf.exe
-wwwroot\Sign.jpeg
+wwwroot\Sign.jpg
+wwwroot\Sign1.png
 wwwroot\Themes\src\fonts\bootstrap\bootstrap-icons.css
 wwwroot\Themes\src\fonts\bootstrap\fonts\bootstrap-icons.woff
 wwwroot\Themes\src\fonts\bootstrap\fonts\bootstrap-icons.woff2
@@ -598,14 +598,9 @@ wwwroot\Themes\vendors\styles\icon-font.css
 wwwroot\Themes\vendors\styles\icon-font.min.css
 wwwroot\Themes\vendors\styles\style.css
 wwwroot\Themes\vendors\styles\style.min.css
-wwwroot\Univ.jpeg
-wwwroot\University_LOGO.png
 wwwroot\css\bootstrap-steps.min.css
 wwwroot\css\printres.css
 wwwroot\css\site.css
-wwwroot\dbru - Copy.jpeg
-wwwroot\dbru.jpeg
-wwwroot\dbru1.jpg
 wwwroot\favicon.ico
 wwwroot\js\AdminJs\CourseMaster.js
 wwwroot\js\AdminJs\OrdinanceApply.js
@@ -685,11 +680,7 @@ wwwroot\lib\jquery\dist\jquery.js
 wwwroot\lib\jquery\dist\jquery.min.js
 wwwroot\lib\jquery\dist\jquery.min.map
 wwwroot\loader.svg
-wwwroot\logo_header - Copy.png
-wwwroot\logo_header - bg.png
 wwwroot\logo_header.png
-wwwroot\logo_header11.png
-wwwroot\logo_header1111.png
 wwwroot\pageui\AGRA_MASTER_L_25_12_25.sql
 wwwroot\pageui\AGRA_RESULT_DEMO_L_25_12_25.sql
 wwwroot\pageui\AGRA_RESULT_ERP_L_25_12_25.sql
@@ -1423,4 +1414,3 @@ wwwroot\pageui\plugins\toastr\toastr.min.js
 wwwroot\pageui\plugins\uplot\uPlot.iife.min.js
 wwwroot\pageui\plugins\uplot\uPlot.min.css
 wwwroot\pageui\starter.html
-wwwroot\yoga.png

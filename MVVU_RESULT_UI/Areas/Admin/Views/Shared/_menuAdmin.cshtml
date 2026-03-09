@@ -8,7 +8,7 @@
 
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
 
-    <a href="index3.html" class="brand-link">
+    <a href="/" class="brand-link">
         <img src="~/logo_header.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">Admin</span>
     </a>
@@ -46,6 +46,9 @@
                         <p>Dashboard</p>
                     </a>
                 </li>
+                @if (CurrentUser.Roles.Contains("Admin") || CurrentUser.Roles.Contains("SuperAdmin"))
+                {
+
                 <li class="nav-item">
                     <a href="/admin/dashboard/course_master" class="nav-link @(ViewData["ActiveMenu"] != null && ViewData["ActiveMenu"].Equals("course_master") ? "selectedmenu" : "")">
                         <i class="nav-icon far fa-circle text-danger"></i>
@@ -104,8 +107,7 @@
 
 
 
-                @if (CurrentUser.Roles.Contains("Admin") || CurrentUser.Roles.Contains("SuperAdmin"))
-                {
+                
 
 
                     <li class="nav-item @(ViewData["ActiveGroup"] != null && ViewData["ActiveGroup"].Equals("CourseMenu") ? "menu-is-opening menu-open" : "")">
@@ -130,12 +132,7 @@
                                     <p class="text">STUDENT RULE</p>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a href="/admin/dashboard/sync_mark_result_demo_erp" class="nav-link @(ViewData["ActiveMenu"] != null && ViewData["ActiveMenu"].Equals("sync_mark_result_demo_erp") ? "selectedmenu" : "")">
-                                    <i class="nav-icon fas fa-code-branch text-warning"></i>
-                                    <p class="text">SYNC <span class="px-4">MARK_RESULT_DEMO_ERP</span></p>
-                                </a>
-                            </li>
+                            
                         </ul>
                     </li>
                 }

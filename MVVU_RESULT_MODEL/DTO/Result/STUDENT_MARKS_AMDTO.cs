@@ -112,5 +112,12 @@ namespace MVVU_RESULT_MODEL.DTO
         public string? ISRWMARKS { get; set; }
         public string? UFMRemark { get; set; }
 
+        public string? T_MAX { get; set; }
+        public string? I_MAX { get; set; }
+        public string? TOT_MAX { get; set; }
+        public int? POINT { get; set; }
+        public int? GRADE_POINT { get; set; }
+        
+
     }
 }

@@ -1,7 +1,7 @@
 ﻿@using MVVU_RESULT_MODEL
 @model MVVU_RESULT_MODEL.DTO.StudentList_Admin
 @{
-    var stud = Model.StudentList; 
+    var stud = Model.StudentList;
     ViewData["Title"] = "STUDENT";
     ViewData["ActiveMenu"] = "studentlist"; ViewData["ActiveGroup"] = "CourseMenu";
 }
@@ -44,8 +44,8 @@
 
                     <form style="margin:0px" id="formIndex" method="post">
 
-                    <div class="card">
-                        
+                        <div class="card">
+
                             <div class="card-header">
                                 <input id="CommandNameSrh" name="CommandNameSrh" value="" hidden />
                                 <div class="container">
@@ -177,22 +177,22 @@
                                                     <option value="0">Pending</option>
                                                 }
                                                 else if (Model.IS_PUBLISHED == 2)
-                                                { 
-                                                    <option value="3" >--All--</option>
-                                                    <option value="2" selected >Published</option>
+                                                {
+                                                    <option value="3">--All--</option>
+                                                    <option value="2" selected>Published</option>
                                                     <option value="1">Not Published</option>
                                                     <option value="0">Pending</option>
                                                 }
                                                 else if (Model.IS_PUBLISHED == 1)
                                                 {
-                                                    <option value="3" >--All--</option>
+                                                    <option value="3">--All--</option>
                                                     <option value="2">Published</option>
-                                                    <option value="1" selected >Not Published</option>
+                                                    <option value="1" selected>Not Published</option>
                                                     <option value="0">Pending</option>
                                                 }
                                                 else
                                                 {
-                                                    <option value="3" >--All--</option>
+                                                    <option value="3">--All--</option>
                                                     <option value="2">Published</option>
                                                     <option value="1">Not Published</option>
                                                     <option value="0" selected>Pending</option>
@@ -216,201 +216,212 @@
 
                             </div>
                             @Html.Hidden("Page")
-                        <!-- /.card-header -->
-                        <div class="card-body table-responsive m-2">
-                            <table class="table table-head-fixed " id="studenttable">
-                                <thead>
+                            <!-- /.card-header -->
+                            <div class="card-body table-responsive m-2">
+                                <table class="table table-head-fixed " id="studenttable">
+                                    <thead>
                                         <tr style="font-size:13px;">
-                                        <th class="text-center" width="150px">
+                                            <th class="text-center" width="150px">
                                                 <input type="checkbox" class="checkboxsize" id="selectAll" />
-                                            ALL / SrNo.
-                                                
-                                        </th>
-                                       
-                                        <th>
-                                            ROLLNO
-                                        /
-                                            EN_NO
-                                        </th>
-                                        <th>EXAM_TYPE</th>
-                                        <th>NAME</th>
-                                        <th>Father/Mother</th>
-                                        <th>CourseName</th>
-                                        <th>SEM_NO</th>
-                                        <th>HeldIn / ResultDate</th>
-                                        <th>Result / Final_Result</th>
+                                                ALL / SrNo.
+
+                                            </th>
+
+                                            <th>
+                                                ROLLNO
+                                                /
+                                                EN_NO
+                                            </th>
+                                            <th>EXAM_TYPE</th>
+                                            <th>NAME</th>
+                                            <th>Father/Mother</th>
+                                            <th>CourseName</th>
+                                            <th>SEM_NO</th>
+                                            <th>HeldIn / ResultDate</th>
+                                            <th>Result / Final_Result</th>
                                             <th>Status</th>
                                             <th>Publish Status</th>
-                                    </tr>
-                                </thead>
+                                        </tr>
+                                    </thead>
 
-                                <tbody>
-                                    @if (stud != null)
-                                    {
-                                        if (stud.Count() > 0)
+                                    <tbody>
+                                        @if (stud != null)
                                         {
-                                           
-                                            foreach (var item in stud)
+                                            if (stud.Count() > 0)
                                             {
-                                                var colors = item.IsActive == false ? "background-color:#ffdde3" : "";
-                                                <tr style="font-size:11px;@colors">
 
-                                                    <td>
-                                                        @* @item.ENTRYID *@
-                                                        <input type="checkbox" data-entry="@item.ENTRYID" class="checkboxsize" />
+                                                foreach (var item in stud)
+                                                {
+                                                    var colors = item.IsActive == false ? "background-color:#ffdde3" : "";
+                                                    <tr style="font-size:11px;@colors">
 
-                                                        @*   <a href="#" onclick="EditCourseCheck(@item.ENTRYID)">
+                                                        <td>
+                                                            @* @item.ENTRYID *@
+                                                            <input type="checkbox" data-entry="@item.ENTRYID" class="checkboxsize" />
+
+                                                            @*   <a href="#" onclick="EditCourseCheck(@item.ENTRYID)">
                                             <i class="fas fa-edit text-danger" style="font-size:20px;"></i>
 
                                             </a> *@
                                                             @item.SrNo
-                                                    </td>
-                                                   @*  <td>
+                                                        </td>
+                                                        @*  <td>
                                                         @i
                                                     </td> *@
                                                         <td>@item.ROLL_NO <br /> @item.ENROLLMENT_NO</td>
-                                                    <td>@item.CourseType</td>
+                                                        <td>@item.CourseType</td>
 
-                                                    <td>@item.NAME</td>
-                                                    <td>@item.FNAME <br />@item.MNAME</td>
-                                                    <td>@item.CourseName</td>
-                                                    <td>@item.YEAR_SEM</td>
-                                                    <td>
-                                                        @item.HELD_IN
-                                                        <br />
-                                                        @if (!string.IsNullOrEmpty(item.ResultDate.ToString()))
-                                                        {
-                                                            @item.ResultDate.Value.ToString("dd MMM yyyy")
-                                                        }
-                                                        else
-                                                        {
-                                                            <h6 class="text-danger">Date Not filled </h6>
-                                                        }
-                                                    </td>
-                                                    <td>
-                                                        @item.RESULT /
-                                                        @if (!string.IsNullOrEmpty(item.FINAL_RESULT))
-                                                        {
-                                                            <span>
-                                                                @item.FINAL_RESULT
-                                                            </span>
-                                                        }
-                                                        else
-                                                        {
-                                                            <span>
-                                                                --
-                                                            </span>
-                                                        }
-                                                    </td>
-                                                    <td >
-                                                        @if (item.IsLive == true)
-                                                        {
-                                                            <span>Live</span>
-                                                        }
-                                                        else
-                                                        {
-                                                            <span>Not_Live</span>
-                                                        }
-
-                                                    </td>
+                                                        <td>@item.NAME</td>
+                                                        <td>@item.FNAME <br />@item.MNAME</td>
+                                                        <td>@item.CourseName</td>
+                                                        <td>@item.YEAR_SEM</td>
                                                         <td>
-                                                            @item.IS_PUBLISHED 
+                                                            @item.HELD_IN
+                                                            <br />
+                                                            @if (!string.IsNullOrEmpty(item.ResultDate.ToString()))
+                                                            {
+                                                                @item.ResultDate.Value.ToString("dd MMM yyyy")
+                                                            }
+                                                            else
+                                                            {
+                                                                <h6 class="text-danger">Date Not filled </h6>
+                                                            }
+                                                        </td>
+                                                        <td>
+                                                            @item.RESULT /
+                                                            @if (!string.IsNullOrEmpty(item.FINAL_RESULT))
+                                                            {
+                                                                <span>
+                                                                    @item.FINAL_RESULT
+                                                                </span>
+                                                            }
+                                                            else
+                                                            {
+                                                                <span>
+                                                                    --
+                                                                </span>
+                                                            }
+                                                        </td>
+                                                        <td>
+                                                            @if (item.IsLive == true)
+                                                            {
+                                                                <span>Live</span>
+                                                            }
+                                                            else
+                                                            {
+                                                                <span>Not_Live</span>
+                                                            }
 
                                                         </td>
-                                                </tr>
-                                                
+                                                        <td>
+                                                            @if (item.IS_PUBLISHED == 2)
+                                                            {
+                                                                <span>Published</span>
+                                                            }
+                                                            else if (item.IS_PUBLISHED == 1)
+                                                            {
+                                                                <span>Not Published</span>
+                                                            }
+                                                            else 
+                                                            {
+                                                                <span>Pending</span>
+                                                            }
+
+                                                        </td>
+                                                    </tr>
+
+                                                }
                                             }
+
+                                        }
+                                        else
+                                        {
+                                            <tr>
+                                                <td colspan="9">
+                                                    <p>
+                                                        Data Not Found!
+                                                    </p>
+                                                </td>
+                                            </tr>
                                         }
 
-                                    }
-                                    else
-                                    {
-                                        <tr>
-                                            <td colspan="9">
-                                                <p>
-                                                    Data Not Found!
-                                                </p>
-                                            </td>
-                                        </tr>
-                                    }
 
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.card-body -->
+                            <div class="card-footer clearfix">
 
-                                </tbody>
-                            </table>
-                        </div>
-                        <!-- /.card-body -->
-                        <div class="card-footer clearfix">
+                                @{
+                                    var totalPages = (int)Math.Ceiling(Decimal.Divide(Model.PagingList.RecordCount, Model.PagingList.PageSize));
+                                    var firstPage = 1;
+                                    var lastPage = totalPages;
+                                    var currentpage = Model.PagingList.PageCurrent;
 
-                            @{
-                                var totalPages = (int)Math.Ceiling(Decimal.Divide(Model.PagingList.RecordCount, Model.PagingList.PageSize));
-                                var firstPage = 1;
-                                var lastPage = totalPages;
-                                var currentpage = Model.PagingList.PageCurrent;
+                                    int maxPagesToShow = 5;
+                                    int halfRange = maxPagesToShow / 2;
 
-                                int maxPagesToShow = 5;
-                                int halfRange = maxPagesToShow / 2;
-
-                                if (totalPages <= maxPagesToShow)
-                                {
-                                    firstPage = 1;
-                                    lastPage = totalPages;
-                                }
-                                else
-                                {
-                                    if (currentpage <= halfRange)
+                                    if (totalPages <= maxPagesToShow)
                                     {
                                         firstPage = 1;
-                                        lastPage = maxPagesToShow;
-                                    }
-                                    else if (currentpage + halfRange >= totalPages)
-                                    {
-                                        firstPage = totalPages - (maxPagesToShow - 1);
                                         lastPage = totalPages;
                                     }
                                     else
                                     {
-                                        firstPage = currentpage - halfRange;
-                                        lastPage = currentpage + halfRange;
+                                        if (currentpage <= halfRange)
+                                        {
+                                            firstPage = 1;
+                                            lastPage = maxPagesToShow;
+                                        }
+                                        else if (currentpage + halfRange >= totalPages)
+                                        {
+                                            firstPage = totalPages - (maxPagesToShow - 1);
+                                            lastPage = totalPages;
+                                        }
+                                        else
+                                        {
+                                            firstPage = currentpage - halfRange;
+                                            lastPage = currentpage + halfRange;
+                                        }
                                     }
-                                }
 
-                            }
-                            <ul class="pagination pagination-sm m-0 float-right">
-                                @if (Model.PagingList.PageCurrent > 1)
-                                {
-                                    <li class="page-item">
-                                        <a class="page-link" onclick="pagechange(1)">First</a>
-                                    </li>
-                                    <li class="page-item">
-                                        <a class="page-link" onclick="pagechange(@currentpage - 1)">« Prev</a>
-                                    </li>
                                 }
+                                <ul class="pagination pagination-sm m-0 float-right">
+                                    @if (Model.PagingList.PageCurrent > 1)
+                                    {
+                                        <li class="page-item">
+                                            <a class="page-link" onclick="pagechange(1)">First</a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link" onclick="pagechange(@currentpage - 1)">« Prev</a>
+                                        </li>
+                                    }
 
-                                <!-- Page Number Buttons (only 5 visible) -->
-                                @for (int i = firstPage; i <= lastPage; i++)
-                                {
-                                    <li class="page-item @(i == Model.PagingList.PageCurrent ? "active" : "")">
-                                        <a class="page-link" onclick="pagechange(@i)">@i</a>
-                                    </li>
-                                }
+                                    <!-- Page Number Buttons (only 5 visible) -->
+                                    @for (int i = firstPage; i <= lastPage; i++)
+                                    {
+                                        <li class="page-item @(i == Model.PagingList.PageCurrent ? "active" : "")">
+                                            <a class="page-link" onclick="pagechange(@i)">@i</a>
+                                        </li>
+                                    }
 
-                                <!-- Next Button -->
-                                @if (Model.PagingList.PageCurrent < totalPages)
-                                {
-                                    <li class="page-item">
-                                        <a class="page-link" onclick="pagechange(@currentpage + 1)">Next »</a>
-                                    </li>
-                                }
-                                @if (Model.PagingList.PageCurrent < totalPages)
-                                {
-                                    <li class="page-item">
-                                        <a class="page-link" onclick="pagechange(@totalPages)">Last</a>
-                                    </li>
-                                }
-                            </ul>
+                                    <!-- Next Button -->
+                                    @if (Model.PagingList.PageCurrent < totalPages)
+                                    {
+                                        <li class="page-item">
+                                            <a class="page-link" onclick="pagechange(@currentpage + 1)">Next »</a>
+                                        </li>
+                                    }
+                                    @if (Model.PagingList.PageCurrent < totalPages)
+                                    {
+                                        <li class="page-item">
+                                            <a class="page-link" onclick="pagechange(@totalPages)">Last</a>
+                                        </li>
+                                    }
+                                </ul>
 
+                            </div>
                         </div>
-                    </div>
                     </form>
                 </div>
 
@@ -436,8 +447,8 @@
             <div class="modal-body">
                 <div class="row">
                     <input id="selectedd" name="selectedd" hidden />
-                    
-                   @*  <div class="col-md-6 form-group">
+
+                    @*  <div class="col-md-6 form-group">
                         <span class="" style="width:120px">Result Date</span>
                         <input type="text" name="ResultDate" id="ResultDate"
                                class="form-control date-picker"
@@ -449,7 +460,7 @@
                         <span class="" style="width:120px">Result Date</span>
                         <div class="input-group date" id="ResultDate" data-target-input="nearest">
                             <input type="text" class="form-control datetimepicker-input" data-target="#ResultDate" placeholder="Select Date" value="" id="ResultDated" name="ResultDated" />
-                            <div class="input-group-append" data-target="#ResultDate" data-toggle="datetimepicker" >
+                            <div class="input-group-append" data-target="#ResultDate" data-toggle="datetimepicker">
                                 <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                             </div>
                         </div>
@@ -479,12 +490,12 @@
 @section scripts {
     <script>
         function pagechange(p) {
-            
+
             $("#Page").val(p);  $("#CommandNameSrh").val("Search");
             $("#formIndex").submit();  OpenProgressBar();
         }
 
-          
+
 
     </script>
 }
@@ -504,8 +515,8 @@
         $("#formIndex").submit();
         OpenProgressBar();
     }
-    
-    
+
+
 
     // $(".date-picker").datepicker({
     //     language: "en",
@@ -559,7 +570,7 @@
                 // setting a timeout
                 $('#btnpwait').show();
                 $('#btnp').hide();
-                
+
             },
             success: function (response) {
                 // alert(response.res)

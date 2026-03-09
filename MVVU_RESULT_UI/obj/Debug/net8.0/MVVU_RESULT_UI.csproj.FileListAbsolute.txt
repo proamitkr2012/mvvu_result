@@ -593,7 +593,6 @@ D:\MVVU_RESULT\MVVU_RESULT_UI\obj\Debug\net8.0\staticwebassets.build.json.cache
 D:\MVVU_RESULT\MVVU_RESULT_UI\obj\Debug\net8.0\staticwebassets.development.json
 D:\MVVU_RESULT\MVVU_RESULT_UI\obj\Debug\net8.0\staticwebassets.build.endpoints.json
 D:\MVVU_RESULT\MVVU_RESULT_UI\obj\Debug\net8.0\swae.build.ex.cache
-D:\MVVU_RESULT\MVVU_RESULT_UI\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 D:\MVVU_RESULT\MVVU_RESULT_UI\obj\Debug\net8.0\MVVU_RES.9F55D0CB.Up2Date
 D:\MVVU_RESULT\MVVU_RESULT_UI\obj\Debug\net8.0\MVVU_RESULT_UI.dll
 D:\MVVU_RESULT\MVVU_RESULT_UI\obj\Debug\net8.0\refint\MVVU_RESULT_UI.dll
@@ -601,3 +600,5 @@ D:\MVVU_RESULT\MVVU_RESULT_UI\obj\Debug\net8.0\MVVU_RESULT_UI.pdb
 D:\MVVU_RESULT\MVVU_RESULT_UI\obj\Debug\net8.0\MVVU_RESULT_UI.genruntimeconfig.cache
 D:\MVVU_RESULT\MVVU_RESULT_UI\obj\Debug\net8.0\ref\MVVU_RESULT_UI.dll
 D:\MVVU_RESULT\MVVU_RESULT_UI\obj\Debug\net8.0\MVVU_RESULT_UI.sourcelink.json
+D:\MVVU_RESULT\MVVU_RESULT_UI\bin\Debug\net8.0\dotnet-tools.json
+D:\MVVU_RESULT\MVVU_RESULT_UI\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

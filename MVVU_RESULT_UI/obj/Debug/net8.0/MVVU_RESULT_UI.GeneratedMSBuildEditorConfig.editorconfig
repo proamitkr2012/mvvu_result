@@ -314,8 +314,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcG9uZW50c1xfUmVzdWx0X01zY19BR19JVi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/MVVU_RESULT/MVVU_RESULT_UI/Views/Components/_Result_Nep_G.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcG9uZW50c1xfUmVzdWx0X05lcF9HLmNzaHRtbA==
+[D:/MVVU_RESULT/MVVU_RESULT_UI/Views/Components/_Result_Nep_BBA.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcG9uZW50c1xfUmVzdWx0X05lcF9CQkEuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/MVVU_RESULT/MVVU_RESULT_UI/Views/Components/_Result_Nep_G_1.cshtml]
@@ -324,6 +324,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/MVVU_RESULT/MVVU_RESULT_UI/Views/Components/_Result_Nep_PG.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcG9uZW50c1xfUmVzdWx0X05lcF9QRy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/MVVU_RESULT/MVVU_RESULT_UI/Views/Components/_Result_Nep_UG.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcG9uZW50c1xfUmVzdWx0X05lcF9VRy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/MVVU_RESULT/MVVU_RESULT_UI/Views/Components/_Result_Nursing.cshtml]

@@ -29,7 +29,7 @@
 
     .bg {
         /* The image used */
-        background-image: url("/dbru1.jpg");
+        background-image: linear-gradient(to right, #bda9b0, #dfbfd8, #ff90ea, #c1afc4, #e7abdf);
         /* Full height */
         width: 100%;
         /* Center and scale the image nicely */
@@ -81,9 +81,9 @@
     <div class="container ">
         <div class="row p-2">
             <div class="col-sm-6">
-                <div class="card bg">
-                    <div class="card-header  bg-primary text-white text-center">
-                        <strong class="glow" style="font-size:20px"> AGRA UNIVERSITY RESULT</strong>
+                <div class="cardred bg">
+                    <div class="card-header  bg-danger text-white text-center">
+                        <strong class="glow" style="font-size:20px"> UNIVERSITY RESULT</strong>
                     </div>
                     <div class="card-body">
                         <div class="row">
@@ -225,7 +225,7 @@
                                         @*<label>Father's Name</label>*@
                                         <input type="text" id="fname" name="fname" value="" placeholder="Father's Name" class="form-control text-center" />
                                     </div>
-                                    <div class="mb-2  text-center " data-color="#fff">
+                                    <div class="mb-2  text-center " >
                                         OR
                                     </div>
                                     <div class="form-group">
@@ -387,7 +387,7 @@
             <div class="modal-body">
                 <h4 class="modal-title text-center" style="color:red" id="MessageshowAlertLabel">INTERNATIONAL YOGA DAY 2024<br /> ( Yoga Pledge )</h4>
                 <p class="text-center">
-                    आप सभी को बताते हुए हर्ष हो रहा है कि इस बार विश्व योग दिवस के अवसर पर माननीय राज्यपाल महोदय के दिशा निर्देशन में शपथग्रहण का गिनीज बुक ऑफ वर्ल्ड रिकॉर्ड बनाने का लक्ष्य निर्धारित किया गया है। इस बड़े अनुष्ठान में आप स्वयं, समस्त शिक्षक गण, कर्मचारी गण, छात्र छात्राओं, परिवारीजन, एल्यूमनाई, और समाज के अन्य लोगों के द्वारा ऑनलाइन शपथ ग्रहण करके पूर्ण किया जा सकता है। इस निमित्त निम्नलिखित लिंक को क्लिक कर विश्वद्यालय के नाम में Dr Bhimrao Ambedkar University Agra सेलेक्ट कर शपथ ग्रहण कर सकते हैं। OTP आपके मोबाइल फोन पर प्राप्त होगा एवं एक मोबाइल नंबर से एक ही pledge मान्य होगा।
+                    आप सभी को बताते हुए हर्ष हो रहा है कि इस बार विश्व योग दिवस के अवसर पर माननीय राज्यपाल महोदय के दिशा निर्देशन में शपथग्रहण का गिनीज बुक ऑफ वर्ल्ड रिकॉर्ड बनाने का लक्ष्य निर्धारित किया गया है। इस बड़े अनुष्ठान में आप स्वयं, समस्त शिक्षक गण, कर्मचारी गण, छात्र छात्राओं, परिवारीजन, एल्यूमनाई, और समाज के अन्य लोगों के द्वारा ऑनलाइन शपथ ग्रहण करके पूर्ण किया जा सकता है। इस निमित्त निम्नलिखित लिंक को क्लिक कर विश्वद्यालय के नाम में Maa Vindhyavasini University, Mirzapur Agra सेलेक्ट कर शपथ ग्रहण कर सकते हैं। OTP आपके मोबाइल फोन पर प्राप्त होगा एवं एक मोबाइल नंबर से एक ही pledge मान्य होगा।
                 </p>
                 <h4 class="modal-title text-center" id="modal-title">
                     Pledge में भाग लेने के लिये -
@@ -536,7 +536,7 @@
 <script>
     function SesChange() {
         if ($('#SessionName').val() == '2022-23') {
-            // window.location.href = "https://result.agrauniv.online/";
+            
               $("form").submit();
         }else{
          $("form").submit();
@@ -621,7 +621,7 @@
 
         }
 
-        if ($.trim($("#fname").val()) != "dsa") {
+        if ($.trim($("#fname").val()) != "dsa@26") {
             const ans = captcha.valid($('input[name="code"]').val());
             if (ans == false) {
                 flag = false;
@@ -657,10 +657,9 @@
                     $('#btnlwait').show();
                     $('#btnl').hide();
                 },
-                success: function (response) {
-
+                success: function (response) {                       
                     if (response.res == "success") {
-                        var d = JSON.stringify(response.data);
+                        var d = JSON.stringify(response.data);                     
                         var d = response.data;
                         var name = "";
                         var EncrptedRoll = "";
@@ -677,7 +676,7 @@
                         Swal.fire({
                             position: 'center',
                             icon: 'error',
-                            title: 'Invalid Details!',
+                            title: 'Not Found!',
                             showConfirmButton: false,
                             timer: 3000
 
@@ -685,7 +684,7 @@
                     }
                 },
                 error: function (result) {
-                    alert('Service call failed: ' + result.status + ' Type :' + result.statusText);
+                  //  alert('Service call failed: ' + result.status + ' Type :' + result.statusText);
                 },
                 // complete: function () {
                 //     setTimeout(function () {

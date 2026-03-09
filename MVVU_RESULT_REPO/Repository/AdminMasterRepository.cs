@@ -29,7 +29,6 @@ namespace MVVU_RESULT_REPO
         IDapperContext _dapperContext;
         private readonly string _connectionString;
         private readonly string _connectionStringResult;
-        private readonly string _connectionStringResultDemo;
         public DataContext _dbContext
         {
             get
@@ -44,7 +43,6 @@ namespace MVVU_RESULT_REPO
             _dapperContext = dapperContext;
             _connectionString = _config["ConnectionStrings:DefaultConnectionMaster"];
             _connectionStringResult = _config["ConnectionStrings:DefaultConnectionResult"];
-            _connectionStringResultDemo = _config["ConnectionStrings:DefaultConnectionResultDEMO"];
 
         }
         //admin-login
@@ -848,7 +846,7 @@ namespace MVVU_RESULT_REPO
         {
             FormResponse list = new();
             // var list = new StudentMasterDTO();
-            await using var con = new SqlConnection(_connectionStringResultDemo);
+            await using var con = new SqlConnection(_connectionStringResult);
             con.Open();
             try
             {
@@ -1033,7 +1031,7 @@ namespace MVVU_RESULT_REPO
         {
             FormResponse list = new();
             // var list = new StudentMasterDTO();
-            await using var con = new SqlConnection(_connectionStringResultDemo);
+            await using var con = new SqlConnection(_connectionStringResult);
             con.Open();
             try
             {
@@ -1066,7 +1064,7 @@ namespace MVVU_RESULT_REPO
         {
             FormResponse list = new();
             // var list = new StudentMasterDTO();
-            await using var con = new SqlConnection(_connectionStringResultDemo);
+            await using var con = new SqlConnection(_connectionStringResult);
             con.Open();
             try
             {
@@ -1559,7 +1557,7 @@ namespace MVVU_RESULT_REPO
         {
 
             StudentList_Admin list = new();
-            await using var con = new SqlConnection(_connectionStringResultDemo);
+            await using var con = new SqlConnection(_connectionStringResult);
             con.Open();
             try
             {
@@ -1603,7 +1601,7 @@ namespace MVVU_RESULT_REPO
         public async Task<FormResponse> StudentStatusUpdate(string EntryIDs, string IsActive, DateTime? Resultdate, long AdminID)
         {
             FormResponse list = new();
-            await using var con = new SqlConnection(_connectionStringResultDemo);
+            await using var con = new SqlConnection(_connectionStringResult);
             con.Open();
             try
             {
@@ -1632,7 +1630,7 @@ namespace MVVU_RESULT_REPO
         public async Task<MANAGE_STUDENT_DEMO_TO_ERP_DTO> Sync_Mark_Result_Demo_Erp(string flag, int UserId = 0, string Search = null, int COURSE_ID = 0, string SESSIONNAME = "")
         {
             MANAGE_STUDENT_DEMO_TO_ERP_DTO d = new();
-            await using var con = new SqlConnection(_connectionStringResultDemo);
+            await using var con = new SqlConnection(_connectionStringResult);
             con.Open();
             try
             {
@@ -1672,7 +1670,7 @@ namespace MVVU_RESULT_REPO
         public async Task<FormResponse> MappingDemoToErp(string Flag, ORDINANCE_STUDENT_DTO model, long AdminID,string ipAddressName)
         {
             FormResponse list = new();
-            await using var con = new SqlConnection(_connectionStringResultDemo);
+            await using var con = new SqlConnection(_connectionStringResult);
             con.Open();
             try
             {
@@ -1723,7 +1721,7 @@ namespace MVVU_RESULT_REPO
         public async Task<STUDENT_DATA_DASH_AM> GET_CORRECTION_FORM_VIEW_AM(string flag, int UserId = 0, string res =null, string mas = null)
         {
             STUDENT_DATA_DASH_AM d = new();
-            await using var con = new SqlConnection(_connectionStringResultDemo);
+            await using var con = new SqlConnection(_connectionStringResult);
             con.Open();
             try
             {

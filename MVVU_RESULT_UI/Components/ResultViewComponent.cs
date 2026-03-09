@@ -49,7 +49,7 @@ namespace MVVU_RESULT_UI.ViewComponents
 
                         var data1 = adminData.CourseName + "$" + s.RollNumber + "$" + s.CourseType + "$" + s.ExamTypeName + "$" + s.SessionName + "$" + s.HELD_IN;
                         data1 = AESEncription.Base64Encode(data1);
-                        var UriPayload = "https://result2024.agrauniv.online/resultpreview/" + data1;
+                        var UriPayload = "https://result.mvvu.ac.in/resultpreview/" + data1;
                         QRCodeGenerator _qrCode = new QRCodeGenerator();
                         QRCodeData _qrCodeData = _qrCode.CreateQrCode(UriPayload, QRCodeGenerator.ECCLevel.Q);
                         QRCode qrCode = new QRCode(_qrCodeData);
@@ -60,8 +60,10 @@ namespace MVVU_RESULT_UI.ViewComponents
                         {
                             case "T1":
                                 return View("/views/components/_Result_t1.cshtml", adminData);
-                            case "Nep_G":
-                                return View("/views/components/_Result_Nep_G.cshtml", adminData);
+                            case "Nep_UG":
+                                return View("/views/components/_Result_Nep_UG.cshtml", adminData);
+                            case "NEP_BBA":
+                                return View("/views/components/_Result_Nep_BBA.cshtml", adminData);
                             case "Nep_PG":
                                 return View("/views/components/_Result_Nep_PG.cshtml", adminData);
                             case "PG_CBCS":
