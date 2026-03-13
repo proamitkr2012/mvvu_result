@@ -47,7 +47,8 @@ namespace MVVU_RESULT_UI.Controllers
 
         public async Task<IActionResult> Index()
         {
-            ResultDTO_DASH data = await UOF.IAdminMaster.GetResultDTO_DASH("","",false,0,"");           
+            ResultDTO_DASH data = await UOF.IAdminMaster.GetResultDTO_DASH("","",false,0,"");
+            data.CourseType = "Affiliated College";
             return View(data);
         }
         [HttpPost]
@@ -239,7 +240,7 @@ namespace MVVU_RESULT_UI.Controllers
                     model.IsAdmin = "0";
                 }
 
-                model.FName = "dsa@26";
+                model.FName = "dsa26";
                 if (!string.IsNullOrEmpty(model.RollNumber))
                 {
                     Session.SetObject("resultdata", model);

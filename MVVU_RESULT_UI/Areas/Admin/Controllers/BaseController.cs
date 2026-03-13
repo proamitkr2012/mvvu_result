@@ -14,7 +14,7 @@ using MVVU_RESULT_REPO;
 
 namespace MVVU_RESULT_UI.Areas.Admin.Controllers
 {
-    [CustomAdminAuthorize(Roles= "Admin, Agra,Vrs,Staff")]
+    [CustomAdminAuthorize(Roles= "Admin, Operator,SuperAdmin,Staff")]
     [Area("Admin")]
     public class BaseController : Controller
     {
