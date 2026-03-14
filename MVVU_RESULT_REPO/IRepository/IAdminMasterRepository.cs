@@ -14,7 +14,7 @@ namespace MVVU_RESULT_REPO
         Task<AdminMasterDTO> AuthenticateAdmin(string userName, string password);
         bool IsAdminEmailExists(string email);
         
-        Task<FormResponse> VisitCountSet(StudentMasterDTO model);
+        Task<FormResponse> VisitCountSet(StudentMasterDTOCount model);
 
     }
 }

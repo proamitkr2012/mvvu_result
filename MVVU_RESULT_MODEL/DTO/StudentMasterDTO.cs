@@ -5,13 +5,35 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MVVU_RESULT_MODEL.DTO
 {
+    public class StudentMasterDTOCount
+    {
+        public string? CourseName { get; set; }
+        public string? ROLL_NO { get; set; }
+     
+        public string? SessionName { get; set; }
+        public string? EXAM_TYPE { get; set; }
+  
+        public string? SEM_NO { get; set; }
+   
+    }
+
+
+    public class MANAGE_STUDENT_DEMO_TO_ERP_DTO
+    {
+        public List<EXAM_TYPE_MASTER_DTO> EXAM_LIST { get; set; }
+        public List<COURSE_FILTER_DTO> COURSE_FILTER_LIST { get; set; }
+        public List<SESSION_MASTER_DTO> SESSION_LIST { get; set; }
+        public List<HeldinDTO> HeldinList { get; set; }
+
+    }
+
     public class StudentMasterDTO
     {
-        
+
         public int? SrNo { get; set; }
         public long? ENTRYID { get; set; }
         public string? RESULT_ID { get; set; }
-        
+
         public string? MASTER_ID { get; set; }
         public string? CCODE { get; set; }
         public string? CNAME { get; set; }
@@ -20,7 +42,7 @@ namespace MVVU_RESULT_MODEL.DTO
         public int? COURSE_ID { get; set; }
         public string? CourseName { get; set; }
         public string? DisplayCourseName { get; set; }
-        
+
         public string? RESULT_TYPE { get; set; }
         public string? ROLL_NO { get; set; }
         public string? ENROLLMENT_NO { get; set; }
@@ -67,13 +89,4 @@ namespace MVVU_RESULT_MODEL.DTO
         public List<CSP_MASTER_AMDTO> CSPList { get; set; }
     }
 
-
-    public class MANAGE_STUDENT_DEMO_TO_ERP_DTO
-    {
-        public List<EXAM_TYPE_MASTER_DTO> EXAM_LIST { get; set; }
-        public List<COURSE_FILTER_DTO> COURSE_FILTER_LIST { get; set; }
-        public List<SESSION_MASTER_DTO> SESSION_LIST { get; set; }
-        public List<HeldinDTO> HeldinList { get; set; }
-
-    }
 }

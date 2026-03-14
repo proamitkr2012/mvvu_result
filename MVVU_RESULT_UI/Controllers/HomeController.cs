@@ -52,10 +52,10 @@ namespace MVVU_RESULT_UI.Controllers
             return View(data);
         }
         [HttpPost]
-        public async Task<IActionResult> Index(string CourseType = "", bool IsPG = false, int CourseID = 0, string ExamTypeName = "", string SessionName = "" ,string CourseName="")
+        public async Task<IActionResult> Index(string CourseType = "", bool? IsPG = false, int CourseID = 0, string ExamTypeName = "", string SessionName = "" ,string CourseName="")
         {
             
-            ResultDTO_DASH data = await UOF.IAdminMaster.GetResultDTO_DASH("", CourseType, false, CourseID,SessionName);
+            ResultDTO_DASH data = await UOF.IAdminMaster.GetResultDTO_DASH("", CourseType, IsPG, CourseID,SessionName);
 
 
             data.CourseType = CourseType;
@@ -126,9 +126,7 @@ namespace MVVU_RESULT_UI.Controllers
                     if (adminData.ROLL_NO == model.RollNumber)
                     {
                         adminData.EncrptedRoll = AESEncription.Base64Encode(adminData.ROLL_NO);
-
-
-                        return Json(new { data = adminData, res = "success" });
+                        return Json(new { data = adminData.EncrptedRoll, res = "success" });
                     }
 
                 }
@@ -145,7 +143,7 @@ namespace MVVU_RESULT_UI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> VisitCountSet([FromBody] StudentMasterDTO model)
+        public async Task<IActionResult> VisitCountSet([FromBody] StudentMasterDTOCount model)
         {
             try
             {

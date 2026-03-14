@@ -142,11 +142,11 @@ namespace MVVU_RESULT_REPO
             return list;
         }
 
-        public async Task<FormResponse> VisitCountSet(StudentMasterDTO model)
+        public async Task<FormResponse> VisitCountSet(StudentMasterDTOCount model)
         {
             FormResponse list = new();
             // var list = new StudentMasterDTO();
-            await using var con = new SqlConnection(_connectionString);
+            await using var con = new SqlConnection(_connectionStringResult);
             con.Open();
             try
             {
