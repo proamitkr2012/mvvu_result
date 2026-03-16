@@ -114,6 +114,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGFzaGJvYXJkXFBBUEVSX01BU1RFUi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/MVVU_RESULT/MVVU_RESULT_UI/Areas/Admin/Views/Dashboard/ResultViewedReport.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGFzaGJvYXJkXFJlc3VsdFZpZXdlZFJlcG9ydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/MVVU_RESULT/MVVU_RESULT_UI/Areas/Admin/Views/Dashboard/Search_Form.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGFzaGJvYXJkXFNlYXJjaF9Gb3JtLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

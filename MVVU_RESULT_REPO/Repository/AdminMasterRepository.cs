@@ -1782,6 +1782,33 @@ namespace MVVU_RESULT_REPO
             }
             return list;
         }
+
+
+        public async Task<List<ResultViewedDTO>> GetResultViewed(string flag)
+        {
+            var list = new List<ResultViewedDTO>();
+            await using var con = new SqlConnection(_connectionStringResult);
+            con.Open();
+            try
+            {
+                var paramList = new
+                {
+                    Flag = flag
+                };
+                var data = await con.QueryAsync<ResultViewedDTO>("ViewCountReport_AM", paramList,
+                    commandType: CommandType.StoredProcedure);
+                list = data.ToList();
+            }
+            catch (Exception e)
+            {
+                //
+            }
+            finally
+            {
+                con.Close();
+            }
+            return list;
+        }
     }
 
 }

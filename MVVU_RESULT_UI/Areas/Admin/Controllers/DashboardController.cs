@@ -884,5 +884,26 @@ namespace MVVU_RESULT_UI.Areas.Admin.Controllers
             }
             return PartialView("_PageDataSearch", adminData);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> ResultViewedReport()
+        {
+            try
+            {
+                bool IsAdmin = false;
+                if (CurrentUser.Roles.Contains("Admin"))
+                {
+                    IsAdmin = true;
+                }
+                StudentList_Admin data = new StudentList_Admin();
+                data.ResultViewed = await UOF.IAdminMaster.GetResultViewed("report");
+                return View(data);
+            }
+            catch (Exception e)
+            {
+
+            }
+            return View();
+        }
     }
 }
