@@ -29,6 +29,7 @@ namespace MVVU_RESULT_MODEL.DTO
         public int ISRW { get; set; }
         public int SESSIONID { get; set; }
         public int PAPER_SERIAL_NO { get; set; }
+        public string? PAPER_TYPE_NAME { get; set; }
 
     }
 

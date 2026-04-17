@@ -460,7 +460,55 @@ namespace MVVU_RESULT_REPO
                     ISRW = model.ISRW,
                     SESSIONID = model.SESSIONID,
                     PAPER_SERIAL_NO = model.PAPER_SERIAL_NO,
+                    PAPER_TYPE_NAME = model.PAPER_TYPE_NAME,
                     EditFlag = 0
+                };
+                var data = await con.QueryAsync<FormResponse>("INSERT_UPDATE_PaperMaster_AM", paramList,
+                    commandType: CommandType.StoredProcedure);
+                list = data.ToList()[0];
+            }
+            catch (Exception e)
+            {
+                //
+            }
+            finally
+            {
+                con.Close();
+            }
+            return list;
+        }
+        public async Task<FormResponse> UpdatePaper_AM(string Flag, PAPER_MASTER_AM_DTO model)
+        {
+            FormResponse list = new();
+            // var list = new StudentMasterDTO();
+            await using var con = new SqlConnection(_connectionStringResult);
+            con.Open();
+            try
+            {
+                var paramList = new
+                {
+                    Flag = Flag,
+                    PAPER_CODE_PK = model.PAPER_CODE_PK,
+                    SUBJECT_NAME = model.SUBJECT_NAME,
+                    PAPER_NAME = model.PAPER_NAME,
+                    PAPER_TYPE = model.PAPER_TYPE,
+                    PAPER_TYPE_CAT = model.PAPER_TYPE_CAT,
+                    CREDIT = model.CREDIT,
+                    IS_QUALIFIYING = model.IS_QUALIFIYING,
+                    THEORY_MAX = model.THEORY_MAX,
+                    THEORY_MIN = model.THEORY_MIN,
+                    INTERNAL_MAX = model.INTERNAL_MAX,
+                    INTERNAL_MIN = model.INTERNAL_MIN,
+                    SESSIONAL_MAX = model.SESSIONAL_MAX,
+                    SESSIONAL_MIN = model.SESSIONAL_MIN,
+                    TOTAL_MAX = model.TOTAL_MAX,
+                    TOTAL_MIN = model.TOTAL_MIN,
+                    SUBJECT_PAPER_CODE = model.SUBJECT_PAPER_CODE,
+                    ISRW = model.ISRW,
+                    SESSIONID = model.SESSIONID,
+                    PAPER_SERIAL_NO = model.PAPER_SERIAL_NO,
+                    PAPER_TYPE_NAME = model.PAPER_TYPE_NAME,
+                    EditFlag = 1
                 };
                 var data = await con.QueryAsync<FormResponse>("INSERT_UPDATE_PaperMaster_AM", paramList,
                     commandType: CommandType.StoredProcedure);
@@ -556,52 +604,7 @@ namespace MVVU_RESULT_REPO
             return list;
         }
 
-        public async Task<FormResponse> UpdatePaper_AM(string Flag, PAPER_MASTER_AM_DTO model)
-        {
-            FormResponse list = new();
-            // var list = new StudentMasterDTO();
-            await using var con = new SqlConnection(_connectionStringResult);
-            con.Open();
-            try
-            {
-                var paramList = new
-                {
-                    Flag = Flag,
-                    PAPER_CODE_PK = model.PAPER_CODE_PK,
-                    SUBJECT_NAME = model.SUBJECT_NAME,
-                    PAPER_NAME = model.PAPER_NAME,
-                    PAPER_TYPE = model.PAPER_TYPE,
-                    PAPER_TYPE_CAT = model.PAPER_TYPE_CAT,
-                    CREDIT = model.CREDIT,
-                    IS_QUALIFIYING = model.IS_QUALIFIYING,
-                    THEORY_MAX = model.THEORY_MAX,
-                    THEORY_MIN = model.THEORY_MIN,
-                    INTERNAL_MAX = model.INTERNAL_MAX,
-                    INTERNAL_MIN = model.INTERNAL_MIN,
-                    SESSIONAL_MAX = model.SESSIONAL_MAX,
-                    SESSIONAL_MIN = model.SESSIONAL_MIN,
-                    TOTAL_MAX = model.TOTAL_MAX,
-                    TOTAL_MIN = model.TOTAL_MIN,
-                    SUBJECT_PAPER_CODE = model.SUBJECT_PAPER_CODE,
-                    ISRW = model.ISRW,
-                    SESSIONID = model.SESSIONID,
-                    PAPER_SERIAL_NO = model.PAPER_SERIAL_NO,
-                    EditFlag = 1
-                };
-                var data = await con.QueryAsync<FormResponse>("INSERT_UPDATE_PaperMaster_AM", paramList,
-                    commandType: CommandType.StoredProcedure);
-                list = data.ToList()[0];
-            }
-            catch (Exception e)
-            {
-                //
-            }
-            finally
-            {
-                con.Close();
-            }
-            return list;
-        }
+        
         public async Task<ORDINANCE_MASTER_AM_DTO_DASH> GET_ORDINANCE_MASTER_AM(string Flag, int UserId, int Page, string Search = null)
         {
 
