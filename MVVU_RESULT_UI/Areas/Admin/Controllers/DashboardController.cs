@@ -391,7 +391,31 @@ namespace MVVU_RESULT_UI.Areas.Admin.Controllers
             }
 
         }
-     
+        [HttpPost]
+        public async Task<IActionResult> UpdateOrdinanceDetails([FromForm] ORDINANCE_DETAILS_AM_DTO model, string ReturnUrl)
+        {
+            try
+            {
+                if (model.ORDINANCE_ID > 0)
+                {
+
+                    FormResponse d = await UOF.IAdminMaster.UpdateOrdinanceDetails_AM("", model);
+                    return Json(d);
+
+
+                }
+                else
+                {
+                    return Json("Try Again Later!");
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json("Internal error!");
+            }
+
+        }
+
         public async Task<IActionResult> Ordinance_Apply(string IS_RW="",string SESSION_ID="",string EXAM_TYPE_ID="",string CollegeCodeDDL="",int COURSE_ID=0,int RESULT_TYPE_ID=0)
         {
             ORDINANCE_APPLY_AM_DTO_DASH data = new ORDINANCE_APPLY_AM_DTO_DASH();
@@ -720,7 +744,7 @@ namespace MVVU_RESULT_UI.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> StudentStatusUpdate([FromForm] string EntryIDs, string IsLiveStatus, DateTime? Resultdate)
+        public async Task<IActionResult> StudentStatusUpdate([FromForm] string EntryIDs, string IsLiveStatus,string? HeldIn,  DateTime? Resultdate, string? SessionName="")
         {
             try
             {
@@ -732,7 +756,7 @@ namespace MVVU_RESULT_UI.Areas.Admin.Controllers
                     Resultdate = datet;
                 }
 
-                data = await UOF.IAdminMaster.StudentStatusUpdate(EntryIDs, IsLiveStatus, Resultdate, CurrentUser.UserId);
+                data = await UOF.IAdminMaster.StudentStatusUpdate(EntryIDs, IsLiveStatus, HeldIn, Resultdate, CurrentUser.UserId, SessionName);
 
                 if (data.ResponseCode == 1 && data.ResponseMessage == "Yes")
                 {

@@ -34,7 +34,9 @@ namespace MVVU_RESULT_MODEL.DTO
         public bool INTERNAL_CHECK { get; set; }
         public bool SESSIONAL_CHECK { get; set; }
         public bool PAPER_TOTAL_CHECK { get; set; }
+        public bool IS_ADD_PAPER_CREDIT { get; set; }
         
+
     }
 
     public class ORDINANCE_DETAILS_AM_DTO_DASH

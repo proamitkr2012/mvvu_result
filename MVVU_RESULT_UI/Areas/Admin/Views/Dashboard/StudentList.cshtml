@@ -556,8 +556,9 @@
         var formData = new FormData();
         formData.append("EntryIDs", $('#selectedd').val());
         formData.append("IsLiveStatus", $('#IsLiveStatusPop').val());
-        // formData.append("HeldIn", $('#HeldIn').val());
+         formData.append("HeldIn", $('#HeldIn').val());
         formData.append("ResultDate", $('#ResultDated').val());
+         formData.append("SessionName", $('#SessionName').val());
 
         $.ajax({
             type: "POST",

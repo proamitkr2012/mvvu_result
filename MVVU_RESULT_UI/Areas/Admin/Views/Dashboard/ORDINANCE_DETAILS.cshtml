@@ -49,25 +49,30 @@
                             <table class="table table-head-fixed text-nowrap" id="papertable">
                                 <thead>
                                     <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">ORDINANCE_NAME</th>
-                                        <th scope="col">RESULT_TYPE</th>
-                                        <th scope="col">COURSE</th>
-                                        <th scope="col">PAPER_TYPE</th>
+                                        <th scope="col">#</th>                                    
+
+                                        <th scope="col">ORDINANCE</th>
                                         <th scope="col">PAPER_TYPE_CAT</th>
-                                        <th scope="col">CREDIT</th>
-                                        <th scope="col">IS_QUALIFIYING</th>
+                                        <th scope="col">PAPER_CREDIT</th>
+                                        <th scope="col">IS_ADD_PAPER_CREDIT</th>
                                         <th scope="col">THEORY_MAX</th>
                                         <th scope="col">THEORY_MIN</th>
+                                        <th scope="col">THEORY_PASS_PERCENT</th>
                                         <th scope="col">INTERNAL_MAX</th>
                                         <th scope="col">INTERNAL_MIN</th>
+                                        <th scope="col">INTERNAL_PASS_PERCENT</th>
                                         <th scope="col">SESSIONAL_MAX</th>
                                         <th scope="col">SESSIONAL_MIN</th>
+                                        <th scope="col">SESSIONAL_PASS_PERCENT</th>
                                         <th scope="col">PAPER_TOTAL_MAX</th>
                                         <th scope="col">PAPER_TOTAL_MIN</th>
                                         <th scope="col">PAPER_TOTAL_PASS_PERCENT</th>
-                                        <th scope="col">SUBJECT_PAPER_CODE</th>
-                                        <th scope="col">ISRW</th>
+                                        <th scope="col">THEORY_CHECK</th>
+                                        <th scope="col">INTERNAL_CHECK</th>
+                                        <th scope="col">SESSIONAL_CHECK</th>
+                                        <th scope="col">PAPER_TOTAL_CHECK</th>
+                                      
+
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -84,18 +89,27 @@
                                                         @item.SrNo
 
                                                     </td>
-                                                    <td>
-                                                        @item.ORDINANCE_NAME
-
-                                                    </td>
-                                                    <td>
-                                                        @item.INTERNAL_CHECK
-
-                                                    </td>
-                                                    <td>
-                                                        @item.SESSIONAL_CHECK
-
-                                                    </td>
+                                                    <td>@item.ORDINANCE_NAME</td>
+                                                    @* <td>@item.ORDINANCE_ID</td> *@
+                                                    <td>@item.PAPER_TYPE_CAT</td>
+                                                    <td>@item.PAPER_CREDIT</td>
+                                                    <td>@item.IS_ADD_PAPER_CREDIT</td>
+                                                    <td>@item.THEORY_MAX</td>
+                                                    <td>@item.THEORY_MIN</td>
+                                                    <td>@item.THEORY_PASS_PERCENT</td>
+                                                    <td>@item.INTERNAL_MAX</td>
+                                                    <td>@item.INTERNAL_MIN</td>
+                                                    <td>@item.INTERNAL_PASS_PERCENT</td>
+                                                    <td>@item.SESSIONAL_MAX</td>
+                                                    <td>@item.SESSIONAL_MIN</td>
+                                                    <td>@item.SESSIONAL_PASS_PERCENT</td>
+                                                    <td>@item.PAPER_TOTAL_MAX</td>
+                                                    <td>@item.PAPER_TOTAL_MIN</td>
+                                                    <td>@item.PAPER_TOTAL_PASS_PERCENT</td>
+                                                    <td>@item.THEORY_CHECK</td>
+                                                    <td>@item.INTERNAL_CHECK</td>
+                                                    <td>@item.SESSIONAL_CHECK</td>
+                                                    <td>@item.PAPER_TOTAL_CHECK</td>
                                                 </tr>
 
                                             }
@@ -155,7 +169,7 @@
                                 @for (int i = firstPage; i <= lastPage; i++)
                                 {
                                     <li class="page-item @(i == Model.PagingList.PageCurrent ? "active" : "")">
-                                        <a class="page-link" onclick="pagechange(@i)" >@i</a>
+                                        <a class="page-link" onclick="pagechange(@i)">@i</a>
                                     </li>
                                 }
 
@@ -185,19 +199,19 @@
 
 </div>
 @section scripts {
-<script>
-    function pagechange(p) {
+    <script>
+        function pagechange(p) {
         
-        $("#Page").val(p);
-        $("#formIndex").submit();
-    }
+            $("#Page").val(p);
+            $("#formIndex").submit();
+        }
 
-        $('#papertable').on('click', 'tr', function () {
+            $('#papertable').on('click', 'tr', function () {
         
-        var PAPER_CODE_PK = $(this).data('pcode');
-                    var paperediturl = '/admin/dashboard/editordinancedetails?pcode=' + PAPER_CODE_PK;
-                window.open(paperediturl, '_self'); // Opens in a new tab
-        });
+            var PAPER_CODE_PK = $(this).data('pcode');
+                        var paperediturl = '/admin/dashboard/editordinancedetails?pcode=' + PAPER_CODE_PK;
+                    window.open(paperediturl, '_self'); // Opens in a new tab
+            });
 
-</script>
+    </script>
 }

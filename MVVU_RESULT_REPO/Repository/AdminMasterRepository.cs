@@ -787,6 +787,7 @@ namespace MVVU_RESULT_REPO
                     INTERNAL_CHECK = model.INTERNAL_CHECK,
                     SESSIONAL_CHECK = model.SESSIONAL_CHECK,
                     PAPER_TOTAL_CHECK = model.PAPER_TOTAL_CHECK,
+                    IS_ADD_PAPER_CREDIT = model.IS_ADD_PAPER_CREDIT,
                     EditFlag = 0
                 };
                 var data = await con.QueryAsync<FormResponse>("INSERT_UPDATE_OrdinanceDetails_AM", paramList,
@@ -804,6 +805,54 @@ namespace MVVU_RESULT_REPO
             return list;
         }
 
+        public async Task<FormResponse> UpdateOrdinanceDetails_AM(string Flag, ORDINANCE_DETAILS_AM_DTO model)
+        {
+            FormResponse list = new();
+            // var list = new StudentMasterDTO();
+            await using var con = new SqlConnection(_connectionString);
+            con.Open();
+            try
+            {
+                var paramList = new
+                {
+                    Flag = Flag,
+                    ORDINANCE_ID = model.ORDINANCE_ID,
+                    PAPER_TYPE_CAT = model.PAPER_TYPE_CAT,
+                    PAPER_CREDIT = model.PAPER_CREDIT,
+                    THEORY_MAX = model.THEORY_MAX,
+                    THEORY_MIN = model.THEORY_MIN,
+                    THEORY_PASS_PERCENT = model.THEORY_PASS_PERCENT,
+                    INTERNAL_MAX = model.INTERNAL_MAX,
+                    INTERNAL_MIN = model.INTERNAL_MIN,
+                    INTERNAL_PASS_PERCENT = model.INTERNAL_PASS_PERCENT,
+                    SESSIONAL_MAX = model.SESSIONAL_MAX,
+                    SESSIONAL_MIN = model.SESSIONAL_MIN,
+                    SESSIONAL_PASS_PERCENT = model.SESSIONAL_PASS_PERCENT,
+                    PAPER_TOTAL_MAX = model.PAPER_TOTAL_MAX,
+                    PAPER_TOTAL_MIN = model.PAPER_TOTAL_MIN,
+                    PAPER_TOTAL_PASS_PERCENT = model.PAPER_TOTAL_PASS_PERCENT,
+                    THEORY_CHECK = model.THEORY_CHECK,
+                    INTERNAL_CHECK = model.INTERNAL_CHECK,
+                    SESSIONAL_CHECK = model.SESSIONAL_CHECK,
+                    PAPER_TOTAL_CHECK = model.PAPER_TOTAL_CHECK,
+                    IS_ADD_PAPER_CREDIT = model.IS_ADD_PAPER_CREDIT,
+                    EditFlag = 1
+                };
+                var data = await con.QueryAsync<FormResponse>("INSERT_UPDATE_OrdinanceDetails_AM", paramList,
+                    commandType: CommandType.StoredProcedure);
+                list = data.ToList()[0];
+            }
+            catch (Exception e)
+            {
+                //
+            }
+            finally
+            {
+                con.Close();
+            }
+            return list;
+        }
+        
         public async Task<ORDINANCE_APPLY_AM_DTO_DASH> GET_ORDINANCEAPPLY_AM(string Flag, int UserId)
         {
 
@@ -1601,7 +1650,7 @@ namespace MVVU_RESULT_REPO
 
         }
 
-        public async Task<FormResponse> StudentStatusUpdate(string EntryIDs, string IsActive, DateTime? Resultdate, long AdminID)
+        public async Task<FormResponse> StudentStatusUpdate(string EntryIDs, string IsActive, string? HeldIn, DateTime? Resultdate, long AdminID, string? SessionName="")
         {
             FormResponse list = new();
             await using var con = new SqlConnection(_connectionStringResult);
@@ -1613,8 +1662,10 @@ namespace MVVU_RESULT_REPO
 
                     EntryIDs = EntryIDs,
                     IsActive = IsActive,
+                    HeldIn = HeldIn,
                     Resultdate = Resultdate,
-                    AdminID = AdminID
+                    AdminID = AdminID,
+                    SESSION = SessionName
                 };
                 var d = await con.QueryAsync<FormResponse>("StudentStatusUpdate_AM", paramList,
                     commandType: CommandType.StoredProcedure);
