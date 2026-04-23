@@ -1863,6 +1863,62 @@ namespace MVVU_RESULT_REPO
             }
             return list;
         }
+
+
+        public async Task<FormResponse> CourseStatusUpdate(string EntryIDs, string IsActive)
+        {
+            FormResponse list = new();
+            await using var con = new SqlConnection(_connectionStringResult);
+            con.Open();
+            try
+            {
+                var paramList = new
+                {
+
+                    EntryIDs = EntryIDs,
+                    IsActive = IsActive
+                };
+                var d = await con.QueryAsync<FormResponse>("CourseStatusUpdate_AM", paramList,
+                    commandType: CommandType.StoredProcedure);
+                list = d.ToList()[0];
+            }
+            catch (Exception ex)
+            {
+                // ignored
+            }
+            finally
+            {
+                con.Close();
+            }
+            return list;
+        }
+        public async Task<FormResponse> CourseStatusReset(string EntryIDs, string IsActive)
+        {
+            FormResponse list = new();
+            await using var con = new SqlConnection(_connectionStringResult);
+            con.Open();
+            try
+            {
+                var paramList = new
+                {
+
+                    EntryIDs = EntryIDs,
+                    IsActive = IsActive
+                };
+                var d = await con.QueryAsync<FormResponse>("CourseStatusReset_AM", paramList,
+                    commandType: CommandType.StoredProcedure);
+                list = d.ToList()[0];
+            }
+            catch (Exception ex)
+            {
+                // ignored
+            }
+            finally
+            {
+                con.Close();
+            }
+            return list;
+        }
     }
 
 }

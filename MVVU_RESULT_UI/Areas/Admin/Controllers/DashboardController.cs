@@ -571,6 +571,50 @@ namespace MVVU_RESULT_UI.Areas.Admin.Controllers
 
         }
         [HttpPost]
+        public async Task<IActionResult> CourseStatusUpdate([FromForm] string EntryIDs, string IsActive)
+        {
+            try
+            {
+
+                FormResponse data = new FormResponse();
+
+                data = await UOF.IAdminMaster.CourseStatusUpdate(EntryIDs, IsActive);
+
+                if (data.ResponseCode == 1 && data.ResponseMessage == "Yes")
+                {
+                    return Json(new { res = "ok" });
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
+            return Json("0");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CourseStatusReset([FromForm] string EntryIDs, string IsActive)
+        {
+            try
+            {
+
+                FormResponse data = new FormResponse();
+
+                data = await UOF.IAdminMaster.CourseStatusReset(EntryIDs, IsActive);
+
+                if (data.ResponseCode == 1 && data.ResponseMessage == "Yes")
+                {
+                    return Json(new { res = "ok" });
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
+            return Json("0");
+        }
+
+        [HttpPost]
         public async Task<IActionResult> CourseMasterRule(bool WithCountH = false, string SessionName = "")
         {
             try
