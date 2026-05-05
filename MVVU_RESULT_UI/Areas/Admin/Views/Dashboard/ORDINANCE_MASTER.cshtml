@@ -46,17 +46,17 @@
                         </div>
                         @Html.Hidden("Page")
                         <div class="card-body table-responsive p-0">
-                            <table class="table table-head-fixed text-nowrap" id="papertable">
+                            <table class="table table-head-fixed text-nowrap" id="ORtable">
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">ORDINANCE_NAME</th>
                                         <th scope="col">RESULT_TYPE</th>
-                                        @* <th scope="col">COURSE</th> *@
+                                        <th scope="col">SUBJECT_COUNT</th>
                                         <th scope="col">PAPER_Count</th>
-                                        @* <th scope="col">PAPER_TYPE_CAT</th> *@
-                                        @* <th scope="col">CREDIT</th>
-                                        <th scope="col">IS_QUALIFIYING</th>
+                                        <th scope="col">COMP_PC</th>
+                                         <th scope="col">MAJOR_PC</th>
+                                        @* <th scope="col">IS_QUALIFIYING</th>
                                         <th scope="col">THEORY_MAX</th>
                                         <th scope="col">THEORY_MIN</th>
                                         <th scope="col">INTERNAL_MAX</th>
@@ -78,7 +78,7 @@
                                             foreach (var item in data)
                                             {
 
-                                                <tr style="font-size:13px;" data-pcode="@item.ORDINANCE_ID">
+                                                <tr style="font-size:13px;" data-ordinance_id="@item.ORDINANCE_ID">
                                                     <td>
                                                         @item.SrNo
 
@@ -91,23 +91,28 @@
                                                         @item.RESULT_TYPE_NAME
 
                                                     </td>
-                                                    @* <td>
-                                                        @item.COURSE_NAME
+                                                    <td>
+                                                        @item.SUBJECT_COUNT
 
-                                                    </td> *@
+                                                    </td>
                                                     <td>
                                                         @item.PAPER_COUNT
+
+                                                    </td>
+                                                   
+                                                   <td>
+                                                        @item.COMPULSORY_PAPER_COUNT
+
+                                                    </td>
+                                                    <td>
+                                                        @item.MAJOR_PAPER_COUNT
 
                                                     </td>
                                                     <td>
                                                         @item.IS_RW
 
                                                     </td>
-                                                   @*  <td>
-                                                        @item.SUBJECT_COUNT
-
-                                                    </td>
-                                                    <td>
+                                                    @*  <td>
                                                         @item.PAPER_COUNT
 
                                                     </td>
@@ -252,12 +257,12 @@
         $("#formIndex").submit();
     }
 
-        // $('#papertable').on('click', 'tr', function () {
+            $('#ORtable').on('dblclick', 'tr', function () {
         
-        // var PAPER_CODE_PK = $(this).data('pcode');
-        //             var paperediturl = '/admin/dashboard/editpapermaster?pcode=' + PAPER_CODE_PK;
-        //         window.open(paperediturl, '_self'); // Opens in a new tab
-        // });
+                    var ORDINANCE_ID = $(this).data('ordinance_id');
+                                var paperediturl = '/admin/dashboard/editordinancemaster?ordinance_id=' + ORDINANCE_ID;
+                window.open(paperediturl, '_self'); // Opens in a new tab
+        });
 
 </script>
 }

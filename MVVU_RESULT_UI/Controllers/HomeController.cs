@@ -168,7 +168,7 @@ namespace MVVU_RESULT_UI.Controllers
             return Json("Internal error!");
         }
 
-
+        
         [Route("~/result/{data}")]
         public async Task<IActionResult> Result(string data)
         {

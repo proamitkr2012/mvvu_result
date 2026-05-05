@@ -117,7 +117,9 @@ namespace MVVU_RESULT_MODEL.DTO
         public string? TOT_MAX { get; set; }
         public int? POINT { get; set; }
         public int? GRADE_POINT { get; set; }
+        public int? PAPER_SERIAL { get; set; }
         
+
 
     }
 }

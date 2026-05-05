@@ -396,7 +396,41 @@ namespace MVVU_RESULT_REPO
             }
             return d;
         }
+        public async Task<ORDINANCE_MASTER_AM_DTO_DASH> EditOrdinanceMaster(string Flag, int UserId, string ordinance_id = "")
+        {
 
+            ORDINANCE_MASTER_AM_DTO_DASH d = new();
+            await using var con = new SqlConnection(_connectionStringResult);
+            con.Open();
+            try
+            {
+                var paramList = new
+                {
+                    Flag = Flag,
+                    UserId = UserId,
+                    ordinance_id = ordinance_id
+                };
+
+
+                var multi = await con.QueryMultipleAsync("EditOrdinanceMaster_AM", paramList, commandTimeout: 0,
+                commandType: CommandType.StoredProcedure);
+
+                var lst1 = await multi.ReadAsync<PAPER_MASTER_AM_DTO>();
+                var lst2 = await multi.ReadAsync<PAPER_TYPE_AM_DTO>();
+                //d.PAPER_MASTER_AM = lst1.ToList()[0];
+                //d.PAPER_TYPE_LIST = lst2.ToList();
+            }
+            catch (Exception e)
+            {
+                //
+            }
+            finally
+            {
+                con.Close();
+            }
+            return d;
+        }
+        
         public async Task<List<PAPER_TYPE_CATEGORY_AM_DTO>> GET_PAPERTYPEMASTER_AM(string Flag, string PAPER_MASTER_TYPE)
         {
 

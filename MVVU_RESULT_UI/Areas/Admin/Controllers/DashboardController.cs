@@ -320,6 +320,15 @@ namespace MVVU_RESULT_UI.Areas.Admin.Controllers
             data = await UOF.IAdminMaster.GET_MANAGEORDINANCEMASTER_AM("", (int)CurrentUser.UserId);
             return View(data);
         }
+        [HttpGet]
+        public async Task<IActionResult> EditOrdinanceMaster(string ordinance_id = "")
+        {
+            ORDINANCE_MASTER_AM_DTO_DASH data = new ORDINANCE_MASTER_AM_DTO_DASH();
+            data = await UOF.IAdminMaster.EditOrdinanceMaster("", (int)CurrentUser.UserId, ordinance_id);
+           // data.PAPERcatlist = await UOF.IAdminMaster.GET_PAPERTYPEMASTER_AM("", data.PAPER_MASTER_AM.PAPER_TYPE.ToString());
+            return View(data);
+        }
+        
         [HttpPost]
         public async Task<IActionResult> SaveOrdinance([FromForm] ORDINANCE_MASTER_AM_DTO model, string ReturnUrl)
         {

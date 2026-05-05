@@ -62,6 +62,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGFzaGJvYXJkXENPVVJTRV9NQVNURVIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/MVVU_RESULT/MVVU_RESULT_UI/Areas/Admin/Views/Dashboard/EditOrdinanceMaster.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGFzaGJvYXJkXEVkaXRPcmRpbmFuY2VNYXN0ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/MVVU_RESULT/MVVU_RESULT_UI/Areas/Admin/Views/Dashboard/EditPaperMaster.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGFzaGJvYXJkXEVkaXRQYXBlck1hc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
