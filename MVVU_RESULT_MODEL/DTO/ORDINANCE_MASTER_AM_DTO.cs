@@ -86,6 +86,8 @@ namespace MVVU_RESULT_MODEL.DTO
     }
     public class MANAGE_ORDINANCE_MASTER_AM_DTO
     {
+        
+        public ORDINANCE_MASTER_AM_DTO ORDINANCE_MASTER_AM_DTO { get; set; }
         public List<RESULT_TYPE_DTO> RESULT_TYPE_LIST { get; set; }
         public List<COURSE_FILTER_DTO> COURSE_FILTER_LIST { get; set; }
         public List<SESSION_MASTER_DTO> SESSION_MASTER_LIST { get; set; }

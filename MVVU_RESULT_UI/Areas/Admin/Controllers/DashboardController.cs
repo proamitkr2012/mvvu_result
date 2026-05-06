@@ -158,6 +158,14 @@ namespace MVVU_RESULT_UI.Areas.Admin.Controllers
             return View(data);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> EditCourseMaster(string ccode = "")
+        {
+            MANAGE_COURSE_MASTER_AM_DTO data = new MANAGE_COURSE_MASTER_AM_DTO();
+            data = await UOF.IAdminMaster.GET_EDITCOURSEMASTER_AM("", (int)CurrentUser.UserId, ccode);
+            return View(data);
+        }
+        
         [HttpPost]
         public async Task<IActionResult> SaveCourse([FromForm] COURSE_MASTER_AM_DTO model, string ReturnUrl)
         {
@@ -171,6 +179,29 @@ namespace MVVU_RESULT_UI.Areas.Admin.Controllers
                         return Json(d);
                    
                     
+                }
+                else
+                {
+                    return Json("Try Again Later!");
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json("Internal error!");
+            }
+
+        }
+        [HttpPost]
+        public async Task<IActionResult> UpdateCourseMaster([FromForm] COURSE_MASTER_AM_DTO model, string ReturnUrl)
+        {
+            try
+            {
+                if (model.COURSE_ID>0)
+                {
+
+                    FormResponse d = await UOF.IAdminMaster.UpdateCourse_AM("", model);
+                    
+                            return Json(d);
                 }
                 else
                 {
@@ -323,7 +354,7 @@ namespace MVVU_RESULT_UI.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> EditOrdinanceMaster(string ordinance_id = "")
         {
-            ORDINANCE_MASTER_AM_DTO_DASH data = new ORDINANCE_MASTER_AM_DTO_DASH();
+            MANAGE_ORDINANCE_MASTER_AM_DTO data = new MANAGE_ORDINANCE_MASTER_AM_DTO();
             data = await UOF.IAdminMaster.EditOrdinanceMaster("", (int)CurrentUser.UserId, ordinance_id);
            // data.PAPERcatlist = await UOF.IAdminMaster.GET_PAPERTYPEMASTER_AM("", data.PAPER_MASTER_AM.PAPER_TYPE.ToString());
             return View(data);

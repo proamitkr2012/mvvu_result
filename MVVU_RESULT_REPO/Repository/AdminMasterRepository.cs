@@ -289,7 +289,46 @@ namespace MVVU_RESULT_REPO
             }
             return list;
         }
-
+        public async Task<FormResponse> UpdateCourse_AM(string Flag, COURSE_MASTER_AM_DTO model)
+        {
+            FormResponse list = new();
+            // var list = new StudentMasterDTO();
+            await using var con = new SqlConnection(_connectionString);
+            con.Open();
+            try
+            {
+                var paramList = new
+                {
+                    Flag = Flag,
+                    COURSE_ID = model.COURSE_ID,
+                    COURSE_ID_MAIN = model.COURSE_ID_MAIN,
+                    COURSE_NAME = model.COURSE_NAME,
+                    COURSE_NAME_PROPER = model.COURSE_NAME_PROPER,
+                    SEM_NO = model.SEM_NO,
+                    YEAR_NO = model.YEAR_NO,
+                    COURSE_TYPE = model.COURSE_TYPE,
+                    COURSE_MODE = model.COURSE_MODE,
+                    IS_ACTIVE = model.IS_ACTIVE,
+                    IS_NEP = model.IS_NEP,
+                    RESULT_TYPE = model.RESULT_TYPE,
+                    RESULT_PATTERN = model.RESULT_PATTERN,
+                   
+                };
+                var data = await con.QueryAsync<FormResponse>("Insert_UpdateCoursMaster_AM", paramList,
+                    commandType: CommandType.StoredProcedure);
+                list = data.ToList()[0];
+            }
+            catch (Exception e)
+            {
+                //
+            }
+            finally
+            {
+                con.Close();
+            }
+            return list;
+        }
+        
 
 
         public async Task<PAPER_MASTER_AM_DTO_DASH> GET_PAPER_MASTER_AM(string Flag, int UserId, int Page, string Search = null)
@@ -396,11 +435,53 @@ namespace MVVU_RESULT_REPO
             }
             return d;
         }
-        public async Task<ORDINANCE_MASTER_AM_DTO_DASH> EditOrdinanceMaster(string Flag, int UserId, string ordinance_id = "")
+        public async Task<MANAGE_COURSE_MASTER_AM_DTO> GET_EDITCOURSEMASTER_AM(string Flag, int UserId, string ccode = "")
         {
 
-            ORDINANCE_MASTER_AM_DTO_DASH d = new();
-            await using var con = new SqlConnection(_connectionStringResult);
+            MANAGE_COURSE_MASTER_AM_DTO d = new();
+            await using var con = new SqlConnection(_connectionString);
+            con.Open();
+            try
+            {
+                var paramList = new
+                {
+                    Flag = Flag,
+                    UserId = UserId,
+                    COURSE_ID = ccode
+                };
+
+
+                var multi = await con.QueryMultipleAsync("GET_EDITCOURSEMASTER_AM", paramList, commandTimeout: 0,
+                commandType: CommandType.StoredProcedure);
+
+                var lst1 = await multi.ReadAsync<COURSE_MASTER_AM_DTO>();
+                var lst2 = await multi.ReadAsync<COURSE_MASTER_MAIN_DTO>();
+                var lst3 = await multi.ReadAsync<COURSE_TYPE_MASTER_DTO>();
+               
+                var lst4 = await multi.ReadAsync<COURSE_MODE_DTO>();
+
+                d.COURSE_MASTER_DTO = lst1.ToList()[0];
+                d.COURSE_MASTER_MAIN_LIST = lst2.ToList();
+                d.COURSE_TYPE_MASTER_LIST = lst3.ToList();
+                //
+                d.COURSE_MODE_LIST = lst4.ToList();
+            }
+            catch (Exception e)
+            {
+                //
+            }
+            finally
+            {
+                con.Close();
+            }
+            return d;
+        }
+        
+        public async Task<MANAGE_ORDINANCE_MASTER_AM_DTO> EditOrdinanceMaster(string Flag, int UserId, string ordinance_id = "")
+        {
+
+            MANAGE_ORDINANCE_MASTER_AM_DTO d = new();
+            await using var con = new SqlConnection(_connectionString);
             con.Open();
             try
             {
@@ -412,13 +493,19 @@ namespace MVVU_RESULT_REPO
                 };
 
 
-                var multi = await con.QueryMultipleAsync("EditOrdinanceMaster_AM", paramList, commandTimeout: 0,
+                var multi = await con.QueryMultipleAsync("GetEditOrdinanceMaster_AM", paramList, commandTimeout: 0,
                 commandType: CommandType.StoredProcedure);
 
-                var lst1 = await multi.ReadAsync<PAPER_MASTER_AM_DTO>();
-                var lst2 = await multi.ReadAsync<PAPER_TYPE_AM_DTO>();
-                //d.PAPER_MASTER_AM = lst1.ToList()[0];
-                //d.PAPER_TYPE_LIST = lst2.ToList();
+                var lst1 = await multi.ReadAsync<ORDINANCE_MASTER_AM_DTO>();               
+                var lst2 = await multi.ReadAsync<RESULT_TYPE_DTO>();
+                var lst3 = await multi.ReadAsync<COURSE_FILTER_DTO>();
+                var lst4 = await multi.ReadAsync<SESSION_MASTER_DTO>();
+                var lst5 = await multi.ReadAsync<EXAM_TYPE_MASTER_DTO>();
+                d.ORDINANCE_MASTER_AM_DTO = lst1.ToList()[0];
+                d.RESULT_TYPE_LIST = lst2.ToList();
+                d.COURSE_FILTER_LIST = lst3.ToList();
+                d.SESSION_MASTER_LIST = lst4.ToList();
+                d.EXAM_TYPE_LIST = lst5.ToList();
             }
             catch (Exception e)
             {

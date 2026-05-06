@@ -46,7 +46,7 @@
                         </div>
                         @Html.Hidden("Page")
                         <div class="card-body table-responsive p-0">
-                            <table class="table table-head-fixed text-nowrap">
+                            <table class="table table-head-fixed text-nowrap" id="coursetable">
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
@@ -73,7 +73,7 @@
                                             foreach (var item in data)
                                             {
 
-                                                <tr style="font-size:13px;">
+                                                <tr style="font-size:13px;" data-ccode="@item.COURSE_ID">
                                                     <td>
                                                         @item.SrNo
 
@@ -214,11 +214,19 @@
     </section>
 
 </div>
-
+@section scripts {
 <script>
     function pagechange(p) {
         
         $("#Page").val(p);
         $("#formIndex").submit();
     }
+
+    $('#coursetable').on('dblclick', 'tr', function () {
+        
+        var COURSE_ID= $(this).data('ccode');
+                    var paperediturl = '/admin/dashboard/editcoursemaster?ccode=' + COURSE_ID;
+                window.open(paperediturl, '_self'); // Opens in a new tab
+        });
 </script>
+}

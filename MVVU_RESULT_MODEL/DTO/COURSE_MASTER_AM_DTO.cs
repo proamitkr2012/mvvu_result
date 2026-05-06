@@ -26,7 +26,10 @@ namespace MVVU_RESULT_MODEL.DTO
         public bool? IS_NEP { get; set; }
         public bool? IS_ALLOWINPRACTICAL { get; set; }
         public string? SEMESTER_NAME { get; set; }
-
+        public string? RESULT_TYPE { get; set; }
+        public string? RESULT_PATTERN { get; set; }
+        public string? PRINT_COURSE_NAME { get; set; }
+        
     }
 
 
@@ -52,8 +55,10 @@ namespace MVVU_RESULT_MODEL.DTO
         public List<COURSE_TYPE_MASTER_DTO> COURSE_TYPE_MASTER_LIST { get; set; }
         public List<EXAM_TYPE_MASTER_DTO> EXAM_TYPE_MASTER_LIST { get; set; }
         public List<COURSE_MODE_DTO> COURSE_MODE_LIST { get; set; }
-
+        public COURSE_MASTER_AM_DTO COURSE_MASTER_DTO { get; set; }
         
+
+
     }
 
     public class COURSE_MASTER_MAIN_DTO
