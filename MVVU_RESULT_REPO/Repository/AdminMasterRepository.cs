@@ -273,7 +273,9 @@ namespace MVVU_RESULT_REPO
                     COURSE_TYPE = model.COURSE_TYPE,
                     COURSE_MODE = model.COURSE_MODE,
                     IS_ACTIVE = model.IS_ACTIVE,
-                    IS_NEP = model.IS_NEP
+                    IS_NEP = model.IS_NEP,
+                    RESULT_TYPE=model.RESULT_TYPE,
+                    RESULT_PATTERN = model.RESULT_PATTERN
                 };
                 var data = await con.QueryAsync<FormResponse>("Insert_UpdateCoursMaster_AM", paramList,
                     commandType: CommandType.StoredProcedure);
