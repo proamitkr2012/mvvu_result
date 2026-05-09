@@ -179,7 +179,7 @@
                                             else
                                             {
                                                 <span class="text-danger">Result Is not Live</span>
-                                                @if (CurrentUser.Roles.Contains("Admin"))
+                                                @if (CurrentUser.Roles.Contains("Admin") || CurrentUser.Roles.Contains("AdmResult"))
                                                 {
                                                     <a class="btn btn-danger btn-sm " href="@UriPayload" target="_blank"><i class="fa fa-eye" aria-hidden="true"></i> </a>
                                                 }

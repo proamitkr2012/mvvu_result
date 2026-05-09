@@ -90,7 +90,7 @@ namespace MVVU_RESULT_UI.Areas.Admin.Controllers
         public async Task<IActionResult> CheckResultData(string RollNumber = "")
         {
             bool IsAdmin = false;
-            if (CurrentUser.Roles.Contains("Admin"))
+            if (CurrentUser.Roles.Contains("Admin") || CurrentUser.Roles.Contains("AdmResult"))
             {
                 IsAdmin = true;
             }
@@ -113,7 +113,7 @@ namespace MVVU_RESULT_UI.Areas.Admin.Controllers
         public async Task<IActionResult> GetMarksData(string roll, string sem_no, int course_id, string sessionname, string exam_type)
         {
             bool IsAdmin = false;
-            if (CurrentUser.Roles.Contains("Admin"))
+            if (CurrentUser.Roles.Contains("Admin") || CurrentUser.Roles.Contains("AdmResult"))
             {
                 IsAdmin = true;
             }
