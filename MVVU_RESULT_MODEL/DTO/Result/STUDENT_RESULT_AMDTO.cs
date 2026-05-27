@@ -124,6 +124,10 @@ namespace MVVU_RESULT_MODEL.DTO
         public string? MARKS_OBT { get; set; }
         public string? MAX_MARKS { get; set; }
         public string? MIN_MARKS { get; set; }
+        public string? MARKS_OBT_TOTAL { get; set; }
+        public string? MAX_MARKS_TOTAL { get; set; }
+        public string? MIN_MARKS_TOTAL { get; set; }
+        
         public string? RESULT { get; set; }
         public string? MAX_TOTAL { get; set; }
         public string? MIN_TOTAL { get; set; }

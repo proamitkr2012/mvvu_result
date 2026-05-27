@@ -64,6 +64,8 @@ namespace MVVU_RESULT_UI.ViewComponents
                                 return View("/views/components/_Result_Nep_UG.cshtml", adminData);
                             case "NEP_BBA":
                                 return View("/views/components/_Result_Nep_BBA.cshtml", adminData);
+                            case "NEP_CHEM":
+                                return View("/views/components/_Result_Nep_CHEM.cshtml", adminData);
                             case "Nep_PG":
                                 return View("/views/components/_Result_Nep_PG.cshtml", adminData);
                             case "PG_CBCS":

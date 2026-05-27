@@ -45,14 +45,14 @@
                                         </td>
                                         <td style="width:75%;text-align:center;vertical-align:middle;padding:5px;margin-left:1px; line-height:25px;font-size:15px; border:none !important">
                                             <span style=" font-weight:bold;font-size:20px">MAA VINDHYAVASINI UNIVERSITY, MIRZAPUR </span> <br />
-                                            @if (Model.COURSE_ID == 14)
+                                            @if (Model.DisplayCourseName.Contains("B.ED."))
                                             {
                                                 <span> @Model.DisplayCourseName </span>
                                             }
-                                            else if (Model.COURSE_ID == 69)
+                                            @* else if (Model.COURSE_ID == 69)
                                             {
                                                 <span> TWO YEAR PROGRAMME </span>
-                                            }
+                                            } *@
                                             else
                                             {
                                                 <span> SEMESTER EXAMINATION</span>
@@ -234,7 +234,7 @@ text-align:center;
                                     {
                                         foreach (var item in Model.MarksList)
                                         {
-                                            var csp = Model.CSPList.Where(x => x.PCODE == item.CODE).FirstOrDefault();
+                                            var csp = Model.CSPList.Where(x => x.PCODE == item.PCODE).FirstOrDefault();
 
                                             <tr style="font-size:12px;border-right: 1px solid #000 !important;border-top: 1px solid #000 !important;border-bottom: 1px solid #000 !important;text-align:center;">
                                                 <td style="text-align:left;font-weight:bold;border-right: 1px solid #000 !important;border-top: 1px solid #000 !important;border-bottom: 1px solid #000 !important">
@@ -249,7 +249,8 @@ text-align:center;
                                                     @csp.THEORY_MAX
                                                 </td>
                                                 <td style="border: 1px solid #000 !important;">
-                                                    @csp.INTERNAL_MAX
+                                                        @(csp.INTERNAL_MAX != 0 ? csp.INTERNAL_MAX : "--")
+                                                   
                                                 </td>
                                                 <td style="border: 1px solid #000 !important;">
                                                     @(csp.THEORY_MAX + (csp.INTERNAL_MAX != null ? csp.INTERNAL_MAX : 0))
@@ -263,15 +264,15 @@ text-align:center;
                                                     @(csp.INTERNAL_MIN != 0 ? csp.INTERNAL_MIN : "--")
                                                 </td>
                                                 <td style="border: 1px solid #000 !important;">
-                                                    @if (result.COURSE_ID == "507")
+                                                    @* @if (result.COURSE_ID == "507")
                                                     {
                                                         <span>40</span>
 
                                                     }
                                                     else
-                                                    {
+                                                    { *@
                                                         @(csp.THEORY_MIN + (csp.INTERNAL_MIN != null ? csp.INTERNAL_MIN : 0))
-                                                    }
+                                                    @* } *@
                                                 </td>
 
                                                 <td style="border: 1px solid #000 !important;">
@@ -310,7 +311,8 @@ text-align:center;
                                                     else
                                                     {
                                                         <span>
-                                                            @item.INT_OBT
+                                                                @(item.INT_OBT != null ? item.INT_OBT : "--")
+                                                                
                                                         </span>
                                                     }
 
@@ -350,21 +352,21 @@ text-align:center;
                                                     <td style="border: 1px solid #000 !important;">
                                                     </td>
                                                     <td style="border: 1px solid #000 !important;">
-                                                        <center>    <strong> @item.MAX_MARKS</strong></center>
+                                                            <center>    <strong> @item.MAX_MARKS_TOTAL</strong></center>
                                                     </td>
                                                     <td style="border: 1px solid #000 !important;">
                                                     </td>
                                                     <td style="border: 1px solid #000 !important;">
                                                     </td>
                                                     <td style="border: 1px solid #000 !important;">
-                                                        <center>    <strong>@item.MIN_MARKS</strong></center>
+                                                            <center>    <strong>@item.MIN_MARKS_TOTAL</strong></center>
                                                     </td>
                                                     <td style="border: 1px solid #000 !important;">
                                                     </td>
                                                     <td style="border: 1px solid #000 !important;">
                                                     </td>
                                                     <td style="border: 1px solid #000 !important">
-                                                        <center>    <strong>@item.MARKS_OBT</strong></center>
+                                                            <center>    <strong>@item.MARKS_OBT_TOTAL</strong></center>
                                                     </td>
 
                                                 </tr>
@@ -536,10 +538,10 @@ text-align:center;
                                     <tr>
                                         <td style="border:none !important ;text-align:left">
                                             <div style="font-size:10px">
-                                                (Passing Marks is 45% of Aggregate)
+                                                (Passing Marks is 48% of Aggregate)
                                             </div>
                                             <p style="padding:0px;margin:5px 0px">
-                                                RESULT :
+                                                    RESULT :
 
                                                 @if (Model.SEM_NO == "IV")
                                                 {

@@ -14,6 +14,8 @@ namespace MVVU_RESULT_MODEL.DTO
         public string? EXAM_TYPE { get; set; }
         public string? YEAR_SEMESTER { get; set; }
         public string? PCODE { get; set; }
+        public string? SPCODE { get; set; }
+
         public string? PNAME { get; set; }
         public string? SUBJECT_NAME { get; set; }
         public string? PNAME_R { get; set; }
@@ -42,8 +44,9 @@ namespace MVVU_RESULT_MODEL.DTO
         public string? Session { get; set; }
         public string? COURSE_TYPE { get; set; }
         public string? HELD_IN { get; set; }
+        public string? GROUP_NAME { get; set; }
 
-
+        
     }
 
 }

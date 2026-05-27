@@ -17,6 +17,7 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.TargetFrameworkIdentifier = .NETCoreApp
 build_property.TargetFrameworkVersion = v8.0
+build_property.EntryPointFilePath = 
 build_property.RootNamespace = MVVU_RESULT_UI
 build_property.RootNamespace = MVVU_RESULT_UI
 build_property.ProjectDir = D:\MVVU_RESULT\MVVU_RESULT_UI\
@@ -328,6 +329,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/MVVU_RESULT/MVVU_RESULT_UI/Views/Components/_Result_Nep_BBA.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcG9uZW50c1xfUmVzdWx0X05lcF9CQkEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/MVVU_RESULT/MVVU_RESULT_UI/Views/Components/_Result_Nep_CHEM.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcG9uZW50c1xfUmVzdWx0X05lcF9DSEVNLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/MVVU_RESULT/MVVU_RESULT_UI/Views/Components/_Result_Nep_G_1.cshtml]
