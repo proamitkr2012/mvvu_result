@@ -655,14 +655,15 @@ namespace MVVU_RESULT_UI.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CourseMasterRule(bool WithCountH = false, string SessionName = "")
+        public async Task<IActionResult> CourseMasterRule(bool WithCountH = false, string SessionName = "",string Search="")
         {
             try
             {
-                List<CourseMasterDTO_AM> adminData = await UOF.IAdminMaster.CourseMasterAdmin(WithCountH, SessionName);
+                List<CourseMasterDTO_AM> adminData = await UOF.IAdminMaster.CourseMasterAdmin(WithCountH, SessionName, Search);
                 ViewBag.SessionList = await UOF.IAdminMaster.GetSessionList("SessionList");
                 ViewBag.IsCount = WithCountH;
                 ViewBag.SessionName = SessionName;
+                ViewBag.Search = Search;
                 return View(adminData);
             }
             catch (Exception)

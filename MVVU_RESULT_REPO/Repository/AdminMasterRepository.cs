@@ -1312,7 +1312,7 @@ namespace MVVU_RESULT_REPO
             return d;
         }
 
-        public async Task<List<CourseMasterDTO_AM>> CourseMasterAdmin(bool WithCount = false, string SessionName = "")
+        public async Task<List<CourseMasterDTO_AM>> CourseMasterAdmin(bool WithCount = false, string SessionName = "",string Search="")
         {
             List<CourseMasterDTO_AM> list = new();
             // var list = new StudentMasterDTO();
@@ -1324,7 +1324,8 @@ namespace MVVU_RESULT_REPO
                 {
                     Flag = "",
                     WithCount = WithCount,
-                    SessionName = SessionName
+                    SessionName = SessionName,
+                    Search= Search
                 };
                 var data = await con.QueryAsync<CourseMasterDTO_AM>("GetCourseMasterData_AM", paramList,
                     commandType: CommandType.StoredProcedure);
