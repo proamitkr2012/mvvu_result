@@ -45,8 +45,9 @@ namespace MVVU_RESULT_MODEL.DTO
         public string? COURSE_TYPE { get; set; }
         public string? HELD_IN { get; set; }
         public string? GROUP_NAME { get; set; }
-
+        public string? PAPER_TYPE_CAT { get; set; }
         
+
     }
 
 }

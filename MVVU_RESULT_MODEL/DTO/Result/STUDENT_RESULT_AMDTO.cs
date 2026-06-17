@@ -291,7 +291,10 @@ namespace MVVU_RESULT_MODEL.DTO
         public string? MIN_PED_MARKS { get; set; }
         public string? MAX_PED_MARKS { get; set; }
         public string? RESULT_PED { get; set; }
+        public string? TOTAL_MAX_MARKS { get; set; }
 
+        public string? TOTAL_MIN_MARKS { get; set; }
+        public string? TOTAL_OBT_MARKS { get; set; }
 
     }
 }
