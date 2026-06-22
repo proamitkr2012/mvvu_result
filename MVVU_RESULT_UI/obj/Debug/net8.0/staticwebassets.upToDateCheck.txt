@@ -5,6 +5,7 @@ wwwroot\Rotativa\wkhtmltoimage.exe
 wwwroot\Rotativa\wkhtmltopdf.exe
 wwwroot\Sign.jpg
 wwwroot\Sign1.png
+wwwroot\Signhar.jpg
 wwwroot\Themes\src\fonts\bootstrap\bootstrap-icons.css
 wwwroot\Themes\src\fonts\bootstrap\fonts\bootstrap-icons.woff
 wwwroot\Themes\src\fonts\bootstrap\fonts\bootstrap-icons.woff2
@@ -598,6 +599,7 @@ wwwroot\Themes\vendors\styles\icon-font.css
 wwwroot\Themes\vendors\styles\icon-font.min.css
 wwwroot\Themes\vendors\styles\style.css
 wwwroot\Themes\vendors\styles\style.min.css
+wwwroot\Untitled-2.png
 wwwroot\css\bootstrap-steps.min.css
 wwwroot\css\printres.css
 wwwroot\css\site.css

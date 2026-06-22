@@ -45,7 +45,7 @@
                                         </td>
                                         <td style="width:75%;text-align:center;vertical-align:middle;padding:5px;margin-left:1px; line-height:25px;font-size:15px; border:none !important">
                                             <span style=" font-weight:bold;font-size:20px">MAA VINDHYAVASINI UNIVERSITY, MIRZAPUR </span> <br />
-                                            @if (Model.COURSE_ID == 105 || Model.COURSE_ID == 100)
+                                            @if (Model.COURSE_ID == 500 )
                                             {
                                                 <span>
                                                     @{
@@ -64,17 +64,10 @@
                                             }
                                             STATEMENT OF MARKS <br />
                                             @*  <b>@Model.DisplayCourseName</b> *@
-                                            @if (Model.COURSE_ID != 897 && Model.COURSE_ID != 925 && Model.COURSE_ID != 927 && Model.COURSE_ID != 926)
+                                            @if (Model.COURSE_ID == 500 )
                                             {
                                                 <div style="font-size:14px">
-                                                    ( BACHELOR OF LAWS
-                                                    @if (Model.COURSE_ID == 100)
-                                                    {
-                                                        <span>
-                                                            FIVE YEAR
-                                                        </span>
-                                                    }
-                                                    )
+                                                    ( BACHELOR OF LAWS )
                                                 </div>
                                             }
 
@@ -133,19 +126,7 @@ text-align:center;
                                                 </span>
                                             </td>
                                         </tr>
-                                        @if (Model.COURSE_ID == 897)
-                                        {
-                                            <tr style="padding:0px">
-
-                                                <th style="border:none !important ;width:20%;vertical-align:top;text-align:left; font-size: 13px ; padding:5px">SEMESTER</th>
-                                                <td colspan="2" style="border:none !important ;width:60%;vertical-align:top;padding:5px;text-transform:uppercase;font-size: 12px">
-                                                    : <strong>@Model.DisplaySemester</strong>
-                                                </td>
-
-
-
-                                            </tr>
-                                        }
+                                        
                                         <tr>
                                             <th style="border:none !important ;width:20%;vertical-align:top;text-align:left; font-size: 13px ; padding:5px"> ENROLLMENT NO</th>
                                             <td colspan="2" style="border:none !important ;width:60%;vertical-align:top;padding:5px;text-transform:uppercase;font-size: 12px">
@@ -199,7 +180,7 @@ text-align:center;
                                 <table style="width: 100%;  border-collapse: collapse;">
 
                                     <tr style="text-align:center;">
-                                        <th style="border-right: 1px solid #000 !important;border-top: 1px solid #000 !important;border-bottom: 1px solid #000 !important;vertical-align:middle; padding:5px;margin-left:1px;text-align:left" width="70%">Course Title</th>
+                                            <th style="border-right: 1px solid #000 !important;border-top: 1px solid #000 !important;border-bottom: 1px solid #000 !important;vertical-align:middle; padding:5px;margin-left:1px;text-align:left" width="70%">Paper Name</th>
                                         <th style="border: 1px solid #000 !important;vertical-align:top; padding:5px;margin-left:1px;  font-size: 14px" width="10%">Maximum Marks</th>
                                         <th style="border: 1px solid #000 !important;vertical-align:top; padding:5px;margin-left:1px;  font-size: 14px" width="10%">Minimum Marks</th>
                                         <th style="border: 1px solid #000 !important;vertical-align:top; padding:5px;margin-left:1px;  font-size: 14px" width="10%">Marks Obtained</th>
@@ -218,7 +199,7 @@ text-align:center;
 
                                         foreach (var item in Model.MarksList)
                                         {
-                                            var csp = Model.CSPList.Where(x => x.PCODE == item.CODE && x.PTYPE == "T").FirstOrDefault();
+                                                var csp = Model.CSPList.Where(x => x.SUBJECT_PAPER_CODE == item.PCODE && x.PTYPE == "T").FirstOrDefault();
                                             @if (csp != null)
                                             {
                                                 <tr style="font-size:12px;border-right: 1px solid #000 !important;border-top: 1px solid #000 !important;border-bottom: 1px solid #000 !important;text-align:center;">
@@ -227,40 +208,25 @@ text-align:center;
                                             {
                                             <span> [@csp.PCODE_N] : </span>
                                             } *@
-                                                        @if (!string.IsNullOrEmpty(csp.PNAME))
-                                                        {
-                                                            <span> @csp.PNAME - </span>
-                                                        }
+                                                        
                                                         @item.PNAME_R
                                                     </td>
 
                                                     <td style="border: 1px solid #000 !important;">
-                                                        @if (!string.IsNullOrEmpty(csp.INTERNAL_MAX.ToString()) && Model.COURSE_ID == 897)
-                                                        {
-                                                            @(csp.THEORY_MAX + @csp.INTERNAL_MAX)
-                                                            maxt += (int)csp.THEORY_MAX + (int)csp.INTERNAL_MAX;
-                                                        }
-                                                        else
-                                                        {
-                                                            @csp.THEORY_MAX
+                                                         @csp.THEORY_MAX
 
-                                                            maxt += (int)csp.THEORY_MAX;
+                                                            @{ maxt += (int)csp.THEORY_MAX; }
 
-                                                        }
+                                                        
                                                     </td>
 
 
 
                                                     <td style="border: 1px solid #000 !important;">
                                                         @* @csp.THEORY_MIN *@
-                                                        @if (!string.IsNullOrEmpty(csp.INTERNAL_MAX.ToString()) && Model.COURSE_ID == 897)
-                                                        {
-                                                            @csp.PAPER_TOTAL_MIN
-                                                        }
-                                                        else
-                                                        {
+                                                        
                                                             @(csp.THEORY_MIN != 0 ? csp.THEORY_MIN : "--")
-                                                        }
+                                                        
 
                                                     </td>
 
@@ -281,22 +247,7 @@ text-align:center;
                                                         else
                                                         {
 
-                                                            @if (!string.IsNullOrEmpty(csp.INTERNAL_MAX.ToString()) && Model.COURSE_ID == 897)
-                                                            {
-                                                                <span>
-                                                                    @(Convert.ToInt32(item.MARKS_OBT) + Convert.ToInt32(item.INT_OBT))
-                                                                    @if (item.RE_EX == "True")
-                                                                    {
-                                                                        <span>*</span>
-                                                                    }
-                                                                    @{
-                                                                        tott += Convert.ToInt32(item.MARKS_OBT) + Convert.ToInt32(item.INT_OBT);
-                                                                    }
-                                                                </span>
-                                                            }
-                                                            else
-                                                            {
-
+                                                            
                                                                 <span>
                                                                     @item.MARKS_OBT
                                                                     @if (item.RE_EX == "True")
@@ -308,141 +259,22 @@ text-align:center;
                                                                     }
                                                                 </span>
 
-                                                            }
+                                                           
                                                         }
                                                     </td>
 
                                                 </tr>
                                             }
                                         }
-                                        @if ((Model.COURSE_ID == 105) || ((Model.SEM_NO != "I" && Model.SEM_NO != "II") && Model.COURSE_ID == 100))
-                                        {
-                                            if ((DateTime)Model.ResultDate.Value < (DateTime)Convert.ToDateTime("09/03/2024"))
-                                            {
-                                                <tr style="font-size:12px;font-weight:bold">
-                                                    <td style="text-align:left;font-weight:bold;border-right: 1px solid #000 !important;border-top: 1px solid #000 !important;border-bottom: 1px solid #000 !important">
-                                                        <strong>Total Theory</strong>
-                                                    </td>
-
-                                                    <td style="border: 1px solid #000 !important;">
-                                                        <center>    <strong>@maxt </strong></center>
-                                                    </td>
-
-                                                    <td style="border: 1px solid #000 !important;">
-                                                        <center>
-                                                            <strong>
-                                                                @{
-                                                                    int num = (maxt * 48) / 100;
-                                                                }
-                                                                @num
-                                                            </strong>
-                                                        </center>
-                                                    </td>
-
-                                                    <td style="border: 1px solid #000 !important">
-                                                        <center>    <strong>@tott</strong></center>
-                                                    </td>
-
-                                                </tr>
-                                            }
-                                        }
-                                        foreach (var item in Model.MarksList)
-                                        {
-                                            var csp = Model.CSPList.Where(x => x.PCODE == item.CODE && x.PTYPE == "P").FirstOrDefault();
-                                            @if (csp != null)
-                                            {
-                                                <tr style="font-size:12px;border-right: 1px solid #000 !important;border-top: 1px solid #000 !important;border-bottom: 1px solid #000 !important;text-align:center;">
-                                                    <td style="text-align:left;font-weight:bold;border-right: 1px solid #000 !important;border-top: 1px solid #000 !important;border-bottom: 1px solid #000 !important">
-                                                        @* @if (!string.IsNullOrEmpty(csp.PCODE_N))
-                                            {
-                                            <span> [@csp.PCODE_N] : </span>
-                                            } *@
-                                                        @item.PNAME_R
-                                                    </td>
-
-                                                    <td style="border: 1px solid #000 !important;">
-                                                        @csp.THEORY_MAX
-                                                        @{
-                                                            maxp += (int)csp.THEORY_MAX;
-                                                        }
-                                                    </td>
-
-
-
-                                                    <td style="border: 1px solid #000 !important;">
-                                                        @csp.THEORY_MIN
-                                                        @{
-                                                            minp += (int)csp.THEORY_MIN;
-                                                        }
-                                                    </td>
-
-
-                                                    <td style="border: 1px solid #000 !important;">
-                                                        @if (item.MARKS_OBT == "-99")
-                                                        {
-                                                            <span>
-                                                                ABS
-                                                            </span>
-                                                        }
-                                                        else if (item.MARKS_OBT == "-98")
-                                                        {
-                                                            <span>
-                                                                UFM
-                                                            </span>
-                                                        }
-                                                        else
-                                                        {
-                                                            <span>
-                                                                @item.MARKS_OBT
-                                                                @if (item.RE_EX == "True")
-                                                                {
-                                                                    <span>*</span>
-                                                                }
-                                                                @{
-                                                                    totp += Convert.ToInt32(item.MARKS_OBT);
-                                                                }
-                                                            </span>
-                                                        }
-                                                    </td>
-
-                                                </tr>
-                                            }
-                                        }
-
-                                        @if ((Model.SEM_NO == "III" && Model.COURSE_ID == 105) || (Model.SEM_NO == "V" && Model.COURSE_ID == 100))
-                                        {
-                                            if ((DateTime)Model.ResultDate.Value < (DateTime)Convert.ToDateTime("09/03/2024"))
-                                            {
-                                                <tr style="font-size:12px;font-weight:bold">
-                                                    <td style="text-align:left;font-weight:bold;border-right: 1px solid #000 !important;border-top: 1px solid #000 !important;border-bottom: 1px solid #000 !important">
-                                                        <strong>Total Practical</strong>
-                                                    </td>
-
-                                                    <td style="border: 1px solid #000 !important;">
-                                                        <center>    <strong>@maxp </strong></center>
-                                                    </td>
-
-                                                    <td style="border: 1px solid #000 !important;">
-                                                        <center>
-                                                            <strong>
-                                                                @minp
-                                                            </strong>
-                                                        </center>
-                                                    </td>
-
-                                                    <td style="border: 1px solid #000 !important">
-                                                        <center>    <strong>@totp</strong></center>
-                                                    </td>
-
-                                                </tr>
-                                            }
-                                        }
+                                       
+                                     
+                                       
                                     }
 
                                     @if (Model.ResultList.Count > 0)
                                     {
                                         var res = Model.ResultList.Take(1).FirstOrDefault();
-                                        if ((Model.SEM_NO != "III" && Model.COURSE_ID == 105) || (Model.SEM_NO != "V" && Model.COURSE_ID == 100))
+                                        if (Model.SEM_NO != "III" && (Model.COURSE_ID == 500 || Model.COURSE_ID==454))
                                         {
 
 
@@ -471,7 +303,7 @@ text-align:center;
                                         else
                                         {
 
-                                            if (Model.SEM_NO == "III" && Model.COURSE_ID == 105)
+                                            if (Model.SEM_NO == "III" && Model.COURSE_ID == 500)
                                             {
                                                 <tr style="font-size:12px;font-weight:bold">
 
@@ -678,137 +510,9 @@ text-align:center;
                                                 </tr>
 
                                             }
-                                            if ((Model.COURSE_ID == 897 && Model.SEM_NO != "IV") || (Model.COURSE_ID == 925) || (Model.COURSE_ID == 927))
-                                            {
-                                                <tr style="font-size:12px;font-weight:bold">
+                                            
 
-
-                                                    <td style="text-align:left;font-weight:bold;border-right: 1px solid #000 !important;border-top: 1px solid #000 !important;border-bottom: 1px solid #000 !important">
-                                                        <strong>Total  </strong>
-                                                    </td>
-
-                                                    <td style="border: 1px solid #000 !important;">
-                                                        <center>    <strong> @res.MAX_MARKS</strong></center>
-                                                    </td>
-
-                                                    <td style="border: 1px solid #000 !important;">
-                                                        <center>    <strong>@res.MIN_MARKS</strong></center>
-                                                    </td>
-
-                                                    <td style="border: 1px solid #000 !important">
-                                                        <center>    <strong>@res.MARKS_OBT</strong></center>
-                                                    </td>
-
-                                                </tr>
-
-
-                                            }
-
-                                            if (Model.SEM_NO == "IV" && Model.COURSE_ID == 897)
-                                            {
-                                                <tr style="font-size:12px;font-weight:bold">
-
-
-                                                    <td style="text-align:left;font-weight:bold;border-right: 1px solid #000 !important;border-top: 1px solid #000 !important;border-bottom: 1px solid #000 !important">
-                                                        <strong>Total </strong>
-                                                    </td>
-
-                                                    <td style="border: 1px solid #000 !important;">
-                                                        <center>    <strong> @res.MAX_MARKS</strong></center>
-                                                    </td>
-
-                                                    <td style="border: 1px solid #000 !important;">
-                                                        <center>    <strong>@res.MIN_MARKS</strong></center>
-                                                    </td>
-
-                                                    <td style="border: 1px solid #000 !important">
-                                                        <center>    <strong>@res.MARKS_OBT</strong></center>
-                                                    </td>
-
-                                                </tr>
-                                                <tr style="font-size:12px;font-weight:bold">
-
-
-                                                    <td style="text-align:left;font-weight:bold;border-right: 1px solid #000 !important;border-top: 1px solid #000 !important;border-bottom: 1px solid #000 !important">
-                                                        <strong>Total Of I Semester </strong>
-                                                    </td>
-
-                                                    <td style="border: 1px solid #000 !important;">
-                                                        <center>    <strong> @res.MAX_MARKS_1</strong></center>
-                                                    </td>
-
-                                                    <td style="border: 1px solid #000 !important;">
-                                                        <center>    <strong>@res.MIN_MARKS_1</strong></center>
-                                                    </td>
-
-                                                    <td style="border: 1px solid #000 !important">
-                                                        <center>    <strong>@res.OBT_MARKS_1</strong></center>
-                                                    </td>
-
-                                                </tr>
-                                                <tr style="font-size:12px;font-weight:bold">
-
-
-                                                    <td style="text-align:left;font-weight:bold;border-right: 1px solid #000 !important;border-top: 1px solid #000 !important;border-bottom: 1px solid #000 !important">
-                                                        <strong>Total Of II Semester </strong>
-                                                    </td>
-
-                                                    <td style="border: 1px solid #000 !important;">
-                                                        <center>    <strong> @res.MAX_MARKS_2</strong></center>
-                                                    </td>
-
-                                                    <td style="border: 1px solid #000 !important;">
-                                                        <center>    <strong>@res.MIN_MARKS_2</strong></center>
-                                                    </td>
-
-                                                    <td style="border: 1px solid #000 !important">
-                                                        <center>    <strong>@res.OBT_MARKS_2</strong></center>
-                                                    </td>
-
-                                                </tr>
-                                                <tr style="font-size:12px;font-weight:bold">
-
-
-                                                    <td style="text-align:left;font-weight:bold;border-right: 1px solid #000 !important;border-top: 1px solid #000 !important;border-bottom: 1px solid #000 !important">
-                                                        <strong>Total Of III Semester </strong>
-                                                    </td>
-
-                                                    <td style="border: 1px solid #000 !important;">
-                                                        <center>    <strong> @res.MAX_MARKS_3</strong></center>
-                                                    </td>
-
-                                                    <td style="border: 1px solid #000 !important;">
-                                                        <center>    <strong>@res.MIN_MARKS_3</strong></center>
-                                                    </td>
-
-                                                    <td style="border: 1px solid #000 !important">
-                                                        <center>    <strong>@res.OBT_MARKS_3</strong></center>
-                                                    </td>
-
-                                                </tr>
-
-                                                <tr style="font-size:12px;font-weight:bold">
-
-
-                                                    <td style="text-align:left;font-weight:bold;border-right: 1px solid #000 !important;border-top: 1px solid #000 !important;border-bottom: 1px solid #000 !important">
-                                                        <strong>Grand Total </strong>
-                                                    </td>
-
-                                                    <td style="border: 1px solid #000 !important;">
-                                                        <center>    <strong> @res.MAX_TOTAL</strong></center>
-                                                    </td>
-
-                                                    <td style="border: 1px solid #000 !important;">
-                                                        <center>    <strong>@res.MIN_TOTAL</strong></center>
-                                                    </td>
-
-                                                    <td style="border: 1px solid #000 !important">
-                                                        <center>    <strong>@res.OBT_TOTAL</strong></center>
-                                                    </td>
-
-                                                </tr>
-
-                                            }
+                                            
                                         }
                                     }
 
@@ -826,25 +530,17 @@ text-align:center;
                                                 RESULT :
 
                                                 <strong>
-                                                    @if ((Model.SEM_NO == "III" && Model.COURSE_ID == 105) || (Model.SEM_NO == "V" && Model.COURSE_ID == 100) || (Model.SEM_NO == "IV" && Model.COURSE_ID == 897))
-                                                    {
-                                                        @if (Model.ResultList.Select(x => x.FINAL_RESULT).FirstOrDefault() != null)
-                                                        {
-                                                            @Model.ResultList.Select(x => x.FINAL_RESULT).FirstOrDefault()
-                                                        }
-                                                    }
-                                                    else
-                                                    {
-                                                        @if (Model.ResultList.Select(x => x.RESULT).FirstOrDefault() != null)
-                                                        {
-                                                            @Model.ResultList.Select(x => x.RESULT).FirstOrDefault()
-                                                        }
+                                                    
+                                                            @if (Model.ResultList.Select(x => x.FINAL_RESULT).FirstOrDefault() != null)
+                                                            {
+                                                                @Model.ResultList.Select(x => x.FINAL_RESULT).FirstOrDefault()
+                                                            }
 
-                                                    }
+                                                    
                                                 </strong>
                                             </p>
 
-                                            @if ((Model.SEM_NO == "III" && Model.COURSE_ID == 105) || (Model.SEM_NO == "V" && Model.COURSE_ID == 100) || (Model.SEM_NO == "IV" && Model.COURSE_ID == 897))
+                                            @if ((Model.SEM_NO == "III" && Model.COURSE_ID == 500))
                                             {
                                                 <p style="padding:0px;margin:5px 0px">
 
@@ -910,7 +606,7 @@ text-align:center;
 
                                 </table>
                                 <div style="text-align:center;float:right">
-                                    <img src="https://result.mvvu.ac.in/Sign.jpg" height="50" width="100" /><br />
+                                    <img src="https://result.mvvu.ac.in/Signhar.jpg" height="50" width="100" /><br />
                                     Controller of Examinations
                                 </div>
                             </td>
