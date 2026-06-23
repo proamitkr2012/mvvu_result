@@ -45,7 +45,7 @@
                                         </td>
                                         <td style="width:75%;text-align:center;vertical-align:middle;padding:5px;margin-left:1px; line-height:25px;font-size:15px; border:none !important">
                                             <span style=" font-weight:bold;font-size:20px">MAA VINDHYAVASINI UNIVERSITY, MIRZAPUR </span> <br />
-                                            @if (Model.COURSE_ID == 500 )
+                                            @if (Model.COURSE_ID == 500 || Model.COURSE_ID == 507)
                                             {
                                                 <span>
                                                     @{
@@ -64,10 +64,17 @@
                                             }
                                             STATEMENT OF MARKS <br />
                                             @*  <b>@Model.DisplayCourseName</b> *@
-                                            @if (Model.COURSE_ID == 500 )
+                                            @if (Model.COURSE_ID == 500 || Model.COURSE_ID == 507)
                                             {
                                                 <div style="font-size:14px">
-                                                    ( BACHELOR OF LAWS )
+                                                    ( BACHELOR OF LAWS 
+                                                    @if (Model.COURSE_ID == 507)
+                                                    {
+                                                        <span>
+                                                            FIVE YEAR
+                                                        </span>
+                                                    }
+                                                    )
                                                 </div>
                                             }
 
@@ -274,8 +281,8 @@ text-align:center;
                                     @if (Model.ResultList.Count > 0)
                                     {
                                         var res = Model.ResultList.Take(1).FirstOrDefault();
-                                        if (Model.SEM_NO != "III" && (Model.COURSE_ID == 500 || Model.COURSE_ID==454))
-                                        {
+                                            if ((Model.SEM_NO != "III" && Model.COURSE_ID == 500) || (Model.SEM_NO != "V" && Model.COURSE_ID == 507))
+                                            {
 
 
 
@@ -303,7 +310,7 @@ text-align:center;
                                         else
                                         {
 
-                                            if (Model.SEM_NO == "III" && Model.COURSE_ID == 500)
+                                            if (Model.SEM_NO == "III" && Model.COURSE_ID == 500 )
                                             {
                                                 <tr style="font-size:12px;font-weight:bold">
 
@@ -386,7 +393,7 @@ text-align:center;
 
                                                 </tr>
                                             }
-                                            if (Model.SEM_NO == "V" && Model.COURSE_ID == 100)
+                                                if (Model.SEM_NO == "V" && Model.COURSE_ID == 507)
                                             {
                                                 <tr style="font-size:12px;font-weight:bold">
 

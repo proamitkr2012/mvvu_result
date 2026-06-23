@@ -64,7 +64,7 @@
                                         </td>
                                         <td style="float:right;font-weight:bold;font-size:12px ;border:none !important">
                                             <img src="@String.Format("data:image/png;base64,{0}",
-                                                                                 Convert.ToBase64String(Model.qcore))" height="100" width="100" />
+                                                                                                                                                                                   Convert.ToBase64String(Model.qcore))" height="100" width="100" />
 
 
                                         </td>
@@ -212,7 +212,7 @@
                                             <td style="border: 1px solid #000 !important;">
                                                 Int.
                                             </td>
-                                           
+
                                             <td style="border: 1px solid #000 !important;">
                                                 Total
                                             </td>
@@ -239,7 +239,7 @@
                                             <td style="border: 1px solid #000 !important;">
                                                 Int.
                                             </td>
-                                           
+
                                             <td style="border: 1px solid #000 !important;">
                                                 Total
                                             </td>
@@ -274,37 +274,37 @@
                                                         </td>
 
                                                         <td style="border: 1px solid #000 !important;">
-                                                            @if (csp.PTYPE=="T")
+                                                            @if (csp.PTYPE == "T")
                                                             {
-                                                                @csp.THEORY_MAX
+                                                                @item.T_MAX
                                                             }
-                                                            
-                                                        </td>
-                                                        <td style="border: 1px solid #000 !important;">
-                                                            @(csp.SESSIONAL_MAX != 0 ? csp.SESSIONAL_MAX : "--")
-                                                            @if (csp.PTYPE == "P")
-                                                            {
-                                                                @csp.THEORY_MAX
-                                                            }
-                                                        </td>
-                                                        <td style="border: 1px solid #000 !important;">
-                                                            @(csp.INTERNAL_MAX != 0 ? csp.INTERNAL_MAX : "--")
 
                                                         </td>
-                                                       
                                                         <td style="border: 1px solid #000 !important;">
-                                                           @*  @(csp.THEORY_MAX + (csp.INTERNAL_MAX != null ? csp.INTERNAL_MAX : 0) + (csp.SESSIONAL_MAX != null ? csp.SESSIONAL_MAX : 0)) *@
+                                                            @(item.S_MAX != "0" ? item.S_MAX : "--")
+                                                            @if (csp.PTYPE == "P")
+                                                            {
+                                                                @item.T_MAX
+                                                            }
+                                                        </td>
+                                                        <td style="border: 1px solid #000 !important;">
+                                                            @(item.I_MAX != "0" ? item.I_MAX : "--")
+
+                                                        </td>
+
+                                                        <td style="border: 1px solid #000 !important;">
+                                                            @*  @(csp.THEORY_MAX + (csp.INTERNAL_MAX != null ? csp.INTERNAL_MAX : 0) + (csp.SESSIONAL_MAX != null ? csp.SESSIONAL_MAX : 0)) *@
                                                             @item.TOTAL_MAX
                                                         </td>
 
 
-                                                       @*  <td style="border: 1px solid #000 !important;">
+                                                        @*  <td style="border: 1px solid #000 !important;">
                                                             @if (csp.PTYPE == "T")
                                                             {
                                                                 @csp.THEORY_MIN
                                                             }
-                                                            
-                                                        </td>
+
+</td>
                                                         <td style="border: 1px solid #000 !important;">
                                                             @(csp.SESSIONAL_MIN != 0 ? csp.SESSIONAL_MIN : "--")
                                                             @if (csp.PTYPE == "P")
@@ -326,25 +326,26 @@
                                                         <td style="border: 1px solid #000 !important;">
                                                             @if (csp.PTYPE == "T")
                                                             {
-                                                                
-                                                            @if (item.MARKS_OBT == "-99")
-                                                            {
-                                                                <span>
-                                                                    ABS
-                                                                </span>
+
+                                                                @if (item.MARKS_OBT == "-99")
+                                                                {
+                                                                    <span>
+                                                                        ABS
+                                                                    </span>
+                                                                }
+                                                                else if (item.MARKS_OBT == "-98")
+                                                                {
+                                                                    <span>
+                                                                        UFM
+                                                                    </span>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <span>
+                                                                        @item.MARKS_OBT
+                                                                    </span>
+                                                                }
                                                             }
-                                                            else if (item.MARKS_OBT == "-98")
-                                                            {
-                                                                <span>
-                                                                    UFM
-                                                                </span>
-                                                            }
-                                                            else
-                                                            {
-                                                                <span>
-                                                                    @item.MARKS_OBT
-                                                                </span>
-                                                            }}
                                                         </td>
                                                         <td style="border: 1px solid #000 !important;">
                                                             @if (item.SES_OBT == "-99")
@@ -409,7 +410,7 @@
                                                             }
 
                                                         </td>
-                                                       
+
                                                         <td style="border: 1px solid #000 !important;">
                                                             @if (item.INT_OBT == "-99" && item.MARKS_OBT == "-99")
                                                             {
@@ -424,7 +425,7 @@
                                                                 }
                                                             }
                                                         </td>
-                                                       
+
                                                         @if ((csp.PAPER_TYPE_CAT == "Q" || csp.PAPER_TYPE_CAT == "S") && item.PAPER_RESULT == "PASS")
                                                         {
                                                             q++;
@@ -487,7 +488,7 @@
                                                     <td style="border: 1px solid #000 !important;">
                                                         <center>    <strong> @item.TOTAL_MAX_MARKS</strong></center>
                                                     </td>
-                                                   @*  <td style="border: 1px solid #000 !important;">
+                                                    @*  <td style="border: 1px solid #000 !important;">
                                                     </td>
                                                     <td style="border: 1px solid #000 !important;">
                                                     </td>
@@ -602,13 +603,13 @@
 
                                             @if (Model.MarksList.Any(x => x.Grade == "Q") == true)
                                             {
-                                                 <strong style="padding:0px;margin:0px">
+                                                <strong style="padding:0px;margin:0px">
                                                     Note. Q - Qualifying Paper Clear
                                                 </strong>
                                             }
                                             @if (Model.MarksList.Any(x => x.Grade == "NQ") == true)
                                             {
-                                                 <strong style="padding:0px;margin:0px">
+                                                <strong style="padding:0px;margin:0px">
                                                     Note. NQ - Qualifying Paper Not Clear
                                                 </strong>
                                             }
@@ -641,7 +642,7 @@
 
                                 </table>
                                 <div style="text-align:center;float:right">
-                                    <img src="https://result.mvvu.ac.in/Sign.jpg" height="50" width="100" /><br />
+                                    <img src="https://result.mvvu.ac.in/Signhar.jpg" height="50" width="100" /><br />
                                     Controller of Examinations
                                 </div>
                             </td>
