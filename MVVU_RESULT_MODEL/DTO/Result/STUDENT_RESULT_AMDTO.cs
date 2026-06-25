@@ -297,6 +297,12 @@ namespace MVVU_RESULT_MODEL.DTO
         public string? TOTAL_OBT_MARKS { get; set; }
         public string? Total_Grade_Point { get; set; }
         public string? Total_Point { get; set; }
+        public string? PRACTICAL_MAX_MARKS { get; set; }
 
+        public string? PRACTICAL_MIN_MARKS { get; set; }
+
+        public string? PRACTICAL_OBT_MARKS { get; set; }
+        public string? PRACTICAL_RESULT { get; set; }
+        
     }
 }

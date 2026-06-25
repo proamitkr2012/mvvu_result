@@ -168,7 +168,7 @@ text-align:center;
                                 <table style="width: 100%;  border-collapse: collapse;">
                                     @* ------------THOERY------------ *@
                                     <tr style="text-align:center;">
-                                        <th style="border-right: 1px solid #000 !important;border-top: 1px solid #000 !important;border-bottom: 1px solid #000 !important;width:65%;vertical-align:middle; padding:5px;margin-left:1px;text-align:left">Course Title</th>
+                                        <th style="border-right: 1px solid #000 !important;border-top: 1px solid #000 !important;border-bottom: 1px solid #000 !important;width:65%;vertical-align:middle; padding:5px;margin-left:1px;text-align:left">Paper Name</th>
                                         <th style="border: 1px solid #000 !important;width:5%;vertical-align:top; padding:5px;margin-left:1px">Credit</th>
                                         <th style="border: 1px solid #000 !important;width:5%;vertical-align:top; padding:5px;margin-left:1px;">
                                             Max./Min. <br />
@@ -220,7 +220,7 @@ text-align:center;
                                         foreach (var item1 in Model.CSPList.Where(x => x.PTYPE == "T").ToList().OrderBy(x => x.PrintSrNo))
                                         {
 
-                                            var d1 = Model.MarksList.Where(x => x.CODE == item1.PCODE).ToList();
+                                            var d1 = Model.MarksList.Where(x => x.PCODE == item1.SUBJECT_PAPER_CODE).ToList();
 
                                             @if (d1.Count > 0)
                                             {
@@ -448,7 +448,7 @@ text-align:center;
                                         foreach (var item1 in Model.CSPList.Where(x => x.PTYPE == "P").ToList().OrderBy(x => x.PrintSrNo))
                                         {
 
-                                            var d1 = Model.MarksList.Where(x => x.CODE == item1.PCODE).ToList();
+                                            var d1 = Model.MarksList.Where(x => x.PCODE == item1.SUBJECT_PAPER_CODE).ToList();
 
                                             @if (d1.Count > 0)
                                             {

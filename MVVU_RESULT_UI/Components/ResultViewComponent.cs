@@ -72,8 +72,8 @@ namespace MVVU_RESULT_UI.ViewComponents
                                 return View("/views/components/_Result_PG_CBCS.cshtml", adminData);
                             case "PG_MLIS":
                                 return View("/views/components/_Result_PG_MLIS.cshtml", adminData);
-                            case "MEDICAL":
-                                return View("/views/components/_Result_MEDICAL.cshtml", adminData);
+                            case "LIB":
+                                return View("/views/components/_Result_LIB.cshtml", adminData);
                             case "Edu_I":
                                 return View("/views/components/_Result_Edu1.cshtml", adminData);
                             case "LAW":

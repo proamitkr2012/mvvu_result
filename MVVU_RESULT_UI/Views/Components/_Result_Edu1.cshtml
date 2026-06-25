@@ -189,7 +189,7 @@ text-align:center;
                                         <th colspan="3" style="border: 1px solid #000 !important;width:15%;vertical-align:top; padding:5px;margin-left:1px;  font-size: 14px">Maximum Marks</th>
                                         <th colspan="3" style="border: 1px solid #000 !important;width:15%;vertical-align:top; padding:5px;margin-left:1px;  font-size: 14px">Minimum Marks</th>
                                         <th colspan="3" style="border: 1px solid #000 !important;width:15%;vertical-align:top; padding:5px;margin-left:1px;  font-size: 14px">Marks Obtained</th>
-
+                                           
                                     </tr>
 
                                     <tr style="text-align:center; font-size:12px;border-top: 1px solid #000 !important;border-bottom: 1px solid #000 !important;font-weight:bold">
@@ -227,15 +227,15 @@ text-align:center;
                                         <td style="border: 1px solid #000 !important;">
                                             Total
                                         </td>
-
+                                           
 
                                     </tr>
                                     @if (Model.MarksList.Count > 0)
                                     {
                                         foreach (var item in Model.MarksList)
                                         {
-                                            var csp = Model.CSPList.Where(x => x.PCODE == item.PCODE).FirstOrDefault();
-
+                                            var csp = Model.CSPList.Where(x => x.SUBJECT_PAPER_CODE == item.PCODE && x.PTYPE=="T").FirstOrDefault();
+                                            @if(csp!=null){
                                             <tr style="font-size:12px;border-right: 1px solid #000 !important;border-top: 1px solid #000 !important;border-bottom: 1px solid #000 !important;text-align:center;">
                                                 <td style="text-align:left;font-weight:bold;border-right: 1px solid #000 !important;border-top: 1px solid #000 !important;border-bottom: 1px solid #000 !important">
 
@@ -331,9 +331,193 @@ text-align:center;
                                                         }}
                                                 </td>
                                             </tr>
+                                            }
                                         }
+                                            @if (Model.ResultList.Count > 0)
+                                            {
+                                                foreach (var item in Model.ResultList.Take(1))
+                                                {
+                                                        <tr style="font-size:12px;">
+                                                            <td style="text-align:left;font-weight:bold;border-right: 1px solid #000 !important;border-top: 1px solid #000 !important;border-bottom: 1px solid #000 !important">
+                                                                <strong>  </strong>
+                                                            </td>
+                                                            <td style="text-align:left;font-weight:bold; border: 1px solid #000 !important;">
+                                                                <strong>  Total </strong>
+                                                            </td>
+                                                            <td style="border: 1px solid #000 !important;">
+                                                            </td>
+                                                            <td style="border: 1px solid #000 !important;">
+                                                            </td>
+                                                            <td style="border: 1px solid #000 !important;">
+                                                            <center>    <strong> @item.MAX_MARKS</strong></center>
+                                                            </td>
+                                                            <td style="border: 1px solid #000 !important;">
+                                                            </td>
+                                                            <td style="border: 1px solid #000 !important;">
+                                                            </td>
+                                                            <td style="border: 1px solid #000 !important;">
+                                                            <center>    <strong>@item.MIN_MARKS</strong></center>
+                                                            </td>
+                                                            <td style="border: 1px solid #000 !important;">
+                                                            </td>
+                                                            <td style="border: 1px solid #000 !important;">
+                                                            </td>
+                                                            <td style="border: 1px solid #000 !important">
+                                                                <center>    <strong>@item.MARKS_OBT</strong></center>
+                                                            </td>
+
+                                                        </tr>
+                                                    
+                                                    
+                                                }
+                                            }
+
+
+                                            foreach (var item in Model.MarksList)
+                                            {
+                                                var csp = Model.CSPList.Where(x => x.SUBJECT_PAPER_CODE == item.PCODE && x.PTYPE == "P").FirstOrDefault();
+                                                @if (csp != null)
+                                                {
+                                                    <tr style="font-size:12px;border-right: 1px solid #000 !important;border-top: 1px solid #000 !important;border-bottom: 1px solid #000 !important;text-align:center;">
+                                                        <td style="text-align:left;font-weight:bold;border-right: 1px solid #000 !important;border-top: 1px solid #000 !important;border-bottom: 1px solid #000 !important">
+
+                                                            @item.PCODE
+                                                        </td>
+                                                        <td style="text-align:left;font-weight:bold;border: 1px solid #000 !important;">
+                                                            @item.PNAME_R
+                                                        </td>
+
+                                                        <td style="border: 1px solid #000 !important;">
+                                                            @csp.THEORY_MAX
+                                                        </td>
+                                                        <td style="border: 1px solid #000 !important;">
+                                                            @(csp.INTERNAL_MAX != 0 ? csp.INTERNAL_MAX : "--")
+
+                                                        </td>
+                                                        <td style="border: 1px solid #000 !important;">
+                                                            @(csp.THEORY_MAX + (csp.INTERNAL_MAX != null ? csp.INTERNAL_MAX : 0))
+                                                        </td>
+
+
+                                                        <td style="border: 1px solid #000 !important;">
+                                                            @csp.THEORY_MIN
+                                                        </td>
+                                                        <td style="border: 1px solid #000 !important;">
+                                                            @(csp.INTERNAL_MIN != 0 ? csp.INTERNAL_MIN : "--")
+                                                        </td>
+                                                        <td style="border: 1px solid #000 !important;">
+                                                            @* @if (result.COURSE_ID == "507")
+                                                    {
+                                                        <span>40</span>
+
+                                                    }
+                                                    else
+                                                    { *@
+                                                            @(csp.THEORY_MIN + (csp.INTERNAL_MIN != null ? csp.INTERNAL_MIN : 0))
+                                                            @* } *@
+                                                        </td>
+
+                                                        <td style="border: 1px solid #000 !important;">
+                                                            @if (item.MARKS_OBT == "-99")
+                                                            {
+                                                                <span>
+                                                                    ABS
+                                                                </span>
+                                                            }
+                                                            else if (item.MARKS_OBT == "-98")
+                                                            {
+                                                                <span>
+                                                                    UFM
+                                                                </span>
+                                                            }
+                                                            else
+                                                            {
+                                                                <span>
+                                                                    @item.MARKS_OBT
+                                                                </span>
+                                                            }
+                                                        </td>
+                                                        <td style="border: 1px solid #000 !important;">
+                                                            @if (item.INT_OBT == "-99")
+                                                            {
+                                                                <span>
+                                                                    ABS
+                                                                </span>
+                                                            }
+                                                            else if (item.INT_OBT == "-98")
+                                                            {
+                                                                <span>
+                                                                    UFM
+                                                                </span>
+                                                            }
+                                                            else
+                                                            {
+                                                                <span>
+                                                                    @(item.INT_OBT != null ? item.INT_OBT : "--")
+
+                                                                </span>
+                                                            }
+
+                                                        </td>
+                                                        <td style="border: 1px solid #000 !important;">
+                                                            @if (item.INT_OBT == "-99" && item.MARKS_OBT == "-99")
+                                                            {
+                                                                <span>ABS</span>
+                                                            }
+                                                            else
+                                                            {
+                                                                @item.PAPER_TOT_MARKS_OBT
+                                                                @if (item.RE_EX == "True")
+                                                                {
+                                                                    <span>*</span>
+                                                                }
+                                                            }
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            }
                                     }
-                                    @if (Model.ResultList.Count > 0)
+
+
+                                        @if (Model.ResultList.Count > 0)
+                                        {
+                                            foreach (var item in Model.ResultList.Take(1))
+                                            {
+                                                <tr style="font-size:12px;">
+                                                    <td style="text-align:left;font-weight:bold;border-right: 1px solid #000 !important;border-top: 1px solid #000 !important;border-bottom: 1px solid #000 !important">
+                                                        <strong>  </strong>
+                                                    </td>
+                                                    <td style="text-align:left;font-weight:bold; border: 1px solid #000 !important;">
+                                                        <strong>  Total </strong>
+                                                    </td>
+                                                    <td style="border: 1px solid #000 !important;">
+                                                    </td>
+                                                    <td style="border: 1px solid #000 !important;">
+                                                    </td>
+                                                    <td style="border: 1px solid #000 !important;">
+                                                        <center>    <strong> @item.PRACTICAL_MAX_MARKS</strong></center>
+                                                    </td>
+                                                    <td style="border: 1px solid #000 !important;">
+                                                    </td>
+                                                    <td style="border: 1px solid #000 !important;">
+                                                    </td>
+                                                    <td style="border: 1px solid #000 !important;">
+                                                        <center>    <strong>@item.PRACTICAL_MIN_MARKS</strong></center>
+                                                    </td>
+                                                    <td style="border: 1px solid #000 !important;">
+                                                    </td>
+                                                    <td style="border: 1px solid #000 !important;">
+                                                    </td>
+                                                    <td style="border: 1px solid #000 !important">
+                                                        <center>    <strong>@item.PRACTICAL_OBT_MARKS</strong></center>
+                                                    </td>
+
+                                                </tr>
+
+                                                    
+                                            }
+                                        }
+                                                                 @if (Model.ResultList.Count > 0)
                                     {
                                         foreach (var item in Model.ResultList.Take(1))
                                         {
@@ -538,26 +722,12 @@ text-align:center;
                                     <tr>
                                         <td style="border:none !important ;text-align:left">
                                             <div style="font-size:10px">
-                                                (Passing Marks is 48% of Aggregate)
+                                              
+                                               @*  (Passing Marks is 48% of Aggregate) *@
                                             </div>
                                             <p style="padding:0px;margin:5px 0px">
-                                                    RESULT :
-
-                                                @if (Model.SEM_NO == "IV")
-                                                {
-                                                    <strong>
-                                                        @if (Model.ResultList.Select(x => x.FINAL_RESULT).FirstOrDefault() != null)
-                                                        {
-                                                            @Model.ResultList.Select(x => x.FINAL_RESULT).FirstOrDefault()
-                                                        }
-                                                        else
-                                                        {
-
-                                                        }
-                                                    </strong>
-                                                }
-                                                else
-                                                {
+                                                 
+                                                <span style="padding-right:20px">Theory Result :                                                
                                                     <strong>
                                                         @if (Model.ResultList.Select(x => x.RESULT).FirstOrDefault() != null)
                                                         {
@@ -568,7 +738,21 @@ text-align:center;
 
                                                         }
                                                     </strong>
-                                                }
+                                                    </span>
+                                                    <span>
+                                                   Practical Result :                                                
+                                                    <strong>
+                                                        @if (Model.ResultList.Select(x => x.PRACTICAL_RESULT).FirstOrDefault() != null)
+                                                        {
+                                                            @Model.ResultList.Select(x => x.PRACTICAL_RESULT).FirstOrDefault()
+                                                        }
+                                                        else
+                                                        {
+
+                                                        }
+                                                    </strong></span>
+
+                                                
                                             </p>
                                             @if (Model.SEM_NO == "IV")
                                             {
@@ -624,7 +808,16 @@ text-align:center;
 
                                 </table>
                                 <div style="text-align:center;float:right">
-                                    <img src="https://result.mvvu.ac.in/Sign.jpg" height="50" width="100" /><br />
+                                    @if ((DateTime)DateTime.Now < (DateTime)Convert.ToDateTime("01/06/2026"))
+                                    {
+                                        <img src="https://result.mvvu.ac.in/Sign.jpg" height="50" width="100" />
+                                    }
+                                    else
+                                    {
+
+                                        <img src="https://result.mvvu.ac.in/Signhar.jpg" height="50" width="100" />
+                                    }
+                                    <br />
                                     Controller of Examinations
                                 </div>
                             </td>

@@ -115,6 +115,11 @@ namespace MVVU_RESULT_MODEL.DTO
         public string? T_MAX { get; set; }
         public string? I_MAX { get; set; }
         public string? S_MAX { get; set; }
+
+        public string? T_MIN { get; set; }
+        public string? I_MIN { get; set; }
+        public string? S_MIN { get; set; }
+
         public string? TOT_MAX { get; set; }
         public int? POINT { get; set; }
         public string? POINT_STR { get; set; }
