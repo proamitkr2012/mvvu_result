@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MVVU_RESULT_MODEL")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+42b98888748d038f9bcd104a9352f3d1a1dd589a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+311ab1a728b7c6a137ae49c13125eecb34f786ab")]
 [assembly: System.Reflection.AssemblyProductAttribute("MVVU_RESULT_MODEL")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MVVU_RESULT_MODEL")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
