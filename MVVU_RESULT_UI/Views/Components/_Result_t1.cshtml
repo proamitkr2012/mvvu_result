@@ -47,7 +47,7 @@
                                             <span style=" font-weight:bold;font-size:20px">MAA VINDHYAVASINI UNIVERSITY, MIRZAPUR </span> <br />
                                             @if (Model.COURSE_ID == 934)
                                             {
-                                                <span> EXAMINATION @Model.HELD_IN<br /></span>
+                                                <span> EXAMINATION @Model.SessionName.ToUpper()<br /></span>
                                             }
                                             else
                                             {
@@ -56,14 +56,14 @@
                                                 @if (Model.CourseType == "ANNUAL")
                                                 {
 
-                                                    <span>ANNUAL EXAMINATION @Model.HELD_IN<br /></span>
+                                                    <span>ANNUAL EXAMINATION @Model.SessionName.ToUpper()<br /></span>
 
 
                                                 }
                                                 else
                                                 {
 
-                                                    <span>SEMESTER EXAMINATION @Model.HELD_IN<br /></span>
+                                                    <span>SEMESTER EXAMINATION @Model.SessionName.ToUpper()<br /></span>
 
 
                                                 }

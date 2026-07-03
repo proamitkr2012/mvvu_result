@@ -44,14 +44,14 @@ function SubmitFormA() {
     else {
         $('#EXAM_TYPE_ID').removeClass("input-validation-error");
     }
-    if ($.trim($("#RESULT_TYPE_ID").val()) == "") {
-        $('#RESULT_TYPE_ID').addClass("input-validation-error");
+    // if ($.trim($("#RESULT_TYPE_ID").val()) == "") {
+    //     $('#RESULT_TYPE_ID').addClass("input-validation-error");
 
-        flag = false;
-    }
-    else {
-        $('#RESULT_TYPE_ID').removeClass("input-validation-error");
-    }
+    //     flag = false;
+    // }
+    // else {
+    //     $('#RESULT_TYPE_ID').removeClass("input-validation-error");
+    // }
 
     if (flag) {
 
@@ -64,7 +64,7 @@ function SubmitFormA() {
         formData.append("CollegeCode", $("#CollegeCodeDDL").val()),
         formData.append("ROLL_NO", $("#ROLL_NO").val())
         
-        formData.append("RESULT_TYPE_ID", $("#RESULT_TYPE_ID").val()),
+        // formData.append("RESULT_TYPE_ID", $("#RESULT_TYPE_ID").val()),
 
 
             $.ajax({

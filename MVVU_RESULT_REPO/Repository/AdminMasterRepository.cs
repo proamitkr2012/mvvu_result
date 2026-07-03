@@ -1030,11 +1030,11 @@ namespace MVVU_RESULT_REPO
                     Flag = Flag,
                     COURSE_ID = model.COURSE_ID,
                     SESSION_ID = model.SESSION_ID,
-                    ROLL_NO = model.ROLL_NO,
+                    ROLL_NO = string.IsNullOrEmpty(model.ROLL_NO)?"":model.ROLL_NO,
                     IS_RW = model.IS_RW,
-                    CollegeCode = model.CollegeCode,
+                    CollegeCode = string.IsNullOrEmpty(model.CollegeCode) ? "" : model.CollegeCode,
                     EXAM_TYPE_ID = model.EXAM_TYPE_ID,
-                    RESULT_TYPE_ID = model.RESULT_TYPE_ID,
+                    //RESULT_TYPE_ID = model.RESULT_TYPE_ID,
 
                 };
                 var data = await con.QueryAsync<FormResponse>("ApplyOrdinance_AM", paramList,
