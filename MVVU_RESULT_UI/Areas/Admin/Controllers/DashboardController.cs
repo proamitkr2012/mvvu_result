@@ -27,6 +27,8 @@ using MVVU_RESULT_MODEL.Enum;
 using MVVU_RESULT_REPO;
 using MVVU_RESULT_REPO.Utilities;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Data;
+using MVVU_RESULT_UI.Generic;
 
 namespace MVVU_RESULT_UI.Areas.Admin.Controllers
 {
@@ -38,6 +40,7 @@ namespace MVVU_RESULT_UI.Areas.Admin.Controllers
         public string ImgCloudPath = "";
         private IMailClient _mailClient;
         private readonly ILogger<HomeController> _logger; string ipAddressName = "";
+        private readonly IConfiguration _configuration;
         public DashboardController(IHttpContextAccessor _httpContextAccessor, IConfiguration _config,
              IWebHostEnvironment _environment, IUnitOfWork uow, IMailClient mailClient,ILogger<HomeController> logger) : base(_httpContextAccessor, _config, uow)
         {
@@ -1013,6 +1016,32 @@ namespace MVVU_RESULT_UI.Areas.Admin.Controllers
 
             }
             return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DownloadResultSummary(string flag="",string CourseIDs = "",int Sem=0,string Session="")
+        {
+            
+
+            FileDirectory.GenerateFilePath(
+                             destFilePath: AppSettings.GetDestinationFilePath(),
+                             GlobalPath: GlobalPath.DownloadReport,
+                             FolderPath: string.Empty,
+                             FileName: "Download"+ flag,
+                             FileExtension: "xlsx",
+                             FullFilePath: out string fullfilepath,
+                             AbsoulteFilePath: out string absoultefilepath,
+            ReturnFileName: out string returnfilename);
+
+            DataTable dt1 = await UOF.IAdminMaster.Download_Result_Summary(flag, CourseIDs,Sem, Session);
+
+            //Generate Excel Report
+            new Helper().GenerateExcelReport(
+                            _filepath: fullfilepath,
+                            _sheetName: "Download"+flag,
+                            _dt: dt1);
+            return Json(new { filename = returnfilename, filepath = absoultefilepath });
+
         }
     }
 }

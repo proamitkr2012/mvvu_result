@@ -315,6 +315,10 @@
           "framework": "net8.0",
           "targetAlias": "net8.0",
           "dependencies": {
+            "ClosedXML": {
+              "target": "Package",
+              "version": "[0.105.0, )"
+            },
             "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": {
               "target": "Package",
               "version": "[8.0.0, )"
@@ -335,6 +339,10 @@
               "target": "Package",
               "version": "[8.0.0, )"
             },
+            "NReco.PdfGenerator": {
+              "target": "Package",
+              "version": "[1.2.1, )"
+            },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.4, )"
@@ -354,6 +362,10 @@
             "System.Data.SqlClient": {
               "target": "Package",
               "version": "[4.9.1, )"
+            },
+            "ZXing.Net": {
+              "target": "Package",
+              "version": "[0.16.11, )"
             }
           },
           "imports": [

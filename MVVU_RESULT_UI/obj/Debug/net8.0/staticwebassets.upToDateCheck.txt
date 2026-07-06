@@ -1,3 +1,6 @@
+wwwroot\Assets\Temp\DownloadReport\DownloadCourseWise_1783329983.xlsx
+wwwroot\Assets\Temp\DownloadReport\Download_1783331820.xlsx
+wwwroot\Assets\Temp\DownloadReport\new.gif
 wwwroot\DHRAU_Watermark.png
 wwwroot\DHRAU_Watermark1.png
 wwwroot\No-Image-Placeholder.svg
@@ -686,6 +689,7 @@ wwwroot\lib\jquery\dist\jquery.min.js
 wwwroot\lib\jquery\dist\jquery.min.map
 wwwroot\loader.svg
 wwwroot\logo_header.png
+wwwroot\m_app_offline.html
 wwwroot\pageui\AGRA_MASTER_L_25_12_25.sql
 wwwroot\pageui\AGRA_RESULT_DEMO_L_25_12_25.sql
 wwwroot\pageui\AGRA_RESULT_ERP_L_25_12_25.sql

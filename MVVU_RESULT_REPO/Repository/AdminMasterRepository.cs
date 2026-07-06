@@ -2043,6 +2043,37 @@ namespace MVVU_RESULT_REPO
             }
             return list;
         }
+
+        public async Task<DataTable> Download_Result_Summary(string Flag = "", string CourseIDs = "", int Sem = 0,string Session="")
+        {
+
+            DataTable dt = new DataTable();
+            await using var con = new SqlConnection(_connectionStringResult);
+            con.Open();
+            try
+            {
+                var paramList = new
+                {
+
+                    Flag = Flag,
+                    CourseIDs = CourseIDs,
+                    Sem= Sem,
+                    Session= Session
+                };
+                var dr = await con.ExecuteReaderAsync("Download_Result_Summary_AM", paramList, commandType: CommandType.StoredProcedure);
+                dt.Load(dr);
+            }
+            catch (Exception e)
+            {
+                //
+            }
+            finally
+            {
+                con.Close();
+            }
+            return dt;
+        }
+        
     }
 
 }
