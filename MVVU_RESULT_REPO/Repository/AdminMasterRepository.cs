@@ -2044,7 +2044,7 @@ namespace MVVU_RESULT_REPO
             return list;
         }
 
-        public async Task<DataTable> Download_Result_Summary(string Flag = "", string CourseIDs = "", int Sem = 0,string Session="")
+        public async Task<DataTable> Download_Result_Summary(ResultReprtDTO model)
         {
 
             DataTable dt = new DataTable();
@@ -2055,10 +2055,10 @@ namespace MVVU_RESULT_REPO
                 var paramList = new
                 {
 
-                    Flag = Flag,
-                    CourseIDs = CourseIDs,
-                    Sem= Sem,
-                    Session= Session
+                    Flag = model.Flag,
+                    CourseIDs = model.CourseIDs,
+                    Sem= model.Sem,
+                    Session= model.Session
                 };
                 var dr = await con.ExecuteReaderAsync("Download_Result_Summary_AM", paramList, commandType: CommandType.StoredProcedure);
                 dt.Load(dr);

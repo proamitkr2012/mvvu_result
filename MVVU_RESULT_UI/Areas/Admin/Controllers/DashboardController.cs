@@ -1019,7 +1019,7 @@ namespace MVVU_RESULT_UI.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> DownloadResultSummary(string flag="",string CourseIDs = "",int Sem=0,string Session="")
+        public async Task<IActionResult> DownloadResultSummary([FromBody] ResultReprtDTO model)
         {
             
 
@@ -1027,18 +1027,18 @@ namespace MVVU_RESULT_UI.Areas.Admin.Controllers
                              destFilePath: AppSettings.GetDestinationFilePath(),
                              GlobalPath: GlobalPath.DownloadReport,
                              FolderPath: string.Empty,
-                             FileName: "Download"+ flag,
+                             FileName: "Download"+ model.Flag,
                              FileExtension: "xlsx",
                              FullFilePath: out string fullfilepath,
                              AbsoulteFilePath: out string absoultefilepath,
             ReturnFileName: out string returnfilename);
 
-            DataTable dt1 = await UOF.IAdminMaster.Download_Result_Summary(flag, CourseIDs,Sem, Session);
+            DataTable dt1 = await UOF.IAdminMaster.Download_Result_Summary(model);
 
             //Generate Excel Report
             new Helper().GenerateExcelReport(
                             _filepath: fullfilepath,
-                            _sheetName: "Download"+flag,
+                            _sheetName: "Download"+model.Flag,
                             _dt: dt1);
             return Json(new { filename = returnfilename, filepath = absoultefilepath });
 

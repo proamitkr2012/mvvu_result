@@ -9,6 +9,8 @@ namespace MVVU_RESULT_MODEL.DTO.Result
 {
     public class ResultViewedDTO
     {
+        public int COURSE_ID { get; set; }
+        public int COURSE_ID_MAIN { get; set; }
         public string COURSE_NAME { get; set; }
         public string SEM_NO { get; set; }
         public string Total { get; set; }
