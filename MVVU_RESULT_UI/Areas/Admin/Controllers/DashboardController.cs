@@ -495,6 +495,25 @@ namespace MVVU_RESULT_UI.Areas.Admin.Controllers
 
         }
 
+        [HttpPost]
+        public async Task<IActionResult> ApplyOrdinancePublish([FromForm] ORDINANCE_APPLY_AM_DTO model, string ReturnUrl)
+        {
+            try
+            {
+
+
+                FormResponse d = await UOF.IAdminMaster.ApplyOrdinancePublish_AM("", model);
+                return Json(d);
+
+            }
+            catch (Exception ex)
+            {
+                return Json("Internal error!");
+            }
+
+        }
+
+        
         public async Task<IActionResult> ORDINANCE_MAPPING(int Page = 1, string Search = null)
         {
             try
@@ -1043,5 +1062,87 @@ namespace MVVU_RESULT_UI.Areas.Admin.Controllers
             return Json(new { filename = returnfilename, filepath = absoultefilepath });
 
         }
+
+
+        [HttpPost]
+        public async Task<IActionResult> SaveSerialPaper([FromForm] string CourseID="", bool SubjectType= false, bool Serialno=false)
+        {
+            try
+            {
+
+                FormResponse data = new FormResponse();
+
+                data = await UOF.IAdminMaster.SaveSerialPaper(CourseID, SubjectType, Serialno);
+
+                if (data.ResponseCode == 1 && data.ResponseMessage == "Yes")
+                {
+                    return Json(new { res = "ok" });
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
+            return Json("0");
+        }
+        [HttpPost]
+        public async Task<IActionResult> SaveMergeMasterMarks([FromForm] string Flag = "", int CourseIDMain = 0, int Semester = 0, string HeldIn = "", bool IsMaster = false, bool IsMarks = false, string SESSION = "")
+        {
+            try
+            {
+
+                FormResponse data = new FormResponse();
+
+                data = await UOF.IAdminMaster.SaveMergeMasterMarks(Flag, CourseIDMain, Semester,HeldIn,IsMaster,IsMarks,SESSION);
+
+                if (data.ResponseCode == 1 && data.ResponseMessage == "Yes")
+                {
+                    return Json(new { res = "ok" });
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
+            return Json("0");
+        }
+        [HttpPost]
+        public async Task<IActionResult> SaveFormIntPrac([FromForm] string Flag = "", int CourseIDMain = 0, int Semester = 0, bool Internal = false, bool Practial = false)
+        {
+            try
+            {
+
+                FormResponse data = new FormResponse();
+
+                data = await UOF.IAdminMaster.SaveFormIntPrac(Flag, CourseIDMain, Semester, Internal, Practial);
+
+                if (data.ResponseCode == 1 && data.ResponseMessage == "Yes")
+                {
+                    return Json(new { res = "ok" });
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
+            return Json("0");
+        }
+        public async Task<IActionResult> ViewPaperMasterModel(int CourseIDMain = 0,string SUBJECT_NAME="")
+        {
+
+            FormResponse data = new FormResponse();
+            //return ViewComponent("PageAdmin", new { RollNumber, IsAdmin });
+            if (CourseIDMain>0)
+            {
+                data = await UOF.IAdminMaster.ViewPaperMasterModel("", CourseIDMain, SUBJECT_NAME);
+
+                if (data.ResponseCode == 1)
+                {
+                    return Json(new { res = "ok" ,data= data.ResponseMessage });
+                }
+            }
+            return Json("0");
+        }
+        
     }
 }

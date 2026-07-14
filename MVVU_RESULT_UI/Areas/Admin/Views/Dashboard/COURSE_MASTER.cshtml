@@ -6,6 +6,13 @@
 
     var data = Model.CourseList;
 }
+
+<style>
+    .checkboxsize {
+        width: 20px;
+        height: 20px;
+    }
+</style>
 <div class="content-wrapper">
 
     <div class="content-header">
@@ -32,6 +39,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Course Master <a class="btn btn-xs btn-outline-success mx-3" href="~/admin/dashboard/managecoursemaster"> <i class="fas fa-plus"></i> Add New</a></h3>
+
                             <div class="card-tools">
                                 <div class="input-group input-group-sm" style="width: 250px;">
                                     <input type="text" id="Search" name="Search" class="form-control float-right" placeholder="Search" value="@ViewBag.Search">
@@ -42,6 +50,23 @@
                                     </div>
                                 </div>
 
+                            </div>
+                            <div>
+
+                                <span>
+                                    <a class="btn btn-default float-right mr-2" onclick="SubmitFormMaster()" id="btnp">Merge Master/Marks</a>
+
+                                </span>
+
+                               
+                                <span>
+                                    <a class="btn btn-default float-right mr-2" onclick="SubmitFormSerial()" id="btnp">Set Serial and subject type</a>
+
+                                </span>
+                                <span>
+                                    <a class="btn btn-default float-right mr-2" onclick="SubmitFormIntPrac()" id="btnp">Update Int/Pract</a>
+
+                                </span>
                             </div>
                         </div>
                         @Html.Hidden("Page")
@@ -195,7 +220,7 @@
                                 @for (int i = firstPage; i <= lastPage; i++)
                                 {
                                     <li class="page-item @(i == Model.PagingList.PageCurrent ? "active" : "")">
-                                        <a class="page-link" onclick="pagechange(@i)" >@i</a>
+                                        <a class="page-link" onclick="pagechange(@i)">@i</a>
                                     </li>
                                 }
 
@@ -224,19 +249,366 @@
     </section>
 
 </div>
-@section scripts {
-<script>
-    function pagechange(p) {
-        
-        $("#Page").val(p);
-        $("#formIndex").submit();
-    }
 
-    $('#coursetable').on('dblclick', 'tr', function () {
-        
-        var COURSE_ID= $(this).data('ccode');
-                    var paperediturl = '/admin/dashboard/editcoursemaster?ccode=' + COURSE_ID;
-                window.open(paperediturl, '_self'); // Opens in a new tab
-        });
-</script>
+
+<!-- int/prac -->
+<div class="modal fade" id="FormIntPracModel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title fs-5" id="exampleModalLabel">Update Int / Prac </h4>
+                <a class="btn-close" data-dismiss="modal" aria-label="Close">X</a>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-7 form-group">
+                    <span class="" style="width:120px">CourseID Main</span>
+                    <input type="number" id="P_CourseIDMain" class="form-control" min="0">
+                    <span id="P_CourseIDMainSpan" class="text-danger w-100 float-end"></span>
+                </div>
+                <div class="col-md-5 form-group">
+                    <span class="" style="width:120px">Semester</span>
+                    <input type="number" id="P_Semester" class="form-control" min="0" max="8">
+                    <span id="P_SemesterSpan" class="text-danger w-100 float-end"></span>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input checkboxsize" type="checkbox" name="Internal" id="Internal">
+                    <label class="form-check-label p-1" for="Internal">
+                        For Internal
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input checkboxsize" type="checkbox" name="Practial" id="Practial">
+                    <label class="form-check-label p-1" for="Practial">
+                        For Practial
+                    </label>
+                </div>
+                <span id="P_CheckSpan" class="text-danger w-100 float-end"></span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="SaveFormIntPracModel()" id="btnsync">Sync</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Serial -->
+<div class="modal fade" id="Serialmodel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title fs-5" id="exampleModalLabel">Serial/Subject Type Mapping </h4>
+                <a class="btn-close" data-dismiss="modal" aria-label="Close">X</a>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-6 form-group">
+                    <span class="" style="width:120px">CourseIDs(ex: 123,123)</span>
+                    <input type="text" id="S_CourseID" class="form-control" min="0">
+                    <span id="S_CourseIDSpan" class="text-danger w-100 float-end"></span>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input checkboxsize" type="checkbox" name="Serialno" id="Serialno">
+                    <label class="form-check-label p-1" for="Serialno">
+                        For Serial No
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input checkboxsize" type="checkbox" name="SubjectType" id="SubjectType">
+                    <label class="form-check-label p-1" for="SubjectType">
+                        For Subject Type
+                    </label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="SaveSerialmodel()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- master/marks -->
+<div class="modal fade" id="MasterMarksmodel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title fs-5" id="exampleModalLabel">Master/Marks Mapping </h4>
+                <a class="btn-close" data-dismiss="modal" aria-label="Close">X</a>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-7 form-group">
+                        <span class="" style="width:120px">CourseID Main</span>
+                        <input type="number" id="M_CourseIDMain" class="form-control" min="0">
+                        <span id="M_CourseIDMainSpan" class="text-danger w-100 float-end"></span>
+                    </div>
+                    <div class="col-md-5 form-group">
+                        <span class="" style="width:120px">Semester</span>
+                        <input type="number" id="M_Semester" class="form-control" min="0" max="8">
+                        <span id="M_SemesterSpan" class="text-danger w-100 float-end"></span>
+                    </div>
+
+                    <div class="col-md-6 form-group">
+                        <span class="" style="width:120px">HeldIn</span>
+                        <input type="text" id="M_HeldIn" class="form-control" value="MAY-2026">
+                        <span id="M_HeldInSpan" class="text-danger w-100 float-end"></span>
+                    </div>
+
+                    <div class="col-md-6 form-group">
+                        <span class="" style="width:120px">SESSION</span>
+                        <input type="text" id="M_SESSION" class="form-control" value="2025-26">
+                        <span id="M_SESSIONSpan" class="text-danger w-100 float-end"></span>
+                    </div>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input checkboxsize" type="checkbox" name="IsMaster" id="IsMaster">
+                    <label class="form-check-label p-1" for="IsMaster">
+                        For Master
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input checkboxsize" type="checkbox" name="IsMarks" id="IsMarks">
+                    <label class="form-check-label p-1" for="IsMarks">
+                        For Marks
+                    </label>
+                </div>
+                <span id="M_CheckSpan" class="text-danger w-100 float-end"></span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="SaveMastermodel()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script> *@
+@section scripts {
+    <script>
+        function pagechange(p) {
+
+            $("#Page").val(p);
+            $("#formIndex").submit();
+        }
+
+        $('#coursetable').on('dblclick', 'tr', function () {
+
+            var COURSE_ID= $(this).data('ccode');
+                        var paperediturl = '/admin/dashboard/editcoursemaster?ccode=' + COURSE_ID;
+                    window.open(paperediturl, '_self'); // Opens in a new tab
+            });
+
+
+                 function SubmitFormSerial(){    $('#Serialmodel').modal('show');        }
+                  function SubmitFormMaster(){   $('#MasterMarksmodel').modal('show');   }
+                  function SubmitFormIntPrac(){   $('#FormIntPracModel').modal('show');   }
+
+                 
+                 function SaveSerialmodel()
+                 {
+                     flag = true;
+
+                        if ($("#S_CourseID").val() == "" || $("#S_CourseID").val() == "0") {
+                            $("#S_CourseIDSpan").html('Please Enter Course Code')
+                            flag = false;
+                            }
+                            else {
+                                    $("#S_CourseIDSpan").html("");
+                            }
+
+                             if (flag) {
+
+                            var formData = new FormData();
+                            formData.append("CourseID", $("#S_CourseID").val());
+                            formData.append("SubjectType", $('#SubjectType').prop('checked'));
+                            formData.append("Serialno", $('#Serialno').prop('checked'));
+
+           
+                                $.ajax({
+                                    type: "POST",
+                                    url: '/Admin/Dashboard/SaveSerialPaper',
+                                    data: formData,
+                                    dataType: 'json',
+                                    contentType: false,
+                                    processData: false,
+                                    beforeSend: function () {
+                                        // setting a timeout
+                                        $('#btnlwait').show();
+                                        $('#btnl').hide();
+                                    },
+                                    success: function (response) {
+                                        if (response.res == "ok") {
+                                            $('#btnlwait').hide();
+                                            $('#btnl').show();
+                                            $('#Serialmodel').hide();
+                                            Swal.fire({
+                                                position: 'center',
+                                                icon: 'success',
+                                                title: 'Successfully Updated!',
+                                                showConfirmButton: false,
+                                                timer: 3000
+                                            })
+                                            setTimeout(() => window.location.reload(), 2000)
+
+                                        }
+                                        else{
+                                        alert ("error")
+                                        }
+                                    },
+                                    error: function (error) {
+
+                                    }
+                                });
+        }
+                 }
+
+                  function SaveMastermodel()
+                 {
+                     flag = true;
+
+                            if ($("#M_CourseIDMain").val() == "" || $("#M_CourseIDMain").val() == "0") {
+                            $("#M_CourseIDMainSpan").html('Please Enter Course Main Code')
+                            flag = false;
+                            }
+                            else {
+                                    $("#M_CourseIDMainSpan").html("");
+                            }
+                             if ($("#M_Semester").val() == "" || $("#M_Semester").val() == "0") {
+                            $("#M_SemesterSpan").html('Please Enter Semester')
+                            flag = false;
+                            }
+                            else {
+                                    $("#M_SemesterSpan").html("");
+                            }
+
+                                    if ($('#IsMaster').is(':checked')==true || $('#IsMarks').is(':checked') ==true ) {
+
+                                        $("#M_CheckSpan").html("");
+                                    } else {
+                                         $("#M_CheckSpan").html('Please Check Any');
+                                           flag = false;
+                                    }
+
+                             if (flag) {
+
+                            var formData = new FormData();
+                            formData.append("CourseIDMain", $("#M_CourseIDMain").val());
+                            formData.append("Semester", $("#M_Semester").val());
+                            formData.append("HeldIn", $("#M_HeldIn").val());
+                            formData.append("SESSION", $("#M_SESSION").val());
+                            formData.append("IsMaster", $('#IsMaster').prop('checked'));
+                            formData.append("IsMarks", $('#IsMarks').prop('checked'));
+
+                                $.ajax({
+                                    type: "POST",
+                                    url: '/Admin/Dashboard/SaveMergeMasterMarks',
+                                    data: formData,
+                                    dataType: 'json',
+                                    contentType: false,
+                                    processData: false,
+                                    beforeSend: function () {
+                                        // setting a timeout
+                                        $('#btnlwait').show();
+                                        $('#btnl').hide();
+                                    },
+                                    success: function (response) {
+                                        if (response.res == "ok") {
+                                            $('#btnlwait').hide();
+                                            $('#btnl').show();
+                                            $('#MasterMarksmodel').hide();
+                                            Swal.fire({
+                                                position: 'center',
+                                                icon: 'success',
+                                                title: 'Successfully Updated!',
+                                                showConfirmButton: false,
+                                                timer: 3000
+                                            })
+                                            setTimeout(() => window.location.reload(), 2000)
+
+                                        }
+                                        else{
+                                        alert ("error")
+                                        }
+                                    },
+                                    error: function (error) {
+
+                                    }
+                                });
+        }
+                 }
+                 function SaveFormIntPracModel()
+                 {
+                     flag = true;
+
+                            if ($("#P_CourseIDMain").val() == "" || $("#P_CourseIDMain").val() == "0") {
+                            $("#P_CourseIDMainSpan").html('Please Enter Course Main Code')
+                            flag = false;
+                            }
+                            else {
+                                    $("#P_CourseIDMainSpan").html("");
+                            }
+                             if ($("#P_Semester").val() == "" || $("#P_Semester").val() == "0") {
+                            $("#P_SemesterSpan").html('Please Enter Semester')
+                            flag = false;
+                            }
+                            else {
+                                    $("#P_SemesterSpan").html("");
+                            }
+
+                                    if ($('#Internal').is(':checked')==true || $('#Practial').is(':checked') ==true ) {
+
+                                        $("#P_CheckSpan").html("");
+                                    } else {
+                                         $("#P_CheckSpan").html('Please Check Any');
+                                           flag = false;
+                                    }
+
+                             if (flag) {
+
+                            var formData = new FormData();
+                            formData.append("CourseIDMain", $("#P_CourseIDMain").val());
+                            formData.append("Semester", $("#P_Semester").val());
+                            formData.append("Internal", $('#Internal').prop('checked'));
+                            formData.append("Practial", $('#Practial').prop('checked'));
+
+                                $.ajax({
+                                    type: "POST",
+                                    url: '/Admin/Dashboard/SaveFormIntPrac',
+                                    data: formData,
+                                    dataType: 'json',
+                                    contentType: false,
+                                    processData: false,
+                                    beforeSend: function () {
+                                        // setting a timeout
+                                     
+                                        $('#btnsync').text("Waiting");
+                                    },
+                                    success: function (response) {
+                                        if (response.res == "ok") {
+                                            $('#btnlwait').hide();
+                                            $('#btnl').show();
+                                            $('#FormIntPracModel').hide();
+                                            Swal.fire({
+                                                position: 'center',
+                                                icon: 'success',
+                                                title: 'Successfully Updated!',
+                                                showConfirmButton: false,
+                                                timer: 3000
+                                            })
+                                            setTimeout(() => window.location.reload(), 2000)
+                                             $('#btnsync').text("");
+                                        }
+                                        else{
+                                        alert ("error")
+                                        }
+                                    },
+                                    error: function (error) {
+
+                                    }
+                                });
+        }
+                 }
+
+                 
+    </script>
 }

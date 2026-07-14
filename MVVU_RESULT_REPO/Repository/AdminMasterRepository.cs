@@ -658,6 +658,7 @@ namespace MVVU_RESULT_REPO
                 var paramList = new
                 {
                     Flag = Flag,
+                    ORDINANCE_ID = model.ORDINANCE_ID,
                     ORDINANCE_NAME = model.ORDINANCE_NAME,
                     RESULT_TYPE_ID = model.RESULT_TYPE_ID,
                     //COURSE_ID = model.COURSE_ID,
@@ -1051,6 +1052,41 @@ namespace MVVU_RESULT_REPO
             }
             return list;
         }
+        public async Task<FormResponse> ApplyOrdinancePublish_AM(string Flag, ORDINANCE_APPLY_AM_DTO model)
+        {
+            FormResponse list = new();
+            // var list = new StudentMasterDTO();
+            await using var con = new SqlConnection(_connectionStringResult);
+            con.Open();
+            try
+            {
+                var paramList = new
+                {
+                    Flag = Flag,
+                    COURSE_ID = model.COURSE_ID,
+                    SESSION_ID = model.SESSION_ID,
+                    ROLL_NO = string.IsNullOrEmpty(model.ROLL_NO) ? "" : model.ROLL_NO,
+                    IS_RW = model.IS_RW,
+                    CollegeCode = string.IsNullOrEmpty(model.CollegeCode) ? "" : model.CollegeCode,
+                    EXAM_TYPE_ID = model.EXAM_TYPE_ID,
+                    //RESULT_TYPE_ID = model.RESULT_TYPE_ID,
+
+                };
+                var data = await con.QueryAsync<FormResponse>("ApplyOrdinancePublish_AM", paramList,
+                    commandType: CommandType.StoredProcedure);
+                list = data.ToList()[0];
+            }
+            catch (Exception e)
+            {
+                //
+            }
+            finally
+            {
+                con.Close();
+            }
+            return list;
+        }
+        
         public async Task<ORDINANCE_MAPPING_AM_DTO_DASH> GET_ORDINANCE_MAPPING_AM(string Flag, int UserId, int Page, string Search = null)
         {
 
@@ -2073,7 +2109,123 @@ namespace MVVU_RESULT_REPO
             }
             return dt;
         }
+        public async Task<FormResponse> SaveSerialPaper(string? CourseID="", bool SubjectType=false, bool Serialno=false)
+        {
+            FormResponse list = new();
+            await using var con = new SqlConnection(_connectionStringResult);
+            con.Open();
+            try
+            {
+                var paramList = new
+                {
+                    CourseIDs = CourseID,
+                    SubjectType = SubjectType,
+                    Serialno = Serialno
+                };
+                var data = await con.QueryAsync<FormResponse>("SaveSerialPaper_AM", paramList,
+                    commandType: CommandType.StoredProcedure);
+                list = data.ToList()[0];
+            }
+            catch (Exception e)
+            {
+                //
+            }
+            finally
+            {
+                con.Close();
+            }
+            return list;
+        }
+        public async Task<FormResponse> SaveMergeMasterMarks(string Flag="",int CourseIDMain = 0,int Semester=0, string HeldIn="", bool IsMaster = false, bool IsMarks = false,string SESSION="")
+        {
+            FormResponse list = new();
+            await using var con = new SqlConnection(_connectionStringResult);
+            con.Open();
+            try
+            {
+                var paramList = new
+                {
+                    Flag= Flag,
+                    CourseIDMain = CourseIDMain,
+                    Semester= Semester,
+                    IsMaster = IsMaster,
+                    IsMarks = IsMarks,
+                    Heldin = HeldIn,
+                    SESSION= SESSION
+                };
+                var data = await con.QueryAsync<FormResponse>("MERGE_MASTER_MARKS_AM", paramList,
+                    commandType: CommandType.StoredProcedure);
+                list = data.ToList()[0];
+            }
+            catch (Exception e)
+            {
+                //
+            }
+            finally
+            {
+                con.Close();
+            }
+            return list;
+        }
+        public async Task<FormResponse> SaveFormIntPrac(string Flag = "", int CourseIDMain = 0, int Semester = 0, bool Internal = false, bool Practial = false)
+        {
+            FormResponse list = new();
+            await using var con = new SqlConnection(_connectionStringResult);
+            con.Open();
+            try
+            {
+                var paramList = new
+                {
+                    Flag = Flag,
+                    CourseIDMain = CourseIDMain,
+                    Semester = Semester,
+                    Internal = Internal,
+                    Practial = Practial,
+                  
+                };
+                var data = await con.QueryAsync<FormResponse>("SaveFormIntPrac_AM", paramList,
+                    commandType: CommandType.StoredProcedure);
+                list = data.ToList()[0];
+            }
+            catch (Exception e)
+            {
+                //
+            }
+            finally
+            {
+                con.Close();
+            }
+            return list;
+        }
+        public async Task<FormResponse> ViewPaperMasterModel(string flag,int CourseIDMain=0,string SUBJECT_NAME="")
+        {
+            FormResponse list = new();
+            await using var con = new SqlConnection(_connectionStringResult);
+            con.Open();
+            try
+            {
+                var paramList = new
+                {
+                    Flag = flag,
+                    CourseIDMain= CourseIDMain,
+                    SUBJECT_NAME= @SUBJECT_NAME
+                };
+                var data = await con.QueryAsync<FormResponse>("ViewPaperMasterFromOldMarks_AM", paramList,
+                    commandType: CommandType.StoredProcedure);
+                list = data.ToList()[0];
+            }
+            catch (Exception e)
+            {
+                //
+            }
+            finally
+            {
+                con.Close();
+            }
+            return list;
+        }
         
+
     }
 
 }

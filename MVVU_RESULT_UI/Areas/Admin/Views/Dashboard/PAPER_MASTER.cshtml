@@ -55,6 +55,7 @@
                                         <th scope="col">PAPER_TYPE</th>
                                         <th scope="col">PAPER_TYPE_CAT</th>
                                         <th scope="col">CREDIT</th>
+                                        <th scope="col">SERIAL</th>
                                         <th scope="col">IS_QUALIFIYING</th>
                                         <th scope="col">THEORY_MAX</th>
                                         <th scope="col">THEORY_MIN</th>
@@ -105,6 +106,10 @@
                                                     </td>
                                                     <td>
                                                         @item.CREDIT
+
+                                                    </td>
+                                                    <td>
+                                                        @item.PAPER_SERIAL_NO
 
                                                     </td>
                                                     <td>
@@ -255,7 +260,7 @@
         
         var PAPER_CODE_PK = $(this).data('pcode');
                     var paperediturl = '/admin/dashboard/editpapermaster?pcode=' + PAPER_CODE_PK;
-                window.open(paperediturl, '_self'); // Opens in a new tab
+                window.open(paperediturl, '_blank'); // Opens in a new tab
         });
 
 </script>

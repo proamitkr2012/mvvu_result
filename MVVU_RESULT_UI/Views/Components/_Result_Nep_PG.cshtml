@@ -182,6 +182,9 @@
                                         </th>
                                         @*   <th style="border: 1px solid #000 !important;width:15%;vertical-align:middle; padding:5px;margin-left:1px;"><strong>Course Type </strong> </th> *@
                                         <th style="border: 1px solid #000 !important;width:65%;vertical-align:middle; padding:5px;margin-left:1px;"><strong>Paper Title </strong> </th>
+                                        <th style="border: 1px solid #000 !important;width:5%;vertical-align:middle; padding:5px;margin-left:1px;"><strong>Theory</strong></th>
+                                        <th style="border: 1px solid #000 !important;width:5%;vertical-align:middle; padding:5px;margin-left:1px;"><strong>Internal</strong></th>
+                                        <th style="border: 1px solid #000 !important;width:7%;vertical-align:middle; padding:5px;margin-left:1px;"><strong>Total</strong></th>
                                         <th style="border: 1px solid #000 !important;width:10%;vertical-align:middle; padding:5px;margin-left:1px;"><strong>Credits </strong></th>
 
                                         <th style="border-top: 1px solid #000 !important;border-bottom: 1px solid #000 !important;width:10%;vertical-align:middle; padding:5px;margin-left:1px;"><strong>Grades</strong></th>
@@ -209,7 +212,6 @@
 
 
                                                     </td>
-                                                    @*  <td style="border-right: 1px solid #000 !important;border-bottom: 1px solid #000 !important;"><span> @item.SUBJECT_TYPE </span></td> *@
                                                     <td style="border-right: 1px solid #000 !important;border-bottom: 1px solid #000 !important;">
                                                         <span> @item.PNAME_R </span>
                                                         @if (item.SUBJECT_TYPE.ToLower() == "minor")
@@ -218,6 +220,76 @@
                                                             m++;
                                                         }
                                                     </td>
+                                                    <td style="border-right: 1px solid #000 !important;border-bottom: 1px solid #000 !important;text-align:center">
+                                                        @if (item.MARKS_OBT == "-99")
+                                                        {
+                                                            <span>
+                                                                ABS
+                                                            </span>
+                                                        }
+                                                        else if (item.MARKS_OBT == "-98")
+                                                        {
+                                                            <span>
+                                                                UFM
+                                                            </span>
+                                                        }
+                                                        else
+                                                        {
+                                                            <span>
+                                                                @item.MARKS_OBT
+                                                            </span>
+                                                        }
+                                                        / @item.T_MAX
+                                                    </td>
+                                                    <td style="border-right: 1px solid #000 !important;border-bottom: 1px solid #000 !important;text-align:center">
+                                                        @if (item.INT_OBT == "-99")
+                                                        {
+                                                            <span>
+                                                                ABS
+                                                            </span>
+                                                        }
+                                                        else if (item.INT_OBT == "-98")
+                                                        {
+                                                            <span>
+                                                                UFM
+                                                            </span>
+                                                        }
+                                                        else
+                                                        {
+                                                            <span>
+                                                                @item.INT_OBT
+                                                            </span>
+                                                        }
+
+                                                      @if(!string.IsNullOrEmpty(item.INT_OBT)){ 
+                                                          <span>/</span>
+                                                          
+                                                      }                                                        
+                                                        @item.I_MAX
+                                                    </td>
+                                                    <td style="border-right: 1px solid #000 !important;border-bottom: 1px solid #000 !important;text-align:center">
+                                                        @if (item.PAPER_TOT_MARKS_OBT == "-99")
+                                                        {
+                                                            <span>
+                                                                ABS
+                                                            </span>
+                                                        }
+                                                        else if (item.PAPER_TOT_MARKS_OBT == "-98")
+                                                        {
+                                                            <span>
+                                                                UFM
+                                                            </span>
+                                                        }
+                                                        else
+                                                        {
+                                                            <span>
+                                                                @item.PAPER_TOT_MARKS_OBT
+                                                            </span>
+                                                        }
+                                                        / @item.TOT_MAX
+                                                    </td>
+                                                    @*  <td style="border-right: 1px solid #000 !important;border-bottom: 1px solid #000 !important;"><span> @item.SUBJECT_TYPE </span></td> *@
+                                                   
 
 
                                                     <td style="border-right: 1px solid #000 !important;border-bottom: 1px solid #000 !important;text-align:center">
