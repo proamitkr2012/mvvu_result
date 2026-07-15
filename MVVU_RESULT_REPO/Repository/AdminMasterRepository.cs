@@ -711,6 +711,7 @@ namespace MVVU_RESULT_REPO
                     TOTAL_MAX = model.TOTAL_MAX,
                     TOTAL_MIN = model.TOTAL_MIN,
                     ADD_PRAC_IN_TOTAL_MARKS = model.ADD_PRAC_IN_TOTAL_MARKS,
+                    AGG_CREDIT= model.AGG_CREDIT,
                     EditFlag = 0
                 };
                 var data = await con.QueryAsync<FormResponse>("INSERT_UPDATE_OrdinanceMaster_AM", paramList,

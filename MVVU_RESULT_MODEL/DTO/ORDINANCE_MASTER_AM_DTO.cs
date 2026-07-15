@@ -75,7 +75,9 @@ namespace MVVU_RESULT_MODEL.DTO
        
         public int TOTALCREDIT { get; set; }
         public int TOTAL_MAJOR_CR { get; set; }
+        public int AGG_CREDIT { get; set; }
         
+
     }
 
     public class ORDINANCE_MASTER_AM_DTO_DASH

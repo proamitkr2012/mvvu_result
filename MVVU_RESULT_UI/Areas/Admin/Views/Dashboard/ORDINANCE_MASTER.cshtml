@@ -50,17 +50,19 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
+                                        <th scope="col">ORDINANCE_ID</th>
                                         <th scope="col">ORDINANCE_NAME</th>
                                         <th scope="col">RESULT_TYPE</th>
                                         <th scope="col">SUBJECT_COUNT</th>
                                         <th scope="col">PAPER_Count</th>
                                         <th scope="col">COMP_PC</th>
                                          <th scope="col">MAJOR_PC</th>
-                                        @* <th scope="col">IS_QUALIFIYING</th>
+                                      
                                         <th scope="col">THEORY_MAX</th>
                                         <th scope="col">THEORY_MIN</th>
-                                        <th scope="col">INTERNAL_MAX</th>
-                                        <th scope="col">INTERNAL_MIN</th>
+                                        <th scope="col">AGG_CREDIT</th>
+                                        <th scope="col">RESEARCH_CR</th>
+                                        @*  <th scope="col">INTERNAL_MIN</th>
                                         <th scope="col">SESSIONAL_MAX</th>
                                         <th scope="col">SESSIONAL_MIN</th>
                                         <th scope="col">TOTAL_MAX</th>
@@ -84,6 +86,10 @@
 
                                                     </td>
                                                     <td >
+                                                        @item.ORDINANCE_ID
+
+                                                    </td>
+                                                    <td>
                                                         @item.ORDINANCE_NAME
 
                                                     </td>
@@ -112,24 +118,23 @@
                                                         @item.IS_RW
 
                                                     </td>
-                                                    @*  <td>
-                                                        @item.PAPER_COUNT
+                                                   <td>
+                                                        @item.THEORY_MAX
 
                                                     </td>
                                                     <td>
-                                                        @item.COMPULSORY_PAPER_COUNT
+                                                        @item.THEORY_MIN
 
                                                     </td>
-                                                    <td>
-                                                        @item.OPTIONAL_PAPER_COUNT
+                                                      <td>
+                                                        @item.AGG_CREDIT
 
                                                     </td>
-                                                   
-                                                    <td>
-                                                        @item.GRACE
+                                                       <td>
+                                                        @item.RESEARCH_CR
 
                                                     </td>
-                                                    <td>
+                                                    @* <td>
                                                         @item.RESULT_PASS_PERCENT
 
                                                     </td>

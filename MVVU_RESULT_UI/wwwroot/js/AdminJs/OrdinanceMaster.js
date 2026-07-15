@@ -179,6 +179,8 @@ function SubmitFormO() {
             formData.append("IS_RW", $("#IS_RW").prop('checked')),
             
             formData.append("GRACE_APPLY_EXAM_TYPE", $("#EXAM_TYPE_ID").val()),
+            formData.append("AGG_CREDIT", $("#AGG_CREDIT").val()),
+            
           //  alert("ss")
         
             $.ajax({
@@ -233,6 +235,8 @@ function SubmitFormO() {
                         $("#II_DIV_MIN_PRAC_PERCENT").val(0);
                         $("#III_DIV_MAX_PRAC_PERCENT").val(0);
                         $("#III_DIV_MIN_PRAC_PERCENT").val(0);
+                        $("#AGG_CREDIT").val(0);
+                        
 
                         $("#FAIL_PAPER_FOR_BACK").val(0);
                         $("#AGG_MARKS_PAPER_FOR_BACK").val(0);
@@ -405,7 +409,8 @@ function SubmitFormOE() {
 
             formData.append("IS_RW", $("#IS_RW").prop('checked')),
 
-            formData.append("GRACE_APPLY_EXAM_TYPE", $("#EXAM_TYPE_ID").val()),
+                formData.append("GRACE_APPLY_EXAM_TYPE", $("#EXAM_TYPE_ID").val()),
+                formData.append("AGG_CREDIT", $("#AGG_CREDIT").val()),
             //  alert("ss")
 
             $.ajax({
@@ -460,6 +465,7 @@ function SubmitFormOE() {
                         $("#II_DIV_MIN_PRAC_PERCENT").val(0);
                         $("#III_DIV_MAX_PRAC_PERCENT").val(0);
                         $("#III_DIV_MIN_PRAC_PERCENT").val(0);
+                        $("#AGG_CREDIT").val(0);
 
                         $("#FAIL_PAPER_FOR_BACK").val(0);
                         $("#AGG_MARKS_PAPER_FOR_BACK").val(0);
