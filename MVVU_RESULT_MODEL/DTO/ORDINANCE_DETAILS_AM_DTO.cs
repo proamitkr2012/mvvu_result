@@ -10,19 +10,20 @@ namespace MVVU_RESULT_MODEL.DTO
     {
         [NotMapped]
         public int SrNo { get; set; }
+        public int ORD_DETAILS_ID { get; set; } 
         public int ORDINANCE_ID { get; set; }
         [NotMapped]
         public string ORDINANCE_NAME { get; set; }
         public string PAPER_TYPE_CAT { get; set; }
-       public int PAPER_CREDIT { get; set; } 
-       public int THEORY_MAX { get; set; }
-       public int THEORY_MIN { get; set; }
+       public int? PAPER_CREDIT { get; set; } 
+       public int? THEORY_MAX { get; set; }
+       public int? THEORY_MIN { get; set; }
        public decimal THEORY_PASS_PERCENT { get; set; }
-       public int INTERNAL_MAX { get; set; }
-       public int INTERNAL_MIN { get; set; }
-       public decimal INTERNAL_PASS_PERCENT { get; set; }
-       public int SESSIONAL_MAX { get; set; }
-       public int SESSIONAL_MIN { get; set; }
+       public int? INTERNAL_MAX { get; set; }
+       public int? INTERNAL_MIN { get; set; }
+       public decimal? INTERNAL_PASS_PERCENT { get; set; }
+       public int? SESSIONAL_MAX { get; set; }
+       public int? SESSIONAL_MIN { get; set; }
        public decimal SESSIONAL_PASS_PERCENT { get; set; }
        public int PAPER_TOTAL_MAX { get; set; }
        public int PAPER_TOTAL_MIN { get; set; }

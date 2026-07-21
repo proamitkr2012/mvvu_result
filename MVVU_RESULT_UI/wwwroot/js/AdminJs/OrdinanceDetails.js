@@ -187,7 +187,7 @@ function SubmitFormD() {
 
 
 function SubmitFormED() {
-
+    
     flag = true;
     var Toast = Swal.mixin({
         toast: true,
@@ -197,31 +197,31 @@ function SubmitFormED() {
     });
 
 
-    if ($.trim($("#ORDINANCE_ID").val()) == "") {
-        $('#select2-ORDINANCE_ID-container').closest('.select2-selection--single').addClass("input-validation-error");
+    // if ($.trim($("#ORDINANCE_ID").val()) == "") {
+    //     $('#select2-ORDINANCE_ID-container').closest('.select2-selection--single').addClass("input-validation-error");
 
-        flag = false;
-    }
-    else {
-        $('#select2-ORDINANCE_ID-container').closest('.select2-selection--single').removeClass("input-validation-error");
-    }
+    //     flag = false;
+    // }
+    // else {
+    //     $('#select2-ORDINANCE_ID-container').closest('.select2-selection--single').removeClass("input-validation-error");
+    // }
 
-    if ($.trim($("#selectpaper_type").val()) == "") {
-        $('#selectpaper_type').addClass("input-validation-error");
+    // if ($.trim($("#selectpaper_type").val()) == "") {
+    //     $('#selectpaper_type').addClass("input-validation-error");
 
-        flag = false;
-    }
-    else {
-        $('#selectpaper_type').removeClass("input-validation-error");
-    }
-    if ($.trim($("#PAPER_TYPE_CAT").val()) == "") {
-        $('#PAPER_TYPE_CAT').addClass("input-validation-error");
+    //     flag = false;
+    // }
+    // else {
+    //     $('#selectpaper_type').removeClass("input-validation-error");
+    // }
+    // if ($.trim($("#PAPER_TYPE_CAT").val()) == "") {
+    //     $('#PAPER_TYPE_CAT').addClass("input-validation-error");
 
-        flag = false;
-    }
-    else {
-        $('#PAPER_TYPE_CAT').removeClass("input-validation-error");
-    }
+    //     flag = false;
+    // }
+    // else {
+    //     $('#PAPER_TYPE_CAT').removeClass("input-validation-error");
+    // }
     //if ($.trim($("#THEORY_MIN").val()) == "") {
     //    $('#THEORY_MIN').addClass("input-validation-error");
 
@@ -235,8 +235,10 @@ function SubmitFormED() {
     if (flag) {
 
         var formData = new FormData();
+      
 
-        formData.append("ORDINANCE_ID", $("#ORDINANCE_ID").val()),
+            formData.append("ORD_DETAILS_ID", $("#ORD_DETAILS_ID").val()),
+            formData.append("ORDINANCE_ID", $("#ORDINANCE_ID").val()),
             formData.append("PAPER_TYPE_CAT", $("#PAPER_TYPE_CAT").val()),
             formData.append("PAPER_CREDIT", $("#PAPER_CREDIT").val()),
             formData.append("THEORY_MAX", $("#THEORY_MAX").val()),
@@ -251,7 +253,7 @@ function SubmitFormED() {
             formData.append("PAPER_TOTAL_MAX", $("#PAPER_TOTAL_MAX").val()),
             formData.append("PAPER_TOTAL_MIN", $("#PAPER_TOTAL_MIN").val()),
             formData.append("PAPER_TOTAL_PASS_PERCENT", $("#PAPER_TOTAL_PASS_PERCENT").val())
-        formData.append("THEORY_CHECK", $("#THEORY_CHECK").prop('checked')),
+             formData.append("THEORY_CHECK", $("#THEORY_CHECK").prop('checked')),
             formData.append("INTERNAL_CHECK", $("#INTERNAL_CHECK").prop('checked')),
             formData.append("SESSIONAL_CHECK", $("#SESSIONAL_CHECK").prop('checked')),
             formData.append("PAPER_TOTAL_CHECK", $("#PAPER_TOTAL_CHECK").prop('checked')),

@@ -404,6 +404,14 @@ namespace MVVU_RESULT_UI.Areas.Admin.Controllers
 
         }
         [HttpGet]
+        public async Task<IActionResult> EditOrdinanceDetails(string id = "")
+        {
+            ORDINANCE_DETAILS_AM_DTO data = new ORDINANCE_DETAILS_AM_DTO();
+            data = await UOF.IAdminMaster.EditOrdinanceDetails("", (int)CurrentUser.UserId, id);
+            // data.PAPERcatlist = await UOF.IAdminMaster.GET_PAPERTYPEMASTER_AM("", data.PAPER_MASTER_AM.PAPER_TYPE.ToString());
+            return View(data);
+        }
+        [HttpGet]
         public async Task<IActionResult> ManageOrdinanceDetails()
         {
             MANAGE_ORDINANCE_DETAILS_AM_DTO data = new MANAGE_ORDINANCE_DETAILS_AM_DTO();
@@ -439,7 +447,7 @@ namespace MVVU_RESULT_UI.Areas.Admin.Controllers
         {
             try
             {
-                if (model.ORDINANCE_ID > 0)
+                if (model.ORD_DETAILS_ID > 0)
                 {
 
                     FormResponse d = await UOF.IAdminMaster.UpdateOrdinanceDetails_AM("", model);
@@ -1142,6 +1150,27 @@ namespace MVVU_RESULT_UI.Areas.Admin.Controllers
                 }
             }
             return Json("0");
+        }
+        public async Task<IActionResult> DownloadPending([FromForm] PendingReprtDTO model)
+        {
+            FileDirectory.GenerateFilePath(
+                            destFilePath: AppSettings.GetDestinationFilePath(),
+                            GlobalPath: GlobalPath.DownloadReport,
+                            FolderPath: string.Empty,
+                            FileName: "DownloadPending",
+                            FileExtension: "xlsx",
+                            FullFilePath: out string fullfilepath,
+                            AbsoulteFilePath: out string absoultefilepath,
+           ReturnFileName: out string returnfilename);
+
+            DataTable dt1 = await UOF.IAdminMaster.DownloadPending(model);
+
+            //Generate Excel Report
+            new Helper().GenerateExcelReport(
+                            _filepath: fullfilepath,
+                            _sheetName: "DownloadPending",
+                            _dt: dt1);
+            return Json(new { filename = returnfilename, filepath = absoultefilepath });
         }
         
     }

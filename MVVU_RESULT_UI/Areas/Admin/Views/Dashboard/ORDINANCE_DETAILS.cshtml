@@ -33,20 +33,19 @@
                         <div class="card-header">
                             <h3 class="card-title">Ordinance DETAILS <a class="btn btn-xs btn-outline-success mx-3" href="~/admin/dashboard/manageordinancedetails">  <i class="fas fa-plus"></i> Add New</a></h3>
                             <div class="card-tools">
-                                @* <div class="input-group input-group-sm" style="width: 250px;">
-                                    <input type="text" id="Search" name="Search" class="form-control float-right" placeholder="Search" value="@ViewBag.Search">
+                               <div class="input-group input-group-sm" style="width: 250px;">
+                                   <input type="text" id="Search" name="Search" class="form-control float-right" placeholder="Search" value="@ViewBag.Search">
                                     <div class="input-group-append">
                                         <button type="submit" class="btn btn-default" id="SearchBtn">
                                             <i class="fas fa-search"></i>
                                         </button>
                                     </div>
-                                </div> *@
-
+                                </div> 
                             </div>
                         </div>
                         @Html.Hidden("Page")
                         <div class="card-body table-responsive p-0">
-                            <table class="table table-head-fixed text-nowrap" id="papertable">
+                            <table class="table table-head-fixed text-nowrap" id="papertableo">
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>                                    
@@ -85,7 +84,7 @@
                                             foreach (var item in data)
                                             {
 
-                                                <tr style="font-size:13px;" data-pcode="@item.ORDINANCE_ID">
+                                                <tr style="font-size:13px;" data-pcode="@item.ORD_DETAILS_ID">
                                                     <td>
                                                         @item.SrNo
 
@@ -208,11 +207,11 @@
             $("#formIndex").submit();
         }
 
-            $('#papertable').on('click', 'tr', function () {
+        $('#papertableo').on('dblclick', 'tr', function() {
         
             var PAPER_CODE_PK = $(this).data('pcode');
-                        var paperediturl = '/admin/dashboard/editordinancedetails?pcode=' + PAPER_CODE_PK;
-                    window.open(paperediturl, '_self'); // Opens in a new tab
+            var paperediturl = '/admin/dashboard/editordinancedetails?id=' + PAPER_CODE_PK;
+                    window.open(paperediturl, '_blank'); // Opens in a new tab
             });
 
     </script>

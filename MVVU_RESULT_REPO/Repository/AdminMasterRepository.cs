@@ -19,6 +19,7 @@ using MVVU_RESULT_MODEL.DTO;
 using MVVU_RESULT_MODEL.DTO.Result;
 using MVVU_RESULT_MODEL.Enum;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using Microsoft.AspNetCore.Mvc;
 
 namespace MVVU_RESULT_REPO
 {
@@ -29,6 +30,8 @@ namespace MVVU_RESULT_REPO
         IDapperContext _dapperContext;
         private readonly string _connectionString;
         private readonly string _connectionStringResult;
+        private readonly string _connectionStringExam;
+        
         public DataContext _dbContext
         {
             get
@@ -43,6 +46,7 @@ namespace MVVU_RESULT_REPO
             _dapperContext = dapperContext;
             _connectionString = _config["ConnectionStrings:DefaultConnectionMaster"];
             _connectionStringResult = _config["ConnectionStrings:DefaultConnectionResult"];
+            _connectionStringExam = _config["ConnectionStrings:DefaultConnectionExam"];
 
         }
         //admin-login
@@ -519,7 +523,41 @@ namespace MVVU_RESULT_REPO
             }
             return d;
         }
+        public async Task<ORDINANCE_DETAILS_AM_DTO> EditOrdinanceDetails(string Flag, int UserId, string id = "")
+        {
+
+            ORDINANCE_DETAILS_AM_DTO d = new();
+            await using var con = new SqlConnection(_connectionString);
+            con.Open();
+            try
+            {
+                var paramList = new
+                {
+                    Flag = Flag,
+                    UserId = UserId,
+                    id = id
+                };
+
+
+                var multi = await con.QueryMultipleAsync("GetEditOrdinanceDetails_AM", paramList, commandTimeout: 0,
+                commandType: CommandType.StoredProcedure);
+
+                var lst1 = await multi.ReadAsync<ORDINANCE_DETAILS_AM_DTO>();
+                d = lst1.ToList()[0];
+
+            }
+            catch (Exception e)
+            {
+                //
+            }
+            finally
+            {
+                con.Close();
+            }
+            return d;
+        }
         
+
         public async Task<List<PAPER_TYPE_CATEGORY_AM_DTO>> GET_PAPERTYPEMASTER_AM(string Flag, string PAPER_MASTER_TYPE)
         {
 
@@ -930,6 +968,7 @@ namespace MVVU_RESULT_REPO
             return list;
         }
 
+        
         public async Task<FormResponse> UpdateOrdinanceDetails_AM(string Flag, ORDINANCE_DETAILS_AM_DTO model)
         {
             FormResponse list = new();
@@ -941,6 +980,7 @@ namespace MVVU_RESULT_REPO
                 var paramList = new
                 {
                     Flag = Flag,
+                    ORD_DETAILS_ID = model.ORD_DETAILS_ID,
                     ORDINANCE_ID = model.ORDINANCE_ID,
                     PAPER_TYPE_CAT = model.PAPER_TYPE_CAT,
                     PAPER_CREDIT = model.PAPER_CREDIT,
@@ -2225,8 +2265,42 @@ namespace MVVU_RESULT_REPO
             }
             return list;
         }
-        
 
+        public async Task<DataTable> DownloadPending(PendingReprtDTO model)
+        {
+
+            DataTable dt = new DataTable();
+            await using var con = new SqlConnection(_connectionStringExam);
+            con.Open();
+            try
+            {
+                var paramList = new
+                {
+
+                     Flag = model.Flag,
+                     SessionP= model.SessionP,
+                     CourseidsP= model.CourseidsP,
+                     SemesterS = model.SemesterS,
+                     PaperType = model.PaperType,
+                     IsCtypeU = model.IsCtypeU,
+                     IsCtypeP = model.IsCtypeP,
+                     IsCtypeA = model.IsCtypeA,
+                     IsCtypeS = model.IsCtypeS
+                };
+                var dr = await con.ExecuteReaderAsync("DownloadPending_AM", paramList, commandType: CommandType.StoredProcedure);
+                dt.Load(dr);
+            }
+            catch (Exception e)
+            {
+                //
+            }
+            finally
+            {
+                con.Close();
+            }
+            return dt;
+        }
+        
     }
 
 }

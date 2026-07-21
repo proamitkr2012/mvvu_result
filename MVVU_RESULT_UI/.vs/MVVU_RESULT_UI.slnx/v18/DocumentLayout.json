@@ -3,6 +3,28 @@
   "WorkspaceRootPath": "D:\\MVVU_RESULT\\MVVU_RESULT_UI\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{D410FCDE-AC37-4B68-3F73-7459CFDF7274}|MVVU_RESULT_UI.csproj|d:\\mvvu_result\\mvvu_result_ui\\areas\\admin\\views\\dashboard\\paper_master.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D410FCDE-AC37-4B68-3F73-7459CFDF7274}|MVVU_RESULT_UI.csproj|solutionrelative:areas\\admin\\views\\dashboard\\paper_master.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D410FCDE-AC37-4B68-3F73-7459CFDF7274}|MVVU_RESULT_UI.csproj|d:\\mvvu_result\\mvvu_result_ui\\areas\\admin\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D410FCDE-AC37-4B68-3F73-7459CFDF7274}|MVVU_RESULT_UI.csproj|solutionrelative:areas\\admin\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D410FCDE-AC37-4B68-3F73-7459CFDF7274}|MVVU_RESULT_UI.csproj|d:\\mvvu_result\\mvvu_result_ui\\areas\\admin\\views\\dashboard\\ordinance_details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D410FCDE-AC37-4B68-3F73-7459CFDF7274}|MVVU_RESULT_UI.csproj|solutionrelative:areas\\admin\\views\\dashboard\\ordinance_details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2560B807-A5BA-308F-451B-E7C4CC67FB51}|..\\MVVU_RESULT_MODEL\\MVVU_RESULT_MODEL.csproj|d:\\mvvu_result\\mvvu_result_model\\dto\\ordinance_details_am_dto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D410FCDE-AC37-4B68-3F73-7459CFDF7274}|MVVU_RESULT_UI.csproj|d:\\mvvu_result\\mvvu_result_ui\\areas\\admin\\views\\dashboard\\editordinancedetails.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D410FCDE-AC37-4B68-3F73-7459CFDF7274}|MVVU_RESULT_UI.csproj|solutionrelative:areas\\admin\\views\\dashboard\\editordinancedetails.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E4EAC04C-54F7-461C-E287-8BA9963FCF26}|..\\MVVU_RESULT_REPO\\MVVU_RESULT_REPO.csproj|d:\\mvvu_result\\mvvu_result_repo\\repository\\adminmasterrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{D410FCDE-AC37-4B68-3F73-7459CFDF7274}|MVVU_RESULT_UI.csproj|d:\\mvvu_result\\mvvu_result_ui\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{D410FCDE-AC37-4B68-3F73-7459CFDF7274}|MVVU_RESULT_UI.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -34,7 +56,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -46,7 +68,85 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PAPER_MASTER.cshtml",
+              "DocumentMoniker": "D:\\MVVU_RESULT\\MVVU_RESULT_UI\\Areas\\Admin\\Views\\Dashboard\\PAPER_MASTER.cshtml",
+              "RelativeDocumentMoniker": "Areas\\Admin\\Views\\Dashboard\\PAPER_MASTER.cshtml",
+              "ToolTip": "D:\\MVVU_RESULT\\MVVU_RESULT_UI\\Areas\\Admin\\Views\\Dashboard\\PAPER_MASTER.cshtml",
+              "RelativeToolTip": "Areas\\Admin\\Views\\Dashboard\\PAPER_MASTER.cshtml",
+              "ViewState": "AgIAAO8AAAAAAAAAAAAAAAoBAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-18T07:20:04.377Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ORDINANCE_DETAILS_AM_DTO.cs",
+              "DocumentMoniker": "D:\\MVVU_RESULT\\MVVU_RESULT_MODEL\\DTO\\ORDINANCE_DETAILS_AM_DTO.cs",
+              "RelativeDocumentMoniker": "..\\MVVU_RESULT_MODEL\\DTO\\ORDINANCE_DETAILS_AM_DTO.cs",
+              "ToolTip": "D:\\MVVU_RESULT\\MVVU_RESULT_MODEL\\DTO\\ORDINANCE_DETAILS_AM_DTO.cs",
+              "RelativeToolTip": "..\\MVVU_RESULT_MODEL\\DTO\\ORDINANCE_DETAILS_AM_DTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-18T06:24:28.003Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "ORDINANCE_DETAILS.cshtml",
+              "DocumentMoniker": "D:\\MVVU_RESULT\\MVVU_RESULT_UI\\Areas\\Admin\\Views\\Dashboard\\ORDINANCE_DETAILS.cshtml",
+              "RelativeDocumentMoniker": "Areas\\Admin\\Views\\Dashboard\\ORDINANCE_DETAILS.cshtml",
+              "ToolTip": "D:\\MVVU_RESULT\\MVVU_RESULT_UI\\Areas\\Admin\\Views\\Dashboard\\ORDINANCE_DETAILS.cshtml",
+              "RelativeToolTip": "Areas\\Admin\\Views\\Dashboard\\ORDINANCE_DETAILS.cshtml",
+              "ViewState": "AgIAALcAAAAAAAAAAAAAANQAAABIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-18T06:32:13.393Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AdminMasterRepository.cs",
+              "DocumentMoniker": "D:\\MVVU_RESULT\\MVVU_RESULT_REPO\\Repository\\AdminMasterRepository.cs",
+              "RelativeDocumentMoniker": "..\\MVVU_RESULT_REPO\\Repository\\AdminMasterRepository.cs",
+              "ToolTip": "D:\\MVVU_RESULT\\MVVU_RESULT_REPO\\Repository\\AdminMasterRepository.cs",
+              "RelativeToolTip": "..\\MVVU_RESULT_REPO\\Repository\\AdminMasterRepository.cs",
+              "ViewState": "AgIAAA0CAAAAAAAAAAAjwCACAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-18T05:57:30.895Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "EditOrdinanceDetails.cshtml",
+              "DocumentMoniker": "D:\\MVVU_RESULT\\MVVU_RESULT_UI\\Areas\\Admin\\Views\\Dashboard\\EditOrdinanceDetails.cshtml",
+              "RelativeDocumentMoniker": "Areas\\Admin\\Views\\Dashboard\\EditOrdinanceDetails.cshtml",
+              "ToolTip": "D:\\MVVU_RESULT\\MVVU_RESULT_UI\\Areas\\Admin\\Views\\Dashboard\\EditOrdinanceDetails.cshtml",
+              "RelativeToolTip": "Areas\\Admin\\Views\\Dashboard\\EditOrdinanceDetails.cshtml",
+              "ViewState": "AgIAAO0AAAAAAAAAAAAAALsAAACpAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-18T05:54:21.577Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DashboardController.cs",
+              "DocumentMoniker": "D:\\MVVU_RESULT\\MVVU_RESULT_UI\\Areas\\Admin\\Controllers\\DashboardController.cs",
+              "RelativeDocumentMoniker": "Areas\\Admin\\Controllers\\DashboardController.cs",
+              "ToolTip": "D:\\MVVU_RESULT\\MVVU_RESULT_UI\\Areas\\Admin\\Controllers\\DashboardController.cs",
+              "RelativeToolTip": "Areas\\Admin\\Controllers\\DashboardController.cs",
+              "ViewState": "AgIAAPQAAAAAAAAAAAArwAUBAABFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-18T05:35:54.671Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "_footer.cshtml",
               "DocumentMoniker": "D:\\MVVU_RESULT\\MVVU_RESULT_UI\\Views\\Shared\\_footer.cshtml",
               "RelativeDocumentMoniker": "Views\\Shared\\_footer.cshtml",
@@ -59,7 +159,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 7,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "D:\\MVVU_RESULT\\MVVU_RESULT_UI\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
@@ -72,20 +172,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 6,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\MVVU_RESULT\\MVVU_RESULT_UI\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
               "ToolTip": "D:\\MVVU_RESULT\\MVVU_RESULT_UI\\Views\\Home\\Index.cshtml",
               "RelativeToolTip": "Views\\Home\\Index.cshtml",
-              "ViewState": "AgIAAEsCAAAAAAAAAAAYwGMCAABCAAAAAAAAAA==",
+              "ViewState": "AgIAAEsCAAAAAAAAAAAYwGMCAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2026-03-13T10:46:52.025Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 9,
               "Title": "_ViewStart.cshtml",
               "DocumentMoniker": "D:\\MVVU_RESULT\\MVVU_RESULT_UI\\Views\\_ViewStart.cshtml",
               "RelativeDocumentMoniker": "Views\\_ViewStart.cshtml",
@@ -98,7 +198,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 10,
               "Title": "HomeController.cs",
               "DocumentMoniker": "D:\\MVVU_RESULT\\MVVU_RESULT_UI\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
@@ -111,7 +211,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 11,
               "Title": "ResultViewComponent.cs",
               "DocumentMoniker": "D:\\MVVU_RESULT\\MVVU_RESULT_UI\\Components\\ResultViewComponent.cs",
               "RelativeDocumentMoniker": "Components\\ResultViewComponent.cs",
