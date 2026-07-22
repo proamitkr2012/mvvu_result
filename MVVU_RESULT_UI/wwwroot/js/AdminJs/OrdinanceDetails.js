@@ -322,3 +322,52 @@ function SubmitFormED() {
 
     };
 }
+
+function Clicktocopy(id) {
+    flag = true;
+    var Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000
+    });
+    var result = confirm("Want to copy this?");
+    if (result) {
+
+        var formData = new FormData();
+        formData.append("id", id)
+        formData.append("Tcode", 'OD')
+
+        $.ajax({
+            type: "POST",
+            url: '/admin/dashboard/CopyData',
+            data: formData,
+            dataType: 'json',
+            contentType: false,
+            processData: false,
+            beforeSend: function () {
+                // setting a timeout
+                $('#btnwaitc').show();
+                $('#btnc').hide();
+
+            },
+            success: function (d) {
+                if (d.ResponseCode == 1) {
+                    //alert(JSON.stringify(d))
+                    toastr.success(d.ResponseMessage)
+                    setTimeout(function () {
+                        window.location.href = "/admin/dashboard/ordinance_details";
+                    }, 2000);
+
+
+                } else {
+                    toastr.error(d.ResponseMessage)
+                }
+
+            },
+            error: function (result) {
+                alert('Service call failed: ' + result.status + ' Type :' + result.statusText);
+            }
+        });
+    }
+}

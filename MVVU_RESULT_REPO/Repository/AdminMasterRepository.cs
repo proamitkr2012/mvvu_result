@@ -535,7 +535,7 @@ namespace MVVU_RESULT_REPO
                 {
                     Flag = Flag,
                     UserId = UserId,
-                    id = id
+                    Id = id
                 };
 
 
@@ -543,7 +543,9 @@ namespace MVVU_RESULT_REPO
                 commandType: CommandType.StoredProcedure);
 
                 var lst1 = await multi.ReadAsync<ORDINANCE_DETAILS_AM_DTO>();
+                var lst2 = await multi.ReadAsync<ORDINANCE_FILTER_AM_DTO>();
                 d = lst1.ToList()[0];
+                d.ORDINANCE_LIST = lst2.ToList();
 
             }
             catch (Exception e)
@@ -753,6 +755,35 @@ namespace MVVU_RESULT_REPO
                     EditFlag = 0
                 };
                 var data = await con.QueryAsync<FormResponse>("INSERT_UPDATE_OrdinanceMaster_AM", paramList,
+                    commandType: CommandType.StoredProcedure);
+                list = data.ToList()[0];
+            }
+            catch (Exception e)
+            {
+                //
+            }
+            finally
+            {
+                con.Close();
+            }
+            return list;
+        }
+        public async Task<FormResponse> CopyData(string Flag = "",int id=0,string Tcode="")
+        {
+            FormResponse list = new();
+            // var list = new StudentMasterDTO();
+            await using var con = new SqlConnection(_connectionString);
+            con.Open();
+            try
+            {
+                var paramList = new
+                {
+                    Flag = Flag,
+                    Id = id,
+                    Tcode = Tcode,
+                    
+                };
+                var data = await con.QueryAsync<FormResponse>("CopyData_AM", paramList,
                     commandType: CommandType.StoredProcedure);
                 list = data.ToList()[0];
             }
@@ -1079,7 +1110,7 @@ namespace MVVU_RESULT_REPO
                     //RESULT_TYPE_ID = model.RESULT_TYPE_ID,
 
                 };
-                var data = await con.QueryAsync<FormResponse>("ApplyOrdinance_AM", paramList,
+                var data = await con.QueryAsync<FormResponse>("ApplyOrdinance_AM", paramList, commandTimeout: 0,
                     commandType: CommandType.StoredProcedure);
                 list = data.ToList()[0];
             }

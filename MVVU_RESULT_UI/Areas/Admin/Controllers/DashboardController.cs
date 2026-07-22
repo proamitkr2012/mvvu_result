@@ -387,6 +387,31 @@ namespace MVVU_RESULT_UI.Areas.Admin.Controllers
             }
 
         }
+        [HttpPost]
+        public async Task<IActionResult> CopyData([FromForm] int id=0, string Tcode ="")
+        {
+            try
+            {
+                if (id>0)
+                {
+
+                    FormResponse d = await UOF.IAdminMaster.CopyData("", id,Tcode);
+                    return Json(d);
+
+
+                }
+                else
+                {
+                    return Json("Try Again Later!");
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json("Internal error!");
+            }
+
+        }
+        
         public async Task<IActionResult> ORDINANCE_DETAILS(int Page = 1, string Search = null)
         {
             try

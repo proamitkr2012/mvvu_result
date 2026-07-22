@@ -36,7 +36,8 @@ namespace MVVU_RESULT_MODEL.DTO
         public bool SESSIONAL_CHECK { get; set; }
         public bool PAPER_TOTAL_CHECK { get; set; }
         public bool IS_ADD_PAPER_CREDIT { get; set; }
-        
+        public List<ORDINANCE_FILTER_AM_DTO> ORDINANCE_LIST { get; set; }
+
 
     }
 

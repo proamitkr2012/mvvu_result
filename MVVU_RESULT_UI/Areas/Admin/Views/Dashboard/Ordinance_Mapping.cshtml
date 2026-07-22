@@ -51,8 +51,10 @@
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">ORDINANCE_NAME</th>
+                                        <th scope="col">ORDINANCE_ID</th>
                                         <th scope="col">RESULT_TYPE</th>
-                                         <th scope="col">COURSE</th> 
+                                        <th scope="col">COURSE</th>
+                                        <th scope="col">COURSE ID</th>
                                         <th scope="col">PROC_NAME</th> 
                                         <th scope="col">IsACTIVE</th>
                                     </tr>
@@ -76,11 +78,19 @@
 
                                                     </td>
                                                     <td>
+                                                        @item.ORDINANCE_ID
+
+                                                    </td>
+                                                    <td>
                                                         @item.RESULT_TYPE_NAME
 
                                                     </td>
                                                     <td>
                                                         @item.COURSE_NAME
+
+                                                    </td>
+                                                    <td>
+                                                        @item.COURSE_ID
 
                                                     </td>
                                                     <td>

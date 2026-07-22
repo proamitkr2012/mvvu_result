@@ -103,14 +103,14 @@ function SubmitFormO() {
     else {
         $('#THEORY_MAX').removeClass("input-validation-error");
     }
-    if ($.trim($("#THEORY_MIN").val()) == "0" || $.trim($("#THEORY_MIN").val()) == "") {
-        $('#THEORY_MIN').addClass("input-validation-error");
+    // if ($.trim($("#THEORY_MIN").val()) == "0" || $.trim($("#THEORY_MIN").val()) == "") {
+    //     $('#THEORY_MIN').addClass("input-validation-error");
 
-        flag = false;
-    }
-    else {
-        $('#THEORY_MIN').removeClass("input-validation-error");
-    }
+    //     flag = false;
+    // }
+    // else {
+    //     $('#THEORY_MIN').removeClass("input-validation-error");
+    // }
 
 
     if (flag) {
@@ -334,14 +334,14 @@ function SubmitFormOE() {
     else {
         $('#THEORY_MAX').removeClass("input-validation-error");
     }
-    if ($.trim($("#THEORY_MIN").val()) == "0" || $.trim($("#THEORY_MIN").val()) == "") {
-        $('#THEORY_MIN').addClass("input-validation-error");
+    // if ($.trim($("#THEORY_MIN").val()) == "0" || $.trim($("#THEORY_MIN").val()) == "") {
+    //     $('#THEORY_MIN').addClass("input-validation-error");
 
-        flag = false;
-    }
-    else {
-        $('#THEORY_MIN').removeClass("input-validation-error");
-    }
+    //     flag = false;
+    // }
+    // else {
+    //     $('#THEORY_MIN').removeClass("input-validation-error");
+    // }
 
 
     if (flag) {
@@ -494,4 +494,54 @@ function SubmitFormOE() {
             });
 
     };
+}
+
+
+function Clicktocopy(id) {
+    flag = true;
+    var Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000
+    });
+    var result = confirm("Want to copy this?");
+    if (result) {
+
+        var formData = new FormData();          
+            formData.append("id", id)              
+             formData.append("Tcode", 'O')              
+
+                $.ajax({
+                    type: "POST",
+                    url: '/admin/dashboard/CopyData',
+                    data: formData,
+                    dataType: 'json',
+                    contentType: false,
+                    processData: false,
+                    beforeSend: function () {
+                        // setting a timeout
+                        $('#btnwaitc').show();
+                        $('#btnc').hide();
+
+                    },
+                    success: function (d) {
+                        if (d.ResponseCode == 1) {
+                            //alert(JSON.stringify(d))
+                            toastr.success(d.ResponseMessage)
+                            setTimeout(function () {
+                                window.location.href = "/admin/dashboard/ordinance_master";
+                            }, 2000);
+                            
+
+                        } else {
+                            toastr.error(d.ResponseMessage)
+                        }
+
+                    },
+                    error: function (result) {
+                        alert('Service call failed: ' + result.status + ' Type :' + result.statusText);
+                    }
+                });      
+    }
 }
