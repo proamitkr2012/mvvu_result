@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MVVU_RESULT_REPO")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0db451e111ce0046d6ae33dc64f2e8940be11e81")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5b6ab9c434b793d89e84c60e97e3d757aeeebc74")]
 [assembly: System.Reflection.AssemblyProductAttribute("MVVU_RESULT_REPO")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MVVU_RESULT_REPO")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

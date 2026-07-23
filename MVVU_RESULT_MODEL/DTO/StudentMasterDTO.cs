@@ -84,6 +84,8 @@ namespace MVVU_RESULT_MODEL.DTO
         public bool? IS_BE_LITERAL { get; set; }
         public string? DisplayRemarks { get; set; }
         public bool? AllowForConsolidate { get; set; }
+        public bool? IsImgAnimate { get; set; }
+        
         public List<STUDENT_MARKS_AMDTO> MarksList { get; set; }
         public List<STUDENT_RESULT_AMDTO> ResultList { get; set; }
         public List<CSP_MASTER_AMDTO> CSPList { get; set; }

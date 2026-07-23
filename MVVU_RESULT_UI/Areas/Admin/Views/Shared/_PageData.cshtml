@@ -12,7 +12,46 @@
     #example1 tbody tr:hover {
         background-color: rgb(242 163 0 / 5%);
     }
+
+    /* .heartbeat-double {
+          border: 1px solid #00e5ff;
+        animation: glowBorder 1s ease-in-out infinite;
+        
+    }
+
+    @@keyframes glowBorder {
+        0%, 100% {
+            box-shadow: 0 0 1px #ffff, 0 0 2px #fff, 0 0 5px #fff;
+        }
+
+        20% {
+            box-shadow: 0 0 1px #eee, 0 0 8px #ffff, 0 0 10px #ffff;
+        }
+    } */
+    .heartbeat-double {
+        position: absolute;
+        z-index:9999;
+        top: 4.5rem;
+        right: 1.2rem;
+        cursor: pointer;
+    }
 </style>
+<script>
+    $(document).ready(function() {
+
+    $(".heartbeat-double").hover(function() {
+
+    var maxX = $(window).width() - $(this).outerWidth();
+    var maxY = $(window).height() - $(this).outerHeight();
+
+    $(this).stop().animate({
+    left: Math.random() * maxX,
+    top: Math.random() * maxY
+    }, 300);
+
+    });
+
+    });</script>
 
 <div class="row">
     <div class="col-md-12 ">
@@ -38,9 +77,10 @@
                             <td rowspan="3" width="110px">
                                 @{
                                     var img = sdata.ImageURL + sdata.MPATH + sdata.PHOTOGRAPH;
+                                    var imghid = sdata.IsImgAnimate == true ? "heartbeat-double" :"";
                                 }
                                 <span style="text-align:right">
-                                    <img style="border:1px solid #000" id="Image1" src="@img" alt="" width="110" height="140" />
+                                    <img style="border:1px solid #000" id="Image1" src="@img" alt="" width="110" height="140" class="@imghid" />
                                 </span>
                             </td>
                         </tr>

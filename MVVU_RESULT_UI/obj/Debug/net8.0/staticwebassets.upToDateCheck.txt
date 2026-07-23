@@ -25,6 +25,9 @@ wwwroot\Assets\Temp\DownloadReport\DownloadCourseWise_1784366824.xlsx
 wwwroot\Assets\Temp\DownloadReport\DownloadCourseWise_1784367129.xlsx
 wwwroot\Assets\Temp\DownloadReport\DownloadCourseWise_1784367305.xlsx
 wwwroot\Assets\Temp\DownloadReport\DownloadCourseWise_1784371300.xlsx
+wwwroot\Assets\Temp\DownloadReport\DownloadCourseWise_1784719288.xlsx
+wwwroot\Assets\Temp\DownloadReport\DownloadCourseWise_1784790334.xlsx
+wwwroot\Assets\Temp\DownloadReport\DownloadCourseWise_1784792335.xlsx
 wwwroot\Assets\Temp\DownloadReport\DownloadPending_1784292636.xlsx
 wwwroot\Assets\Temp\DownloadReport\DownloadPending_1784292678.xlsx
 wwwroot\Assets\Temp\DownloadReport\DownloadPending_1784292685.xlsx

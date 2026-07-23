@@ -19,8 +19,9 @@ namespace MVVU_RESULT_MODEL.DTO.Result
         public string Viewed { get; set; }
         public string Per { get; set; }
         public string Session { get; set; }
-        
+        public bool IsTestingActive { get; set; }
 
+        
 
     }
 
